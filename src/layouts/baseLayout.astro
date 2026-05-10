@@ -1,0 +1,38 @@
+---
+const { title = "DamienBuilds | Durban Web Design" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Durban web design for local businesses. Get found on Google." />
+    <title>{title}</title>
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #1a1210;
+        color: #f0ece4;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Playfair', serif;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

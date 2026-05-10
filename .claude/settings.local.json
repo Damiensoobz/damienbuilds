@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__8e979974-8a04-4aff-98c4-e7df3d74ee73__get_metadata",
+      "mcp__8e979974-8a04-4aff-98c4-e7df3d74ee73__get_design_context",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
+    ]
+  }
+}
