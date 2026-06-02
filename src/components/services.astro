@@ -1,382 +1,217 @@
 ---
+const services = [
+  {
+    title: "Web Design & Development",
+    desc: "Clean, fast, mobile-first websites built around what your business actually needs. Whether you're running a salon, a panelbeater, or a one-person catering empire out of your kitchen — your site should pull its weight.",
+    icon: `<rect x="3" y="4" width="18" height="13" rx="1.5"/><line x1="3" y1="20" x2="21" y2="20"/><line x1="9" y1="20" x2="9" y2="17"/><line x1="15" y1="20" x2="15" y2="17"/>`,
+  },
+  {
+    title: "Domain & Hosting Setup",
+    desc: "I register your domain, set up reliable local hosting, and wire it all together so your site actually goes live. You won't have to learn what \"DNS propagation\" means. That's my problem, not yours.",
+    icon: `<rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><line x1="7" y1="7.5" x2="7" y2="7.5"/><line x1="7" y1="16.5" x2="7" y2="16.5"/>`,
+  },
+  {
+    title: "Business Email",
+    desc: "A proper you@yourbusiness.co.za address through Google Workspace. Because emailing a client from \"durbanplumber94@gmail.com\" quietly costs you the job before you've even quoted.",
+    icon: `<rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3,7 12,13 21,7"/>`,
+  },
+  {
+    title: "SEO Foundations",
+    desc: "Meta tags, Google Business Profile, sitemap submission — the unglamorous groundwork that decides whether you show up when someone searches \"near me\" at 9pm with a burst geyser.",
+    icon: `<circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/>`,
+  },
+  {
+    title: "Analytics & Tracking",
+    desc: "Google Analytics 4, set up and explained. You'll see who's visiting, where they came from, and which page they bailed on — so you're making decisions on facts, not vibes.",
+    icon: `<line x1="4" y1="20" x2="4" y2="10"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="13"/><line x1="20" y1="20" x2="20" y2="7"/>`,
+  },
+  {
+    title: "WhatsApp Integration",
+    desc: "A WhatsApp button wired straight to your number. This is South Africa — your customers don't want a contact form, they want to send you a voice note. Let them.",
+    icon: `<path d="M4 20l1.5-4A8 8 0 1 1 9 19.5L4 20Z"/>`,
+  },
+];
 ---
 
 <section class="services" id="services">
 
-  <!-- Contained background cloud image -->
-  <div class="services-bg" aria-hidden="true">
-    <img src="/images/cloudsbg.jpg" alt="" />
+  <!-- Video hero band: title + opening text -->
+  <div class="services-hero">
+    <div class="services-bg" aria-hidden="true">
+      <video autoplay muted loop playsinline>
+        <source src="/videos/servicesbg.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="services-scrim"></div>
+    <div class="services-header">
+      <p class="services-label">What I Do</p>
+      <h2>Everything you need to get online — and stay there.</h2>
+      <p class="services-intro">Most "web guys" build you a pretty page, disappear, and leave you locked out of your own website. I do the opposite. Domain, hosting, email, analytics — I set it all up properly, then hand you the keys with nothing held back. You walk away with a working business, not a digital ornament nobody can find.</p>
+    </div>
   </div>
 
-  <div class="services-intro">
-    <p>Your business deserves to be found.<br/>No cap — pick a package and let's get it done.</p>
-  </div>
-
-  <div class="services-body">
+  <!-- Service grid -->
+  <div class="services-inner">
     <div class="services-grid">
-
-      <div class="service-card">
-        <div class="card-icon">☁️</div>
-        <h3>The Starter Pack</h3>
-        <p class="card-price">R[TBD]</p>
-        <p class="card-desc">Get online before your nephew offers to do it for free and puts Comic Sans everywhere.</p>
-        <ul class="card-features">
-          <li>5-page website</li>
-          <li>Mobile responsive</li>
-          <li>Contact form</li>
-          <li>Google Business Profile</li>
-          <li>Basic SEO</li>
-          <li>SSL + hosting setup</li>
-        </ul>
-        <a href="#contact" class="card-cta">I Need This</a>
-      </div>
-
-      <div class="service-card card-featured">
-        <div class="card-badge">Most Popular</div>
-        <div class="card-icon">🚀</div>
-        <h3>Main Character</h3>
-        <p class="card-price">R[TBD]</p>
-        <p class="card-desc">You showed up. You did the work. Now it's your villain era — in a good way.</p>
-        <ul class="card-features">
-          <li>Everything in Starter</li>
-          <li>Up to 8 pages</li>
-          <li>WhatsApp chat button</li>
-          <li>Google Analytics</li>
-          <li>Gallery section</li>
-          <li>Performance optimisation</li>
-        </ul>
-        <a href="#contact" class="card-cta">Let's Go</a>
-      </div>
-
-      <div class="service-card">
-        <div class="card-icon">⭐</div>
-        <h3>Full Send</h3>
-        <p class="card-price">R[TBD]</p>
-        <p class="card-desc">Custom design. Premium SEO. You're not here to participate — you're here to win.</p>
-        <ul class="card-features">
-          <li>Everything in Main Character</li>
-          <li>Up to 12 pages</li>
-          <li>Custom design</li>
-          <li>Advanced local SEO</li>
-          <li>Chatbot integration</li>
-          <li>1 month support included</li>
-        </ul>
-        <a href="#contact" class="card-cta">Full Send</a>
-      </div>
-
+      {services.map((s, i) => (
+        <div class="service-card">
+          <span class="service-num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" set:html={s.icon}></svg>
+          </span>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </div>
+      ))}
     </div>
-
-    <div class="pricing-download">
-      <p>Want the full breakdown?</p>
-      <a href="/downloads/DamienBuilds_Pricing.pdf" download class="download-link">
-        Download Pricing Sheet ↓
-      </a>
-    </div>
-
   </div>
 
 </section>
 
 <style>
   .services {
+    background: #1e1613;
+    color: #f0ece4;
+    padding: 0 0 6rem;
+  }
+
+  /* ── Video hero band ── */
+  .services-hero {
     position: relative;
-    background: linear-gradient(180deg, #B38782 0%, #D29992 50%, #B38782 100%);
-    padding: 7rem 2rem 6rem;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem 2rem;
   }
 
-  /* ── Contained cloud image — sits centered behind everything ── */
-  .services-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 82%;
-    height: 88%;
-    z-index: 0;
-    overflow: hidden;
-  }
+  .services-bg { position: absolute; inset: 0; z-index: 0; }
 
-  .services-bg img {
+  .services-bg video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 10%;
-    opacity: 0.75;
+    object-position: center;
+    opacity: 0.35;
   }
 
-  /* ── Intro text box ── */
-  .services-intro {
+  .services-scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 18, 16, 0.62);
+    z-index: 1;
+  }
+
+  .services-header {
     position: relative;
     z-index: 2;
-    width: 55%;
-    max-width: 580px;
-    margin: 0 auto 4rem;
-    background: rgba(240, 236, 228, 0.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(240, 236, 228, 0.25);
-    padding: 1.25rem 2rem;
+    max-width: 680px;
     text-align: center;
   }
 
-  .services-intro p {
-    font-size: 0.95rem;
-    color: #f0ece4;
-    line-height: 1.8;
+  .services-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #e0aaa3;
+    margin-bottom: 0.85rem;
   }
 
-  /* ── Cards body ── */
-  .services-body {
-    position: relative;
-    z-index: 2;
-    max-width: 1080px;
-    margin: 0 auto;
+  .services-header h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 400;
+    color: #f0ece4;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 2px 20px rgba(8, 5, 4, 0.5);
+  }
+
+  .services-intro {
+    font-size: 0.92rem;
+    color: rgba(240, 236, 228, 0.78);
+    line-height: 1.85;
+    text-shadow: 0 1px 14px rgba(8, 5, 4, 0.7);
+  }
+
+  /* ── Grid ── */
+  .services-inner {
+    max-width: 1100px;
+    margin: 4rem auto 0;
     padding: 0 2rem;
   }
 
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-bottom: 3rem;
+    border-top: 1px solid rgba(240, 236, 228, 0.1);
+    border-left: 1px solid rgba(240, 236, 228, 0.1);
   }
 
   .service-card {
-    position: relative;
-    background: rgba(240, 236, 228, 0.12);
-    border: 1px solid rgba(240, 236, 228, 0.2);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 2.5rem 1.75rem;
+    padding: 2.75rem 2rem;
+    border-right: 1px solid rgba(240, 236, 228, 0.1);
+    border-bottom: 1px solid rgba(240, 236, 228, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 0.85rem;
-    text-align: center;
-    transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: background 0.3s ease;
   }
 
-  .service-card:hover {
-    transform: scale(1.04);
-    border-color: rgba(240, 236, 228, 0.5);
-    box-shadow: 0 0 35px rgba(240, 236, 228, 0.1), 0 0 12px rgba(240, 236, 228, 0.06);
+  .service-card:hover { background: rgba(210, 153, 146, 0.05); }
+
+  .service-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: rgba(240, 236, 228, 0.22);
+    font-family: 'Inter', sans-serif;
   }
 
-  .services-grid:has(.service-card:hover) .service-card:not(:hover) {
-    transform: scale(0.96);
-    opacity: 0.65;
-  }
-
-  .card-featured {
-    border-color: #f0ece4;
-    background: rgba(240, 236, 228, 0.18);
-  }
-
-  .card-badge {
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #f0ece4;
-    color: #2c2220;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.85rem;
-    white-space: nowrap;
-  }
-
-  @keyframes bob {
-    0%, 100% { transform: scale(1.45) translateY(0); }
-    50%       { transform: scale(1.45) translateY(-7px); }
-  }
-
-  .card-icon {
-    font-size: 1.75rem;
-    margin-bottom: 0.25rem;
-    transition: transform 0.2s ease;
-    display: inline-block;
-  }
-
-  .service-card:hover .card-icon {
-    animation: bob 0.75s ease-in-out infinite;
-  }
-
-  .service-card h3 {
-    font-family: 'Playfair', serif;
-    font-size: 1.3rem;
-    color: #f0ece4;
-    font-weight: 500;
-  }
-
-  .card-price {
-    font-family: 'Playfair', serif;
-    font-size: 1.9rem;
-    color: #f0ece4;
-    font-weight: 600;
-  }
-
-  .card-desc {
-    font-size: 0.85rem;
-    color: rgba(240, 236, 228, 0.75);
-    line-height: 1.6;
-  }
-
-  .card-features {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-    width: 100%;
-    text-align: left;
-  }
-
-  .card-features li {
-    font-size: 0.82rem;
-    color: rgba(240, 236, 228, 0.85);
-    padding-left: 1.25rem;
-    position: relative;
-    line-height: 1.4;
-  }
-
-  .card-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #f0ece4;
-    font-size: 0.72rem;
-  }
-
-  .card-cta {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: transparent;
-    border: 1px solid rgba(240, 236, 228, 0.4);
-    color: #f0ece4;
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.75rem;
-    margin-top: auto;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .card-cta:hover {
-    background: rgba(240, 236, 228, 0.15);
-    border-color: #f0ece4;
-  }
-
-  .pricing-download {
+  .service-icon {
+    color: #D29992;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(210, 153, 146, 0.3);
+    border-radius: 50%;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    margin-bottom: 0.15rem;
   }
 
-  .pricing-download p {
-    font-size: 0.85rem;
-    color: rgba(240, 236, 228, 0.7);
+  .service-card:hover .service-icon {
+    border-color: rgba(210, 153, 146, 0.6);
+    background: rgba(210, 153, 146, 0.08);
   }
 
-  .download-link {
-    font-size: 0.85rem;
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
     color: #f0ece4;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(240, 236, 228, 0.4);
-    padding-bottom: 0.1rem;
-    transition: opacity 0.2s;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
 
-  .download-link:hover {
-    opacity: 0.7;
+  .service-card p {
+    font-size: 0.85rem;
+    color: rgba(240, 236, 228, 0.55);
+    line-height: 1.75;
   }
 
-  /* ── Tablet — compact 3-col before collapse ── */
-  @media (max-width: 1024px) {
-    .services {
-      padding: 5rem 1.5rem 5rem;
-    }
-
-    .services-body {
-      padding: 0 0.5rem;
-    }
-
-    .services-grid {
-      gap: 1.25rem;
-    }
-
-    .service-card {
-      padding: 1.75rem 1.1rem;
-      gap: 0.6rem;
-    }
-
-    .service-card h3 { font-size: 1.1rem; }
-    .card-price      { font-size: 1.55rem; }
-    .card-desc       { font-size: 0.78rem; }
-    .card-features li { font-size: 0.75rem; }
-    .card-cta        { font-size: 0.72rem; padding: 0.6rem; }
+  /* ── Responsive ── */
+  @media (max-width: 880px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-hero { padding: 6rem 1.5rem; }
   }
 
-  /* ── Mobile ── */
-  @media (max-width: 768px) {
-    .services {
-      padding: 5rem 0 4rem; /* no horizontal padding — lets intro center against full viewport */
-    }
-
-    /* Hide the section-wide cloud — each card carries its own */
-    .services-bg { display: none; }
-
-    .services-intro {
-      width: 88%;
-      padding: 1rem 1.5rem;
-      margin: 0 auto 2.5rem;
-      text-align: center;
-    }
-
-    .services-body {
-      padding: 0 1.25rem; /* horizontal breathing room lives here instead */
-    }
-
-    .services-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    /* Per-card blurred cloud background */
-    .service-card {
-      isolation: isolate;
-      overflow: hidden;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      background: rgba(180, 135, 130, 0.25);
-    }
-
-    .service-card::after {
-      content: '';
-      position: absolute;
-      inset: -30px;
-      background: url('/images/cloudsbg.jpg') center / cover no-repeat;
-      filter: blur(18px);
-      opacity: 0.7;
-      z-index: -1;
-    }
-
-    .card-featured {
-      background: rgba(180, 135, 130, 0.32);
-    }
-
-    .pricing-download {
-      flex-direction: column;
-      gap: 0.75rem;
-      text-align: center;
-    }
+  @media (max-width: 560px) {
+    .services { padding: 0 0 4rem; }
+    .services-hero { padding: 5rem 1.25rem; }
+    .services-inner { padding: 0 1.25rem; margin-top: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
   }
 </style>

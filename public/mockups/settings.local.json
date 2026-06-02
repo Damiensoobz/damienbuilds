@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\mockups\\\\.claude\")",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

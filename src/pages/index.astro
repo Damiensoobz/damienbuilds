@@ -1,14 +1,22 @@
 ---
 import BaseLayout from '../layouts/baseLayout.astro';
+import SiteNav from '../components/siteNav.astro';
 import Hero from '../components/hero.astro';
 import Services from '../components/services.astro';
 import Portfolio from '../components/portfolio.astro';
+import Process from '../components/process.astro';
+import Pricing from '../components/pricing.astro';
 import Contact from '../components/contact.astro';
+import Footer from '../components/footer.astro';
 ---
 
 <BaseLayout>
+  <SiteNav home={true} />
   <Hero />
   <Services />
   <Portfolio />
+  <Process />
+  <Pricing />
   <Contact />
+  <Footer home={true} />
 </BaseLayout>

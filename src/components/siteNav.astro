@@ -1,0 +1,194 @@
+---
+const { home = false, active = "" } = Astro.props;
+const p = home ? "" : "/";
+const links = [
+  { label: "Services", href: `${p}#services` },
+  { label: "Work",     href: `${p}#work` },
+  { label: "Process",  href: `${p}#process` },
+  { label: "Pricing",  href: `${p}#pricing` },
+  { label: "FAQ",      href: "/faq" },
+  { label: "Contact",  href: `${p}#contact` },
+];
+---
+
+<nav class="nav" id="mainNav">
+  <a class="nav-logo" href="/" aria-label="DamienBuilds home">
+    <img src="/favicon.png" alt="DamienBuilds" />
+  </a>
+
+  <div class="nav-links">
+    {links.map((l) => (
+      <a href={l.href} class={active === l.label ? "active" : ""}>{l.label}</a>
+    ))}
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <nav class="overlay-links">
+    {links.map((l) => (
+      <a href={l.href} class={`overlay-link ${active === l.label ? "active" : ""}`}>{l.label}</a>
+    ))}
+  </nav>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(26, 18, 16, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(210,153,146,0.12);
+    transition: padding 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  }
+
+  .nav.hidden { transform: translateY(-100%); }
+  .nav.compact { padding: 0.4rem 2.5rem; background: rgba(26, 18, 16, 0.94); }
+
+  .nav-logo {
+    position: relative;
+    z-index: 101;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .nav-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  .nav-links { display: flex; gap: 1.75rem; }
+
+  .nav-links a {
+    color: #f0ece4;
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: #e0aaa3; }
+  .nav-links a.active { opacity: 1; color: #D29992; }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    position: relative;
+    z-index: 101;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #f0ece4;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── Overlay ── */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 98;
+    background: rgba(26, 18, 16, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-overlay.open { display: flex; opacity: 1; }
+
+  .overlay-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .overlay-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #f0ece4;
+    text-decoration: none;
+    opacity: 0.85;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .overlay-link:hover { opacity: 1; color: #e0aaa3; }
+  .overlay-link.active { color: #D29992; }
+
+  @media (max-width: 820px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  const hamburger = document.getElementById('hamburger');
+  const overlay = document.getElementById('mobileOverlay');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    overlay?.classList.toggle('open');
+    document.body.style.overflow =
+      overlay?.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.overlay-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('open');
+      overlay?.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y <= 10) {
+          nav?.classList.remove('hidden', 'compact');
+        } else if (y > lastScrollY) {
+          nav?.classList.add('hidden');
+          nav?.classList.remove('compact');
+        } else {
+          nav?.classList.remove('hidden');
+          nav?.classList.add('compact');
+        }
+        lastScrollY = y;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>

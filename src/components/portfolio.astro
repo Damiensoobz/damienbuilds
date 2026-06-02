@@ -1,439 +1,199 @@
 ---
-const projects = [
-  {
-    title: "Plumbing Bros",
-    description: "Starter site for a Durban plumber who was tired of losing jobs to Google's top 3. Spoiler: now he IS the top 3.",
-    testimonial: "\"My diary is booked three months out. Please send help.\" — Brad T.",
-    image: "/images/cloudsbg.jpg",
-    url: "#",
-    tag: "Starter Package"
-  },
-  {
-    title: "The Hungry Bean",
-    description: "Growth package for a café that was completely invisible online. Now regulars quote their own WhatsApp menu back at them.",
-    testimonial: "\"We had to hire two extra staff. This is not a complaint.\" — Naledi M.",
-    image: "/images/cloudsbg.jpg",
-    url: "#",
-    tag: "Main Character Package"
-  },
-  {
-    title: "Volt & Sparks",
-    description: "Premium build for an electrician who said 'I don't need a website' in 2022. He called us in 2025. He ranked page one in six weeks.",
-    testimonial: "\"I'm obsessed with my own website. Is that weird?\" — Grant K.",
-    image: "/images/cloudsbg.jpg",
-    url: "#",
-    tag: "Full Send Package"
-  },
-];
 ---
 
-<section class="portfolio" id="portfolio">
-  <div class="slider-wrapper">
+<section class="work" id="work">
+  <div class="work-inner">
 
-    <!-- Shown above the slider on mobile only -->
-    <div class="portfolio-header-mobile">
-      <p class="portfolio-label">Recent Work</p>
+    <div class="work-header">
+      <p class="work-label">Work</p>
       <h2>What We've Built</h2>
     </div>
 
-    <div class="slides-container">
-
-      <!-- Overlaid on the right info-panel area on desktop only -->
-      <div class="portfolio-header">
-        <p class="portfolio-label">Recent Work</p>
-        <h2>What We've Built</h2>
+    <div class="banner">
+      <div class="banner-image">
+        <!-- Swap this placeholder for your propaganda-style poster image -->
+        <img src="/images/founding-poster.jpg" alt="This could be you" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="image-placeholder">
+          <span class="ph-tag">🚧 Reserved</span>
+          <p class="ph-title">Your Site Here</p>
+          <p class="ph-sub">A poster goes here until the first case studies land.</p>
+        </div>
       </div>
 
-      {projects.map((project, i) => (
-        <div class={`slide ${i === 0 ? 'active' : ''}`} data-index={i}>
-
-          <!-- Clickable image with zoom effect -->
-          <a
-            class="slide-image"
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View live site: ${project.title}`}
-          >
-            <img src={project.image} alt={project.title} />
-            <div class="slide-overlay"></div>
-          </a>
-
-          <!-- Right-side info panel -->
-          <div class="slide-info">
-            <span class="slide-tag">{project.tag}</span>
-            <h3>{project.title}</h3>
-            <p class="slide-desc">{project.description}</p>
-            <a href={project.url} target="_blank" rel="noopener noreferrer" class="slide-link">
-              View Live Site →
-            </a>
-            <div class="slide-divider"></div>
-            <p class="slide-testimonial">{project.testimonial}</p>
-          </div>
-
-        </div>
-      ))}
-
-      <button class="nav-btn prev" id="prevBtn" aria-label="Previous project">&#8592;</button>
-      <button class="nav-btn next" id="nextBtn" aria-label="Next project">&#8594;</button>
-
-    </div>
-
-    <div class="slide-dots">
-      {projects.map((_, i) => (
-        <button class={`dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Go to project ${i + 1}`}></button>
-      ))}
+      <div class="banner-content">
+        <p class="banner-eyebrow">🚧 This Spot Is Reserved For You</p>
+        <p class="banner-lead">Real talk: I'm new to running this independently, so this space is empty on purpose — I'd rather show you nothing than fake it with stock photos and made-up testimonials.</p>
+        <p class="banner-body">So here's the deal. I'm taking on <strong>3 founding clients at R4,500</strong> instead of R6,500. Same build, same quality, same full handover. All I ask in return is honest feedback and permission to feature your site right here.</p>
+        <p class="banner-kicker">You get a proper website at a founder's price. I get a portfolio that's actually real. Nobody gets Comic Sans.</p>
+        <a href="#contact" class="banner-cta">Claim a Founding Spot →</a>
+        <p class="banner-small">2 spots remaining. Once they're gone, it's full price.</p>
+      </div>
     </div>
 
   </div>
 </section>
 
 <style>
-  .portfolio {
-    background: linear-gradient(180deg, #B38782 0%, #5B6F85 63%);
-    padding: 3rem 0 4.5rem;
-  }
-
-  .slider-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  /* ── Mobile-only header (hidden on desktop) ── */
-  .portfolio-header-mobile {
-    display: none;
-    text-align: center;
-    padding: 1.5rem 1rem 1.25rem;
-    pointer-events: none;
-  }
-
-  .portfolio-header-mobile .portfolio-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(240, 236, 228, 0.75);
-    margin-bottom: 0.6rem;
-  }
-
-  .portfolio-header-mobile h2 {
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  .work {
+    background: #241a15;
+    padding: 7rem 2rem 6rem;
     color: #f0ece4;
-    font-weight: 500;
   }
 
-  /* ── Slides container ── */
-  .slides-container {
-    position: relative;
-    width: 90%;
-    max-width: 1400px;
-    height: 640px;
+  .work-inner {
+    max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
   }
 
-  /* ── Desktop header: sits over the right info-panel area ── */
-  .portfolio-header {
-    position: absolute;
-    top: 1.75rem;
-    right: 0;
-    width: 360px;
-    z-index: 6;
-    pointer-events: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 1.75rem; /* mirrors slide-info horizontal padding */
-  }
+  /* ── Header ── */
+  .work-header { margin-bottom: 3.5rem; }
 
-  .portfolio-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+  .work-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(240, 236, 228, 0.75);
-    margin-bottom: 0.5rem;
+    color: #D29992;
+    margin-bottom: 0.85rem;
   }
 
-  .portfolio-header h2 {
-    font-size: 1.5rem;
+  .work-header h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 400;
     color: #f0ece4;
-    font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
-  /* ── Individual slide ── */
-  .slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
+  /* ── Banner ── */
+  .banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
   }
 
-  .slide.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  /* ── Clickable background image with zoom ── */
-  .slide-image {
-    position: absolute;
-    inset: 0;
-    display: block;
+  .banner-image {
+    position: relative;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
+    border: 1px solid rgba(210, 153, 146, 0.2);
   }
 
-  .slide-image img {
+  .banner-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
-    transition: transform 0.7s ease;
   }
 
-  .slide.active .slide-image:hover img {
-    transform: scale(1.06);
-  }
-
-  .slide-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 20, 35, 0.18);
-    transition: background 0.3s ease;
-  }
-
-  .slide.active .slide-image:hover .slide-overlay {
-    background: rgba(15, 20, 35, 0.08);
-  }
-
-  /* ── Right info panel ── */
-  .slide-info {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 360px;
-    box-sizing: border-box;
-    background: rgba(240, 236, 228, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-left: 1px solid rgba(240, 236, 228, 0.18);
-    padding: 6rem 1.75rem 2.5rem; /* top padding clears the desktop header */
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background:
+      repeating-linear-gradient(45deg, rgba(210,153,146,0.04) 0 12px, transparent 12px 24px),
+      linear-gradient(135deg, rgba(210, 153, 146, 0.12), rgba(210, 153, 146, 0.03));
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch; /* stretch so text fills width and wraps properly */
-    text-align: center;
-    gap: 0.9rem;
-  }
-
-  /* Push content block away from the header — centres it in the remaining space */
-  .slide-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(240, 236, 228, 0.6);
-    margin-top: auto;
-    align-self: center; /* tag is short — keep it centered, not stretched */
-  }
-
-  .slide-info h3 {
-    font-family: 'Playfair', serif;
-    font-size: 1.35rem;
-    color: #f0ece4;
-    font-weight: 500;
-    text-align: center;
-    width: 100%;
-  }
-
-  .slide-desc {
-    font-size: 0.85rem;
-    color: rgba(240, 236, 228, 0.8);
-    line-height: 1.6;
-    text-align: center;
-    width: 100%;
-  }
-
-  .slide-link {
-    display: inline-block;
-    margin-top: 0.25rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: rgba(240, 236, 228, 0.75);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(240, 236, 228, 0.3);
-    padding-bottom: 0.1rem;
-    transition: color 0.2s;
-    align-self: center; /* keep link at natural width, centered */
-  }
-
-  .slide-link:hover { color: #f0ece4; }
-
-  .slide-divider {
-    width: 50%;
-    height: 1px;
-    background: rgba(240, 236, 228, 0.2);
-    margin: 0.5rem 0 0.3rem;
-    margin-top: auto; /* anchors the divider + testimonial to the bottom */
-    align-self: center; /* 50% width — must opt out of stretch */
-  }
-
-  .slide-testimonial {
-    font-size: 0.85rem;
-    color: #f0ece4;
-    line-height: 1.6;
-    font-style: italic;
-    opacity: 0.85;
-    text-align: center;
-    width: 100%;
-  }
-
-  /* ── Nav buttons ── */
-  .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 44px;
-    height: 44px;
-    background: rgba(240, 236, 228, 0.1);
-    border: 1px solid rgba(240, 236, 228, 0.25);
-    color: #f0ece4;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
-    padding: 0;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem;
   }
 
-  .nav-btn:hover {
-    background: rgba(240, 236, 228, 0.22);
-    border-color: rgba(240, 236, 228, 0.5);
+  .ph-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #D29992;
+    border: 1px solid rgba(210, 153, 146, 0.35);
+    padding: 0.3rem 0.7rem;
   }
 
-  .prev { left: 2.5rem; }
-  /* next stays in the image area, clear of the 360px right panel */
-  .next { right: calc(360px + 2.5rem + 44px); }
+  .ph-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: rgba(240, 236, 228, 0.5);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
 
-  /* ── Dots ── */
-  .slide-dots {
+  .ph-sub {
+    font-size: 0.82rem;
+    color: rgba(240, 236, 228, 0.3);
+    line-height: 1.5;
+    max-width: 16rem;
+  }
+
+  /* ── Banner content ── */
+  .banner-content {
     display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.75rem;
+    flex-direction: column;
+    gap: 1.25rem;
   }
 
-  .dot {
-    width: 8px;
-    height: 8px;
-    background: rgba(240, 236, 228, 0.25);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s;
+  .banner-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: #f0ece4;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
-  .dot.active { background: #f0ece4; }
+  .banner-lead {
+    font-size: 0.95rem;
+    color: rgba(240, 236, 228, 0.7);
+    line-height: 1.8;
+  }
 
-  /* ── Tablet / mobile ── */
+  .banner-body {
+    font-size: 0.92rem;
+    color: rgba(240, 236, 228, 0.6);
+    line-height: 1.8;
+  }
+
+  .banner-body strong { color: #D29992; font-weight: 600; }
+
+  .banner-kicker {
+    font-size: 0.88rem;
+    color: rgba(240, 236, 228, 0.5);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .banner-cta {
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a1210;
+    background: #D29992;
+    text-decoration: none;
+    padding: 0.9rem 2.25rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .banner-cta:hover { background: #e0aaa3; transform: translateY(-1px); }
+
+  .banner-small {
+    font-size: 0.78rem;
+    color: rgba(240, 236, 228, 0.4);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Responsive ── */
   @media (max-width: 900px) {
-    .portfolio { padding: 0 0 3rem; }
-
-    /* Show mobile header, hide desktop header */
-    .portfolio-header-mobile { display: block; }
-    .portfolio-header { display: none; }
-
-    /*
-      Stacked layout: image zone (top 240px) + info zone (remaining 310px).
-      slides-container total = 550px. Extra info height prevents text cutoff.
-    */
-    .slides-container {
-      width: 92%;
-      height: 550px;
-    }
-
-    /*
-      Constrain the image to the top zone only.
-      Override inset: 0 — keep top/left/right at 0, but fix height instead of stretching to bottom.
-    */
-    .slide-image {
-      bottom: auto;
-      height: 240px;
-    }
-
-    /* Reset desktop-only overrides */
-    .slide-tag { margin-top: 0; align-self: stretch; }
-    .slide-link { align-self: center; }
-    .slide-divider { margin-top: 0.3rem; align-self: center; }
-
-    /* Info panel: clean block below the image with enough room for all content */
-    .slide-info {
-      top: 240px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: auto;
-      padding: 1.5rem 1.5rem 1.5rem;
-      border-left: none;
-      border-top: 1px solid rgba(240, 236, 228, 0.18);
-      justify-content: center;
-      gap: 0.55rem;
-    }
-
-    /* Arrows vertically centred within the image zone */
-    .nav-btn {
-      top: 120px; /* centre of 240px image zone */
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-    }
-
-    .prev { left: 1rem; }
-    .next { right: 1rem; }
+    .banner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .banner-image { aspect-ratio: 16 / 10; max-height: 360px; }
   }
 
-  /* ── Small mobile ── */
-  @media (max-width: 600px) {
-    .slides-container { width: 94%; height: 540px; }
-
-    .slide-image { height: 220px; }
-
-    .slide-info { top: 220px; padding: 1.25rem 1.25rem 1.25rem; gap: 0.45rem; }
-
-    .nav-btn {
-      top: 110px;
-      width: 34px;
-      height: 34px;
-    }
-
-    .slide-desc { font-size: 0.8rem; }
-    .slide-testimonial { font-size: 0.78rem; }
-    .slide-info h3 { font-size: 1.1rem; }
+  @media (max-width: 560px) {
+    .work { padding: 5rem 1.25rem 4rem; }
+    .work-header { margin-bottom: 2.5rem; }
   }
 </style>
-
-<script>
-  const slides  = document.querySelectorAll('.slide');
-  const dots    = document.querySelectorAll('.dot');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let current = 0;
-
-  function goTo(index) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-
-  prevBtn?.addEventListener('click', () => goTo(current - 1));
-  nextBtn?.addEventListener('click', () => goTo(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-</script>

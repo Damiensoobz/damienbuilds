@@ -1,0 +1,35 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gregorys-driving-school",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3201", "gregorys-driving-school"],
+      "port": 3201
+    },
+    {
+      "name": "mayuri-medical",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3202", "mayuri-medical"],
+      "port": 3202
+    },
+    {
+      "name": "bills-hardware",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3203", "bills-hardware"],
+      "port": 3203
+    },
+    {
+      "name": "ps1-product",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3204", "ps1-product"],
+      "port": 3204
+    },
+    {
+      "name": "machine-rights",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3205", "machine-rights"],
+      "port": 3205
+    }
+  ]
+}

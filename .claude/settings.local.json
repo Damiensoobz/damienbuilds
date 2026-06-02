@@ -5,7 +5,23 @@
       "mcp__8e979974-8a04-4aff-98c4-e7df3d74ee73__get_design_context",
       "Bash(npm run *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321)",
-      "mcp__Claude_in_Chrome__tabs_context_mcp"
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Fix portfolio panel overflow causing off-center text on mobile *)",
+      "Bash(git push *)",
+      "Bash(ls \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\mockups\")",
+      "Bash(xcopy \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\mockups\" \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\web\\\\damienbuilds\\\\astro_build\\\\damienbuilds\\\\public\\\\mockups\" /E /I /Y /Q)",
+      "Bash(npx astro *)",
+      "WebSearch",
+      "WebFetch(domain:webflow.com)",
+      "WebFetch(domain:www.flux-academy.com)",
+      "WebFetch(domain:thecrit.co)",
+      "WebFetch(domain:www.elegantthemes.com)",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Milliseconds 500; $r = Get-Process node -ErrorAction SilentlyContinue; if \\($r\\) { \"still running: $\\($r.Count\\)\" } else { \"all node stopped\" })",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force)",
+      "PowerShell(\"node cleared\")"
     ]
   }
 }

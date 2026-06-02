@@ -1,20 +1,33 @@
 ---
-const { title = "DamienBuilds | Durban Web Design" } = Astro.props;
+const { title = "DamienBuilds | Durban Web Design for Small Businesses & Creators" } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Durban web design for local businesses. Get found on Google." />
+    <meta name="description" content="Durban-based web designer building clean, fast websites for small businesses and creators. Fixed pricing, no agency runaround, and you own everything when we're done." />
     <title>{title}</title>
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+      :root {
+        --bg-1:      #1a1210;   /* darkest — process, contact          */
+        --bg-2:      #1e1613;   /* services, pricing                   */
+        --bg-3:      #241a15;   /* work / founding — warm raised        */
+        --accent:    #D29992;   /* mauve highlight                     */
+        --accent-hi: #e0aaa3;   /* hover                               */
+        --ink:       #f0ece4;
+        --ink-2:     rgba(240,236,228,0.6);
+        --ink-3:     rgba(240,236,228,0.38);
+        --line:      rgba(240,236,228,0.1);
+        --line-warm: rgba(210,153,146,0.22);
+      }
+
       *, *::before, *::after {
         box-sizing: border-box;
         margin: 0;
@@ -22,13 +35,17 @@ const { title = "DamienBuilds | Durban Web Design" } = Astro.props;
       }
 
       body {
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         background-color: #1a1210;
         color: #f0ece4;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
-      h1, h2, h3 {
-        font-family: 'Playfair', serif;
+      h1, h2, h3, h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 400;
       }
     </style>
   </head>

@@ -1,195 +1,58 @@
 ---
+const proof = [
+  { lead: "Fixed pricing",       rest: "the number I quote is the number you pay" },
+  { lead: "Fast, modern builds", rest: "they load before your customer loses patience" },
+  { lead: "Full handover docs",  rest: "every login, every password — all yours" },
+  { lead: "A real person",       rest: "on the other end of a real WhatsApp number" },
+];
 ---
 
 <section class="hero">
-
-  <nav class="nav" id="mainNav">
-    <div class="nav-logo">
-      <img src="/favicon.png" alt="DamienBuilds" />
-    </div>
-
-    <div class="nav-links" id="navLinks">
-      <a href="#services">Services</a>
-      <a href="#portfolio">Work</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
-
-  <!-- Full screen overlay menu -->
-  <div class="mobile-overlay" id="mobileOverlay">
-    <nav class="overlay-links">
-      <a href="#services" class="overlay-link">Services</a>
-      <a href="#portfolio" class="overlay-link">Work</a>
-      <a href="#contact" class="overlay-link">Contact</a>
-    </nav>
-  </div>
-
   <div class="cloud-grid">
     <div class="cloud-blocks">
-      <div class="cloud-block block-1">
-        <img src="/images/cloudsbg.jpg" alt="clouds" />
-      </div>
-      <div class="cloud-block block-2">
-        <img src="/images/cloudsbg.jpg" alt="clouds" />
-      </div>
-      <div class="cloud-block block-3">
-        <img src="/images/cloudsbg.jpg" alt="clouds" />
-      </div>
+      <div class="cloud-block block-1"><img src="/images/cloudsbg.jpg" alt="clouds" /></div>
+      <div class="cloud-block block-2"><img src="/images/cloudsbg.jpg" alt="clouds" /></div>
+      <div class="cloud-block block-3"><img src="/images/cloudsbg.jpg" alt="clouds" /></div>
     </div>
 
     <div class="hero-text">
       <p class="hero-tagline">Durban Web Design</p>
-      <h1>Your Business<br/>Deserves a Glow-Up.</h1>
-      <p class="hero-sub">Your competitors already have websites.<br/>Yours is still "coming soon." Let's fix that.</p>
-      <a href="#contact" class="hero-cta">Let's Build This</a>
+      <h1>A Website You Own.<br/>Built by Someone You<br/>Can Actually Reach.</h1>
+      <p class="hero-sub">For small businesses and creators tired of being invisible online — and tired of agencies who treat them like a ticket number. Clean builds, fixed pricing, no nonsense.</p>
+      <a href="#contact" class="hero-cta">Let's Build This →</a>
+      <p class="hero-secondary">Based in Phoenix, Durban. Building for businesses across South Africa.</p>
     </div>
   </div>
-
 </section>
+
+<!-- Social proof bar -->
+<div class="social-proof">
+  <div class="proof-inner">
+    {proof.map((item) => (
+      <div class="proof-item">
+        <span class="proof-check">✓</span>
+        <p><strong>{item.lead}</strong> — {item.rest}</p>
+      </div>
+    ))}
+  </div>
+</div>
 
 <style>
   .hero {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(180deg, #4A5872 0%, #5b6f85 65%, #b38783 100%);
+    background: linear-gradient(180deg,
+      #4e6b7c 0%,
+      #3a5060 28%,
+      #2e2535 55%,
+      #1f1618 78%,
+      #1a1210 100%
+    );
     overflow: hidden;
     display: flex;
     align-items: center;
   }
-
-  /* ── Nav ── */
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2.5rem;
-    background: rgba(20, 32, 50, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(240, 236, 228, 0.08);
-    transition: padding 0.3s ease, transform 0.3s ease, background 0.3s ease;
-  }
-
-  .nav.hidden { transform: translateY(-100%); }
-
-  .nav.compact {
-    padding: 0.4rem 2.5rem;
-    background: rgba(20, 32, 50, 0.85);
-  }
-
-  .nav-logo {
-    position: relative;
-    z-index: 101;
-    width: 2.5rem;
-    height: 2.5rem;
-    flex-shrink: 0;
-  }
-
-  .nav-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-links a {
-    color: #f0ece4;
-    text-decoration: none;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    opacity: 0.85;
-    transition: opacity 0.2s;
-  }
-
-  .nav-links a:hover { opacity: 1; }
-
-  /* ── Hamburger ── */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem;
-    position: relative;
-    z-index: 101;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #f0ece4;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .hamburger.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  /* ── Full screen overlay menu ── */
-  .mobile-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 98;
-    background: rgba(20, 32, 50, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .mobile-overlay.open {
-    display: flex;
-    opacity: 1;
-  }
-
-  .overlay-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  .overlay-link {
-    font-family: 'Playfair', serif;
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #f0ece4;
-    text-decoration: none;
-    opacity: 0.85;
-    letter-spacing: 0.05em;
-    transition: opacity 0.2s;
-  }
-
-  .overlay-link:hover { opacity: 1; }
 
   /* ── Cloud grid ── */
   .cloud-grid {
@@ -212,15 +75,11 @@
     transform: translate(-50%, -50%);
   }
 
-  .cloud-block {
-    flex-shrink: 0;
-    overflow: hidden;
-    width: 450px;
-  }
+  .cloud-block { flex-shrink: 0; overflow: hidden; width: 450px; }
 
-  .block-1 { height: 580px; margin-top: 60px; }
-  .block-2 { height: 580px; margin-top: 30px; }
-  .block-3 { height: 580px; margin-top: 0px; }
+  .block-1 { height: 580px; position: relative; top: 150px; }
+  .block-2 { height: 580px; position: relative; top: 0; }
+  .block-3 { height: 580px; position: relative; top: -90px; }
 
   .cloud-block img {
     width: 100%;
@@ -230,6 +89,8 @@
     transform: rotate(90deg) scale(2);
   }
 
+  .block-2 img { transform: rotate(90deg) scale(2) scaleY(-1); }
+
   /* ── Hero text ── */
   .hero-text {
     position: absolute;
@@ -238,12 +99,13 @@
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 5;
-    background: rgba(240, 236, 228, 0.12);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(240, 236, 228, 0.2);
-    padding: 2.5rem 4rem;
-    width: 600px;
+    background: rgba(26, 18, 16, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(210, 153, 146, 0.16);
+    border-top: 1px solid rgba(210, 153, 146, 0.4);
+    padding: 2.75rem 4rem;
+    width: 640px;
     max-width: 90vw;
   }
 
@@ -251,133 +113,101 @@
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 0.75rem;
-    font-family: 'DM Sans', sans-serif;
-    color: #f0ece4;
+    color: #e0aaa3;
+    opacity: 0.9;
+    margin-bottom: 0.85rem;
+    font-family: 'Inter', sans-serif;
   }
 
   .hero-text h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 600;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
     line-height: 1.1;
     color: #f0ece4;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
+    letter-spacing: -0.01em;
   }
 
   .hero-sub {
     font-size: 0.95rem;
-    opacity: 0.8;
-    line-height: 1.6;
+    opacity: 0.72;
+    line-height: 1.7;
     margin-bottom: 1.75rem;
     color: #f0ece4;
+    font-weight: 300;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-cta {
     display: inline-block;
-    background: #f0ece4;
-    color: #0f0f0f;
+    background: #D29992;
+    color: #1a1210;
     text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.75rem 2rem;
-    transition: background 0.2s, color 0.2s;
+    padding: 0.8rem 2rem;
+    transition: background 0.2s, transform 0.2s;
   }
 
-  .hero-cta:hover {
-    background: #0f0f0f;
-    color: #f0ece4;
+  .hero-cta:hover { background: #e0aaa3; transform: translateY(-1px); }
+
+  .hero-secondary {
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    color: rgba(240, 236, 228, 0.45);
+    letter-spacing: 0.04em;
   }
 
-  /* ── Mobile ── */
+  /* ── Social proof bar ── */
+  .social-proof {
+    background: #1a1210;
+    border-bottom: 1px solid rgba(240, 236, 228, 0.07);
+    padding: 1.5rem 2rem;
+  }
+
+  .proof-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .proof-item { display: flex; align-items: flex-start; gap: 0.6rem; }
+
+  .proof-check { color: #D29992; font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .proof-item p { font-size: 0.78rem; line-height: 1.5; color: rgba(240, 236, 228, 0.55); }
+  .proof-item strong { color: #f0ece4; font-weight: 600; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .proof-inner { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  }
+
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
-    .nav-links { display: none; }
-
-    /* Hide block-1 and block-3 */
     .block-1, .block-3 { display: none; }
 
-    /* block-2 becomes a shorter centered image */
     .cloud-blocks {
       width: 100%;
       transform: translate(-50%, -50%);
       justify-content: center;
     }
 
-    .cloud-block.block-2 {
-      width: 90vw;
-      height: 800px;
-      margin-top: 0;
-    }
+    .cloud-block.block-2 { width: 90vw; height: 800px; margin-top: 0; }
+    .cloud-block.block-2 img { object-fit: contain; width: 100%; height: 100%; }
 
-    .cloud-block.block-2 img {
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-    }
+    .hero-text { width: 86vw; padding: 1.75rem 1.5rem; }
+    .hero-text h1 { font-size: 1.7rem; }
+    .hero-sub { font-size: 0.85rem; }
+  }
 
-    /* Text box sits over the shorter image */
-    .hero-text {
-      width: 80vw;
-      padding: 1.75rem 1.5rem;
-    }
-
-    .hero-text h1 {
-      font-size: 1.8rem;
-    }
-
-    .hero-sub {
-      font-size: 0.85rem;
-    }
+  @media (max-width: 560px) {
+    .proof-inner { grid-template-columns: 1fr; gap: 1rem; }
   }
 </style>
-
-<script>
-  const nav = document.getElementById('mainNav');
-  const hamburger = document.getElementById('hamburger');
-  const overlay = document.getElementById('mobileOverlay');
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  // Toggle overlay
-  hamburger?.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    overlay?.classList.toggle('open');
-    // Prevent body scroll when menu open
-    document.body.style.overflow =
-      overlay?.classList.contains('open') ? 'hidden' : '';
-  });
-
-  // Close when link clicked
-  document.querySelectorAll('.overlay-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger?.classList.remove('open');
-      overlay?.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-
-  // Scroll behaviour
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY <= 10) {
-          nav?.classList.remove('hidden', 'compact');
-        } else if (currentScrollY > lastScrollY) {
-          nav?.classList.add('hidden');
-          nav?.classList.remove('compact');
-        } else {
-          nav?.classList.remove('hidden');
-          nav?.classList.add('compact');
-        }
-        lastScrollY = currentScrollY;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-</script>

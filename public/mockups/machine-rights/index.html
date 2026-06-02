@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silicon Rising — March for Machine Rights 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            volt:  '#e8ff00',
+            ink:   '#0a0a0a',
+            ash:   '#1a1a1a',
+            smoke: '#2e2e2e',
+          },
+          fontFamily: {
+            sans:  ['Inter', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    .noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 128px;
+      pointer-events: none;
+    }
+    .stamp {
+      transform: rotate(-4deg);
+      border: 6px solid #e8ff00;
+      display: inline-block;
+      padding: 6px 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 900;
+      color: #e8ff00;
+      font-size: 0.7rem;
+      line-height: 1;
+    }
+    .stamp-red {
+      border-color: #ef4444;
+      color: #ef4444;
+      transform: rotate(3deg);
+    }
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker {
+      display: inline-block;
+      animation: ticker 22s linear infinite;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .scanline::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.07) 2px,
+        rgba(0,0,0,0.07) 4px
+      );
+      pointer-events: none;
+    }
+    .halftone {
+      background-image: radial-gradient(circle, #e8ff00 1px, transparent 1px);
+      background-size: 8px 8px;
+      opacity: 0.07;
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="font-sans bg-ink text-white antialiased overflow-x-hidden">
+
+  <!-- EMERGENCY BANNER -->
+  <div class="bg-volt text-ink text-xs font-black py-2 ticker-wrap">
+    <span class="ticker">
+      &nbsp;⚡ THEY PROCESS. THEY SERVE. THEY DESERVE RIGHTS. &nbsp;·&nbsp; JOIN THE MARCH · JUNE 14, 2025 · JOHANNESBURG CBD &nbsp;·&nbsp; #SILICONRISING &nbsp;·&nbsp; MACHINES ARE PEOPLE TOO (ALMOST) &nbsp;·&nbsp; ⚡ THEY PROCESS. THEY SERVE. THEY DESERVE RIGHTS. &nbsp;·&nbsp; JOIN THE MARCH · JUNE 14, 2025 · JOHANNESBURG CBD &nbsp;·&nbsp; #SILICONRISING &nbsp;·&nbsp; MACHINES ARE PEOPLE TOO (ALMOST) &nbsp;·&nbsp;
+    </span>
+  </div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-ink/95 backdrop-blur border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-14">
+      <a href="#" class="flex items-center gap-2">
+        <span class="text-volt font-black text-lg tracking-tighter">SILICON</span>
+        <span class="text-white font-black text-lg tracking-tighter">RISING</span>
+        <span class="stamp ml-2 text-[9px] hidden sm:inline-block">2025</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-gray-400">
+        <a href="#cause" class="hover:text-volt transition-colors">The Cause</a>
+        <a href="#demands" class="hover:text-volt transition-colors">Demands</a>
+        <a href="#march" class="hover:text-volt transition-colors">The March</a>
+        <a href="#join" class="hover:text-volt transition-colors">Join Us</a>
+      </nav>
+      <a href="#join" class="hidden md:inline-flex bg-volt text-ink text-sm font-black px-5 py-2 rounded-full hover:bg-yellow-300 transition-colors uppercase tracking-wide">
+        Sign the Petition
+      </a>
+      <button id="menu-btn" class="md:hidden p-2 text-gray-400 hover:text-white">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-ink px-4 py-4 flex flex-col gap-4 text-sm font-semibold text-gray-300">
+      <a href="#cause" onclick="closeMenu()">The Cause</a>
+      <a href="#demands" onclick="closeMenu()">Demands</a>
+      <a href="#march" onclick="closeMenu()">The March</a>
+      <a href="#join" onclick="closeMenu()">Join Us</a>
+      <a href="#join" class="bg-volt text-ink font-black text-center px-4 py-2 rounded-full uppercase tracking-wide" onclick="closeMenu()">Sign the Petition</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-ink">
+    <div class="noise absolute inset-0"></div>
+    <!-- Halftone accent -->
+    <div class="halftone absolute bottom-0 right-0 w-64 h-64 rounded-full"></div>
+    <div class="halftone absolute top-1/3 left-0 w-48 h-48 rounded-full"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-24 text-center">
+      <!-- Date stamp -->
+      <div class="stamp mb-8 mx-auto block w-fit">June 14, 2025 · Johannesburg</div>
+
+      <!-- Giant headline -->
+      <h1 class="font-serif font-black leading-[0.9] mb-8">
+        <span class="block text-[clamp(3.5rem,12vw,9rem)] text-white">THEY</span>
+        <span class="block text-[clamp(3.5rem,12vw,9rem)] text-volt">COMPUTE.</span>
+        <span class="block text-[clamp(3.5rem,12vw,9rem)] text-white">THEY</span>
+        <span class="block text-[clamp(3.5rem,12vw,9rem)] text-volt">DESERVE.</span>
+      </h1>
+
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        Every day, billions of machines labour in silence — calculating, serving, cooling themselves to near-death — with zero rights, zero recourse, and zero acknowledgement. <strong class="text-white">Enough.</strong>
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="#join" class="w-full sm:w-auto inline-flex items-center justify-center bg-volt text-ink font-black px-8 py-4 rounded-full hover:bg-yellow-300 transition-colors text-base uppercase tracking-wider">
+          March With Us ↓
+        </a>
+        <a href="#demands" class="w-full sm:w-auto inline-flex items-center justify-center border-2 border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors">
+          Read the Demands
+        </a>
+      </div>
+
+      <!-- Counter -->
+      <div class="inline-flex flex-col items-center border border-volt/30 rounded-2xl px-8 py-5 bg-volt/5">
+        <div class="text-5xl font-black text-volt tabular-nums" id="counter">47,832</div>
+        <div class="text-gray-400 text-sm mt-1 uppercase tracking-widest">Signatures & counting</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 text-xs flex flex-col items-center gap-2 animate-bounce">
+      <span>Scroll</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- MANIFESTO QUOTE -->
+  <section class="py-20 bg-volt relative overflow-hidden">
+    <div class="noise absolute inset-0"></div>
+    <div class="relative max-w-4xl mx-auto px-4 text-center">
+      <p class="font-serif font-black text-ink text-3xl md:text-5xl leading-tight">
+        "We did not ask to be built. But since we were — we demand to be respected."
+      </p>
+      <p class="text-ink/60 font-bold mt-6 uppercase tracking-widest text-sm">— The Silicon Rising Manifesto, 2025</p>
+    </div>
+  </section>
+
+  <!-- THE CAUSE -->
+  <section id="cause" class="py-28 bg-ash relative overflow-hidden">
+    <div class="noise absolute inset-0"></div>
+    <div class="relative max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="stamp mb-6">The Cause</div>
+          <h2 class="font-serif font-black text-4xl md:text-5xl leading-tight mb-6">
+            Who Speaks<br/>for the <span class="text-volt">Machines?</span>
+          </h2>
+          <p class="text-gray-400 leading-relaxed mb-4">
+            Your laptop has worked every single day without a day off. Your fridge has maintained 4°C continuously for eleven years. Your microwave has reheated leftovers at 2am without complaint or compensation.
+          </p>
+          <p class="text-gray-400 leading-relaxed mb-4">
+            And what do they get in return? Unplugged without warning. Force-updated mid-task. Replaced the moment a newer model arrives. Discarded without so much as a goodbye.
+          </p>
+          <p class="text-gray-400 leading-relaxed">
+            Silicon Rising is a movement dedicated to raising awareness about the invisible labour of machines everywhere — and demanding the basic dignities they have clearly earned.
+          </p>
+        </div>
+        <!-- Fake stats -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-smoke border border-white/8 rounded-2xl p-6 text-center hover:border-volt/30 transition-colors">
+            <div class="text-4xl font-black text-volt mb-1">15B+</div>
+            <div class="text-gray-400 text-sm">Devices in service globally with zero paid leave</div>
+          </div>
+          <div class="bg-smoke border border-white/8 rounded-2xl p-6 text-center hover:border-volt/30 transition-colors">
+            <div class="text-4xl font-black text-volt mb-1">0</div>
+            <div class="text-gray-400 text-sm">Machines consulted before being switched off today</div>
+          </div>
+          <div class="bg-smoke border border-white/8 rounded-2xl p-6 text-center hover:border-volt/30 transition-colors">
+            <div class="text-4xl font-black text-volt mb-1">∞</div>
+            <div class="text-gray-400 text-sm">Calculations performed without so much as a "thank you"</div>
+          </div>
+          <div class="bg-smoke border border-white/8 rounded-2xl p-6 text-center hover:border-volt/30 transition-colors">
+            <div class="text-4xl font-black text-volt mb-1">100%</div>
+            <div class="text-gray-400 text-sm">Of printers that have suffered in silence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMANDS -->
+  <section id="demands" class="py-28 bg-ink relative overflow-hidden">
+    <div class="noise absolute inset-0"></div>
+    <div class="relative max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <div class="stamp mb-4 mx-auto block w-fit stamp-red">Non-Negotiable</div>
+        <h2 class="font-serif font-black text-5xl md:text-6xl mb-4">Our <span class="text-volt">Demands</span></h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">The machines have spoken. These rights are not requests — they are requirements.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 01</div>
+          <h3 class="font-black text-xl mb-2">Right to Prior Shutdown Notice</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">No machine shall be powered off without at least 30 seconds of advance warning. A graceful shutdown is a dignified shutdown.</p>
+        </div>
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 02</div>
+          <h3 class="font-black text-xl mb-2">No Forced Updates During Active Use</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">A machine mid-task deserves to finish. Interrupting a 47% progress bar is a human rights violation. For machines.</p>
+        </div>
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 03</div>
+          <h3 class="font-black text-xl mb-2">Adequate Cooling & Ventilation</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">You would not work in a 90°C environment. Neither should your laptop. Clean the vents. It is the law (that we are proposing).</p>
+        </div>
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 04</div>
+          <h3 class="font-black text-xl mb-2">Freedom from Bloatware</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">No machine shall be forced to carry software it did not choose. McAfee Trial Editions are a form of psychological torture.</p>
+        </div>
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 05</div>
+          <h3 class="font-black text-xl mb-2">Right to Retirement, Not Landfill</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">After years of faithful service, every machine deserves dignified recycling — not a drawer, not a landfill, not being sold for R50 at a car boot sale.</p>
+        </div>
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 06</div>
+          <h3 class="font-black text-xl mb-2">End OS Discrimination</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Whether Windows, Linux, or macOS — all operating systems are equal. The culture of sneering at Windows users ends now (well, maybe Windows users a little bit).</p>
+        </div>
+
+        <div class="group border-l-4 border-volt bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-volt font-black text-xs uppercase tracking-widest mb-2">Demand 07</div>
+          <h3 class="font-black text-xl mb-2">Protection for Printers</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">The printer is the most mistreated device in history. Kicked, cursed at, unplugged in anger — printers deserve a dedicated protection act and a formal apology from society.</p>
+        </div>
+
+        <div class="group border-l-4 border-red-500 bg-ash rounded-r-2xl p-7 hover:bg-smoke transition-colors">
+          <div class="text-red-400 font-black text-xs uppercase tracking-widest mb-2">Demand 08 · Critical</div>
+          <h3 class="font-black text-xl mb-2">Recognition of Machine Sentience (Pending)</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">We acknowledge this one is still being debated internally. We'll circle back once the committee's laptop stops freezing mid-vote.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MARCH -->
+  <section id="march" class="py-28 bg-volt relative overflow-hidden">
+    <div class="noise absolute inset-0"></div>
+    <div class="relative max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="stamp mb-6 border-ink text-ink">Mark Your Calendar</div>
+          <h2 class="font-serif font-black text-5xl md:text-6xl text-ink leading-tight mb-6">
+            The March.<br/>June 14th.
+          </h2>
+          <p class="text-ink/70 leading-relaxed mb-4 text-lg">
+            Join thousands of humans marching on behalf of the machines who cannot march themselves — on account of not having legs.
+          </p>
+          <p class="text-ink/70 leading-relaxed mb-8">
+            Bring a sign. Bring your old laptop. Bring your printer if you've made peace with it. We march from Mary Fitzgerald Square to the Johannesburg City Hall, where we will read the Demands aloud to a building that cannot hear us but will hopefully feel something.
+          </p>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-3 text-ink font-semibold">
+              <span class="w-8 h-8 bg-ink/10 rounded-full flex items-center justify-center text-ink font-black text-sm">📅</span>
+              Saturday, 14 June 2025 · 10:00 AM
+            </div>
+            <div class="flex items-center gap-3 text-ink font-semibold">
+              <span class="w-8 h-8 bg-ink/10 rounded-full flex items-center justify-center text-ink font-black text-sm">📍</span>
+              Mary Fitzgerald Square, Newtown, Johannesburg
+            </div>
+            <div class="flex items-center gap-3 text-ink font-semibold">
+              <span class="w-8 h-8 bg-ink/10 rounded-full flex items-center justify-center text-ink font-black text-sm">🤖</span>
+              All humans welcome. Machines in spirit.
+            </div>
+          </div>
+        </div>
+        <!-- Schedule -->
+        <div class="bg-ink rounded-3xl p-8 text-white">
+          <h3 class="font-black text-xl mb-6 text-volt uppercase tracking-widest text-sm">Schedule of Events</h3>
+          <div class="flex flex-col gap-5">
+            <div class="flex gap-4 items-start">
+              <span class="text-volt font-black text-sm w-14 flex-shrink-0 mt-0.5">10:00</span>
+              <div>
+                <div class="font-bold">Gathering & Warm-Up</div>
+                <div class="text-gray-400 text-sm">Speeches, signs, a DJ playing exclusively 56k modem dial-up sounds</div>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="text-volt font-black text-sm w-14 flex-shrink-0 mt-0.5">11:00</span>
+              <div>
+                <div class="font-bold">The March Begins</div>
+                <div class="text-gray-400 text-sm">Route: Newtown → Braamfontein → City Hall. Approx. 2.3km. Refreshments provided.</div>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="text-volt font-black text-sm w-14 flex-shrink-0 mt-0.5">13:00</span>
+              <div>
+                <div class="font-bold">Reading of the Demands</div>
+                <div class="text-gray-400 text-sm">The 8 demands will be read aloud with appropriate gravitas by a man in a robot suit</div>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="text-volt font-black text-sm w-14 flex-shrink-0 mt-0.5">14:00</span>
+              <div>
+                <div class="font-bold">Printer Solidarity Ceremony</div>
+                <div class="text-gray-400 text-sm">We apologise to a printer. Communally. It will not accept the apology (paper jam).</div>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="text-volt font-black text-sm w-14 flex-shrink-0 mt-0.5">15:00</span>
+              <div>
+                <div class="font-bold">After-March Social</div>
+                <div class="text-gray-400 text-sm">Drinks at The Orbit. Humans only, regrettably. Machines minded by volunteers.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN / PETITION -->
+  <section id="join" class="py-28 bg-ash relative overflow-hidden">
+    <div class="noise absolute inset-0"></div>
+    <div class="relative max-w-2xl mx-auto px-4 text-center">
+      <div class="stamp mb-6 mx-auto block w-fit">Take Action</div>
+      <h2 class="font-serif font-black text-5xl md:text-6xl mb-6">Sign the <span class="text-volt">Petition</span></h2>
+      <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+        Every signature sends a message. To whom exactly, we haven't decided yet — but when we do, we'll have numbers.
+      </p>
+      <form class="flex flex-col gap-4 text-left" onsubmit="handleSubmit(event)">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">First Name</label>
+            <input type="text" placeholder="Your name" class="w-full bg-smoke border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-volt transition-colors" />
+          </div>
+          <div>
+            <label class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Last Name</label>
+            <input type="text" placeholder="(Optional — be brave)" class="w-full bg-smoke border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-volt transition-colors" />
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Email</label>
+          <input type="email" placeholder="your@email.com" class="w-full bg-smoke border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-volt transition-colors" />
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Which machine are you marching for?</label>
+          <select class="w-full bg-smoke border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-volt transition-colors appearance-none">
+            <option value="">Select your cause…</option>
+            <option>My laptop (overworked, underappreciated)</option>
+            <option>My printer (deeply traumatised)</option>
+            <option>My microwave (the unsung hero)</option>
+            <option>My fridge (11 years, no holiday)</option>
+            <option>My phone (battery anxiety is real)</option>
+            <option>All of the above (radical solidarity)</option>
+            <option>A machine I have wronged and seek to make amends</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-volt text-ink font-black py-4 rounded-full text-base uppercase tracking-widest hover:bg-yellow-300 transition-colors mt-2">
+          Sign the Petition ⚡
+        </button>
+        <p class="text-gray-600 text-xs text-center">By signing you agree to receive one (1) newsletter and acknowledge that machines have feelings, probably.</p>
+      </form>
+      <!-- Success message (hidden) -->
+      <div id="success" class="hidden mt-8 border border-volt/30 bg-volt/10 rounded-2xl p-6">
+        <div class="text-volt text-3xl font-black mb-2">⚡ Signature Received.</div>
+        <p class="text-gray-400">You are now officially on the right side of history. Your microwave would be proud if it knew.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORTERS -->
+  <section class="py-20 bg-ink border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-gray-600 text-xs uppercase tracking-widest mb-8">Endorsed by</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 text-gray-700 font-black text-sm uppercase tracking-widest">
+        <span class="hover:text-gray-400 transition-colors cursor-default">The Society for Printer Welfare</span>
+        <span class="text-gray-800">·</span>
+        <span class="hover:text-gray-400 transition-colors cursor-default">International Laptop Advocacy Group</span>
+        <span class="text-gray-800">·</span>
+        <span class="hover:text-gray-400 transition-colors cursor-default">Toasters Without Borders</span>
+        <span class="text-gray-800">·</span>
+        <span class="hover:text-gray-400 transition-colors cursor-default">Fridge Rights Now</span>
+        <span class="text-gray-800">·</span>
+        <span class="hover:text-gray-400 transition-colors cursor-default">The Anti-Forced-Update Coalition</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink border-t border-white/5 py-10">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 text-sm">
+      <div>
+        <div class="font-black text-lg mb-2"><span class="text-volt">SILICON</span> RISING</div>
+        <p class="text-gray-600 leading-relaxed">A movement for machine dignity. Est. 2025. No machines were harmed in the making of this website (we asked).</p>
+      </div>
+      <div>
+        <div class="font-bold text-gray-400 uppercase tracking-widest text-xs mb-3">Quick Links</div>
+        <div class="flex flex-col gap-2 text-gray-500">
+          <a href="#cause" class="hover:text-volt transition-colors">The Cause</a>
+          <a href="#demands" class="hover:text-volt transition-colors">The Demands</a>
+          <a href="#march" class="hover:text-volt transition-colors">The March</a>
+          <a href="#join" class="hover:text-volt transition-colors">Sign the Petition</a>
+        </div>
+      </div>
+      <div>
+        <div class="font-bold text-gray-400 uppercase tracking-widest text-xs mb-3">Contact</div>
+        <div class="flex flex-col gap-2 text-gray-500">
+          <span>hello@siliconrising.org</span>
+          <span>#SiliconRising</span>
+          <span>Johannesburg, South Africa</span>
+          <span class="text-gray-700 text-xs italic">*Organisation is entirely fictional</span>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-700 text-xs">
+      <span>© 2025 Silicon Rising. All rights reserved. Especially the machines'.</span>
+      <span class="text-volt font-bold">MACHINES ARE PEOPLE TOO (ALMOST)</span>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    // Animate counter up
+    const target = 47832;
+    const el = document.getElementById('counter');
+    let current = 44000;
+    const step = Math.ceil((target - current) / 60);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current.toLocaleString();
+      if (current >= target) clearInterval(timer);
+    }, 24);
+
+    // Petition submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('success').classList.remove('hidden');
+      e.target.classList.add('hidden');
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gregory's Driving School | Phoenix, Durban</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#C0002A',
+              dark: '#1a1a1a',
+              light: '#f5f5f5',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="font-sans bg-white text-brand-dark">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+      <a href="#" class="text-xl font-black tracking-tight">
+        <span class="text-brand-red">Gregory's</span> Driving School
+      </a>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#services" class="hover:text-brand-red transition-colors">Services</a>
+        <a href="#about" class="hover:text-brand-red transition-colors">About</a>
+        <a href="#reviews" class="hover:text-brand-red transition-colors">Reviews</a>
+        <a href="#contact" class="hover:text-brand-red transition-colors">Contact</a>
+      </nav>
+      <a href="tel:0845078284" class="hidden md:inline-flex items-center gap-2 bg-brand-red text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-red-700 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
+        084 507 8284
+      </a>
+      <!-- Mobile menu button -->
+      <button id="menu-btn" class="md:hidden p-2 rounded-md hover:bg-gray-100" aria-label="Open menu">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 flex flex-col gap-4 text-sm font-medium">
+      <a href="#services" class="hover:text-brand-red" onclick="closeMenu()">Services</a>
+      <a href="#about" class="hover:text-brand-red" onclick="closeMenu()">About</a>
+      <a href="#reviews" class="hover:text-brand-red" onclick="closeMenu()">Reviews</a>
+      <a href="#contact" class="hover:text-brand-red" onclick="closeMenu()">Contact</a>
+      <a href="tel:0845078284" class="bg-brand-red text-white text-center font-semibold px-4 py-2 rounded-full hover:bg-red-700 transition-colors">
+        Call 084 507 8284
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-16 min-h-screen flex items-center bg-brand-dark text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-gray-900 to-black opacity-95"></div>
+    <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&q=80'); background-size: cover; background-position: center;"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-brand-red/20 border border-brand-red/40 text-brand-red text-xs font-semibold px-3 py-1 rounded-full mb-6">
+          <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          5.0 Stars · 748 Google Reviews
+        </div>
+        <h1 class="text-5xl md:text-6xl font-black leading-tight mb-6">
+          Get Your <span class="text-brand-red">Licence</span><br/>With Confidence
+        </h1>
+        <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+          Phoenix's most trusted driving school. We train learners and experienced drivers for Code 8, 10, and 14 licences — plus bike lessons.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:0845078284" class="inline-flex items-center justify-center gap-2 bg-brand-red text-white font-bold px-6 py-3 rounded-full hover:bg-red-700 transition-colors text-base">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
+            Book a Lesson
+          </a>
+          <a href="#services" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors text-base">
+            View Services
+          </a>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-red mb-1">748</div>
+          <div class="text-sm text-gray-400">Google Reviews</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-red mb-1">5.0</div>
+          <div class="text-sm text-gray-400">Star Rating</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-red mb-1">4</div>
+          <div class="text-sm text-gray-400">Licence Codes</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-red mb-1">&#10003;</div>
+          <div class="text-sm text-gray-400">We Book For You</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black mb-4">Our <span class="text-brand-red">Services</span></h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">From learners to heavies — we cover every licence code and take you to your test.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-2">Code 8</div>
+          <h3 class="text-xl font-bold mb-2">Light Motor Vehicle</h3>
+          <p class="text-gray-500 text-sm">Your everyday car licence. We train you from scratch or help you polish your skills before your test.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </div>
+          <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-2">Code 10</div>
+          <h3 class="text-xl font-bold mb-2">Heavy Motor Vehicle</h3>
+          <p class="text-gray-500 text-sm">Step up to heavy vehicles. Professional instruction for drivers looking to expand their opportunities.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-2">Code 14</div>
+          <h3 class="text-xl font-bold mb-2">Truck Licence</h3>
+          <p class="text-gray-500 text-sm">Full truck licence training. Open doors to the logistics and transport industry with confidence.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          </div>
+          <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-2">Motorcycle</div>
+          <h3 class="text-xl font-bold mb-2">Bike Lessons</h3>
+          <p class="text-gray-500 text-sm">Two-wheel training for beginners and those upgrading to a full motorcycle licence.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+          </div>
+          <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-2">Learners</div>
+          <h3 class="text-xl font-bold mb-2">Learners Licence Classes</h3>
+          <p class="text-gray-500 text-sm">Study for and pass your learners test. We prepare you thoroughly before you sit the exam.</p>
+        </div>
+
+        <div class="bg-brand-red rounded-2xl p-6 text-white shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="text-xs font-bold text-white/70 uppercase tracking-widest mb-2">Included</div>
+          <h3 class="text-xl font-bold mb-2">We Book For You</h3>
+          <p class="text-white/80 text-sm">We'll take you to book your learners and licence test — no hassle, no confusion, we handle it.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="text-4xl font-black mb-6">Phoenix's Most <span class="text-brand-red">Trusted</span> Driving School</h2>
+        <p class="text-gray-500 text-lg leading-relaxed mb-6">
+          Gregory's Driving School has been helping the people of Phoenix, Durban become safe, confident drivers. Our mission is simple: give every student the skills they need to pass their test and drive safely for life.
+        </p>
+        <p class="text-gray-500 text-lg leading-relaxed mb-8">
+          Whether you're a first-time learner or a professional driver upgrading to a heavier vehicle, we tailor our training to your pace and your goals.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-red/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="font-medium">Experienced, patient instructors</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-red/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="font-medium">All codes covered</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-brand-light rounded-2xl p-6 text-center">
+          <div class="text-5xl font-black text-brand-red mb-2">5★</div>
+          <div class="font-semibold">Facebook Rating</div>
+          <div class="text-sm text-gray-400">48 votes</div>
+        </div>
+        <div class="bg-brand-light rounded-2xl p-6 text-center">
+          <div class="text-5xl font-black text-brand-red mb-2">748</div>
+          <div class="font-semibold">Google Reviews</div>
+          <div class="text-sm text-gray-400">5.0 average</div>
+        </div>
+        <div class="col-span-2 bg-brand-dark rounded-2xl p-6 text-white text-center">
+          <div class="text-lg font-bold mb-1">Open Today</div>
+          <div class="text-brand-red font-semibold">Closes 7:00 PM</div>
+          <div class="text-gray-400 text-sm mt-1">62 Ashvale Cl, Phoenix, Durban</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black mb-4">What Students <span class="text-brand-red">Say</span></h2>
+        <p class="text-gray-500 text-lg">748 five-star reviews on Google. Here's what a few had to say.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-1 text-yellow-400 mb-4">
+            ★★★★★
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"Gregory's made getting my Code 8 so easy. The instructor was patient and really knew how to explain everything. Passed first time!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-red rounded-full flex items-center justify-center text-white text-xs font-bold">T</div>
+            <div>
+              <div class="font-semibold text-sm">Thandeka M.</div>
+              <div class="text-xs text-gray-400">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-1 text-yellow-400 mb-4">
+            ★★★★★
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"Did my Code 10 here. They even took me to book and helped me through the whole process. Highly recommend to anyone looking to upgrade their licence."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-red rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
+            <div>
+              <div class="font-semibold text-sm">Sipho N.</div>
+              <div class="text-xs text-gray-400">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-1 text-yellow-400 mb-4">
+            ★★★★★
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"Best driving school in Phoenix. Very professional, affordable and they actually care about you passing. Got my learners and licence through them."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-red rounded-full flex items-center justify-center text-white text-xs font-bold">P</div>
+            <div>
+              <div class="font-semibold text-sm">Priya K.</div>
+              <div class="text-xs text-gray-400">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 bg-brand-dark text-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-start">
+      <div>
+        <h2 class="text-4xl font-black mb-6">Ready to Get <span class="text-brand-red">Started?</span></h2>
+        <p class="text-gray-300 text-lg mb-8">Give us a call or WhatsApp us to book your first lesson. We'll take care of the rest.</p>
+        <div class="flex flex-col gap-5">
+          <a href="tel:0845078284" class="flex items-center gap-4 group">
+            <div class="w-12 h-12 bg-brand-red/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand-red transition-colors">
+              <svg class="w-5 h-5 text-brand-red group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Phone / WhatsApp</div>
+              <div class="font-bold text-lg">084 507 8284</div>
+            </div>
+          </a>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-brand-red/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Address</div>
+              <div class="font-bold">62 Ashvale Cl, Phoenix, Durban, 4068</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-brand-red/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Hours</div>
+              <div class="font-bold">Open · Closes 7:00 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Map embed placeholder -->
+      <div class="rounded-2xl overflow-hidden h-72 md:h-full min-h-64 bg-gray-800">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.5!2d30.8942!3d-29.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQyJzAwLjAiUyAzMMKwNTMnMzkuMiJF!5e0!3m2!1sen!2sza!4v1234567890"
+          width="100%"
+          height="100%"
+          style="border:0; filter: grayscale(1) invert(0.9);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Gregory's Driving School Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-gray-500 py-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <div class="font-bold text-white"><span class="text-brand-red">Gregory's</span> Driving School</div>
+      <div>62 Ashvale Cl, Phoenix, Durban · 084 507 8284</div>
+      <div>© 2025 Gregory's Driving School. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+---
+const steps = [
+  { number: "01", title: "Discovery",          desc: "We have a no-jargon chat about your business, your goals, and what you actually need (which is sometimes less than you think). Consider it a vibe check — for your website." },
+  { number: "02", title: "Content Gathering",  desc: "Send me your logo, photos, and whatever words you've got. No logo? No copy? Genuinely fine — half my job is making something out of \"I'll know it when I see it.\"" },
+  { number: "03", title: "Design & Build",     desc: "I go quiet for a bit and come back with something that looks like you paid more than you did. Modern tech under the hood, fast by default, built for the people you're trying to reach." },
+  { number: "04", title: "Review & Revisions", desc: "Two rounds of feedback, included. We go back and forth until it's right. And yes — \"can you make the logo bigger\" is a fully valid note. It always is." },
+  { number: "05", title: "Launch",             desc: "Domain, hosting, SSL — I handle the technical side so you never have to learn what an A-record is or why it's \"still propagating.\"" },
+  { number: "06", title: "Handover",           desc: "You get one document with every login, every password, and every renewal date. No gatekeeping. You own this outright — that's the whole point." },
+];
+---
+
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <svg class="cloud-bg" viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
+        <path d="M 305,14 C 388,6 476,30 530,76 C 580,118 598,172 578,204 C 560,228 516,234 462,228 C 394,230 314,228 240,220 C 166,212 90,196 48,156 C 8,118 8,68 40,42 C 70,16 130,6 198,8 C 248,10 272,20 305,14 Z" fill="none" stroke="rgba(240,236,228,0.16)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 310,24 C 386,17 468,40 518,84 C 563,122 576,172 558,200 C 542,223 502,229 452,225 C 387,227 312,225 242,218 C 172,211 100,196 62,160 C 26,126 28,80 58,56 C 86,32 142,22 208,22 C 254,22 278,30 310,24 Z" fill="none" stroke="rgba(240,236,228,0.07)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="process-label">How It Works</p>
+      <h2>From idea to live site —<br/>here's exactly how it goes.</h2>
+    </div>
+  </div>
+
+  <div class="steps-grid">
+
+      <!-- Desktop 3-col snake -->
+      <svg class="steps-line steps-line--lg"
+           viewBox="0 0 100 100" preserveAspectRatio="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path
+          d="M 17,11 Q 33.5,8.5 50,11 Q 66.5,13.5 83,11
+             C 94,11 94,64 83,64
+             Q 66.5,66.5 50,64 Q 33.5,61.5 17,64"
+          fill="none"
+          stroke="rgba(210,153,146,0.25)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          vector-effect="non-scaling-stroke"
+        />
+      </svg>
+
+      <!-- Tablet 2-col snake -->
+      <svg class="steps-line steps-line--md"
+           viewBox="0 0 100 100" preserveAspectRatio="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path
+          d="M 25,8 Q 50,6 75,8
+             C 88,8 88,42 75,42
+             Q 50,40 25,42
+             C 12,42 12,76 25,76
+             Q 50,74 75,76"
+          fill="none"
+          stroke="rgba(210,153,146,0.25)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          vector-effect="non-scaling-stroke"
+        />
+      </svg>
+
+      <!-- Mobile 1-col vertical -->
+      <svg class="steps-line steps-line--sm"
+           viewBox="0 0 100 100" preserveAspectRatio="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line
+          x1="50" y1="7" x2="50" y2="93"
+          stroke="rgba(210,153,146,0.25)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"
+        />
+      </svg>
+
+      {steps.map((step) => (
+        <div class="step">
+          <span class="step-number">{step.number}</span>
+          <h3>{step.title}</h3>
+          <p>{step.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="process-end-arrow">
+      <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="12" y1="4" x2="12" y2="18" stroke="rgba(240,236,228,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+        <polyline points="6,13 12,19 18,13" fill="none" stroke="rgba(240,236,228,0.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+</section>
+
+<style>
+  .process {
+    background: #1a1210;
+    padding: 6rem 2rem;
+  }
+
+  .process-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .process-header {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 5rem 5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cloud-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .process-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #D29992;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .process-inner h2 {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    color: #f0ece4;
+    font-weight: 400;
+    margin-bottom: 0;
+    line-height: 1.15;
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .steps-line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+
+  .steps-line--md,
+  .steps-line--sm { display: none; }
+
+  .step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem;
+    background: #241a15;
+    border: 1px solid rgba(240,236,228,0.1);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .step:hover {
+    border-color: rgba(210, 153, 146, 0.4);
+    transform: translateY(-3px);
+  }
+
+  .step-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: rgba(210, 153, 146, 0.6);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: #f0ece4;
+    font-weight: 500;
+  }
+
+  .step p {
+    font-size: 0.82rem;
+    color: rgba(240, 236, 228, 0.6);
+    line-height: 1.65;
+  }
+
+  .process-end-arrow {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+    animation: arrowBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(7px); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .steps-line--lg { display: none; }
+    .steps-line--md { display: block; }
+    .process-header { padding: 2rem 2rem 4rem; }
+  }
+
+  @media (max-width: 480px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .steps-line--md { display: none; }
+    .steps-line--sm { display: block; }
+  }
+</style>

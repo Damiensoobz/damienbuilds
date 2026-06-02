@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayStation | The Original Console</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ps: {
+              dark:    '#0a0a0f',
+              navy:    '#00439c',
+              blue:    '#003087',
+              gray:    '#c8c8c8',
+              tri:     '#4db848',
+              cir:     '#e4002b',
+              cross:   '#0072ce',
+              sq:      '#e5007d',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'float-slow': 'float 8s ease-in-out infinite',
+            'spin-slow': 'spin 12s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-18px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, #a0a0c0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ps-glow {
+      box-shadow: 0 0 60px rgba(0, 67, 156, 0.4), 0 0 120px rgba(0, 67, 156, 0.15);
+    }
+    .symbol-glow-tri  { text-shadow: 0 0 20px #4db848; }
+    .symbol-glow-cir  { text-shadow: 0 0 20px #e4002b; }
+    .symbol-glow-cross{ text-shadow: 0 0 20px #0072ce; }
+    .symbol-glow-sq   { text-shadow: 0 0 20px #e5007d; }
+    .spec-row:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="font-sans bg-ps-dark text-white antialiased overflow-x-hidden">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-ps-dark/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-14">
+      <a href="#" class="flex items-center gap-2">
+        <svg class="w-6 h-6 text-white" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M87.3 70.2L74.7 74.8V20.6l-24.4 8v58.8l-13.8 4.6V33.8L24.7 37.6v52.6L12.7 94.2V57.8l-12.7 4v11.4L0 73.4v10.2l12.7-4.2v9.6l12-4V75.4l13.8-4.6v9.6l12.2-4.1V18L74.7 12v52.8l12.6-4.2V70.2z"/>
+        </svg>
+        <span class="font-black text-lg tracking-tight">PlayStation</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+        <a href="#overview" class="hover:text-white transition-colors">Overview</a>
+        <a href="#specs" class="hover:text-white transition-colors">Specs</a>
+        <a href="#gallery" class="hover:text-white transition-colors">Gallery</a>
+        <a href="#legacy" class="hover:text-white transition-colors">Legacy</a>
+      </nav>
+      <button class="hidden md:inline-flex items-center gap-2 bg-ps-navy text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-blue-700 transition-colors">
+        Buy Now · R1,499
+      </button>
+      <button id="menu-btn" class="md:hidden p-2 text-gray-400 hover:text-white">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ps-dark px-4 py-4 flex flex-col gap-4 text-sm font-medium text-gray-300">
+      <a href="#overview" onclick="closeMenu()">Overview</a>
+      <a href="#specs" onclick="closeMenu()">Specs</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#legacy" onclick="closeMenu()">Legacy</a>
+      <button class="bg-ps-navy text-white font-semibold px-4 py-2 rounded-full">Buy Now · R1,499</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="overview" class="min-h-screen flex flex-col items-center justify-center pt-14 relative overflow-hidden">
+    <!-- Background orbs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-ps-navy/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-ps-sq/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Floating symbols background -->
+    <div class="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+      <span class="absolute top-24 left-12 text-5xl text-ps-tri/10 animate-float">▲</span>
+      <span class="absolute top-40 right-20 text-6xl text-ps-sq/10 animate-float-slow">■</span>
+      <span class="absolute bottom-32 left-20 text-5xl text-ps-cross/10 animate-float">✕</span>
+      <span class="absolute bottom-20 right-16 text-7xl text-ps-cir/10 animate-float-slow">●</span>
+      <span class="absolute top-1/2 left-6 text-4xl text-ps-tri/5">▲</span>
+      <span class="absolute top-1/3 right-6 text-4xl text-ps-cir/5">●</span>
+    </div>
+
+    <div class="relative text-center px-4 max-w-5xl mx-auto">
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-2 border border-white/10 text-gray-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
+        <span class="w-1.5 h-1.5 bg-ps-tri rounded-full"></span>
+        The Original · 1994
+        <span class="w-1.5 h-1.5 bg-ps-cir rounded-full"></span>
+      </div>
+
+      <h1 class="text-6xl sm:text-7xl md:text-9xl font-black leading-none mb-4 tracking-tight">
+        <span class="gradient-text">Play</span><span class="text-ps-navy">Station</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 font-medium mb-3">The console that started it all.</p>
+
+      <!-- Symbols -->
+      <div class="flex items-center justify-center gap-5 text-3xl font-black mb-10">
+        <span class="symbol-glow-tri text-ps-tri">▲</span>
+        <span class="symbol-glow-cir text-ps-cir">●</span>
+        <span class="symbol-glow-cross text-ps-cross">✕</span>
+        <span class="symbol-glow-sq text-ps-sq">■</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <button class="w-full sm:w-auto inline-flex items-center justify-center bg-white text-ps-dark font-black px-8 py-3.5 rounded-full hover:bg-gray-100 transition-colors text-base">
+          Buy Now · R1,499
+        </button>
+        <a href="#specs" class="w-full sm:w-auto inline-flex items-center justify-center border border-white/20 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors text-base">
+          View Specs ↓
+        </a>
+      </div>
+
+      <!-- Product image -->
+      <div class="relative inline-block animate-float">
+        <div class="ps-glow rounded-3xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=900&q=85"
+            alt="PlayStation 1 Console"
+            class="w-full max-w-2xl mx-auto rounded-3xl"
+          />
+        </div>
+        <!-- Price tag -->
+        <div class="absolute -top-3 -right-3 bg-ps-navy text-white font-black text-lg px-4 py-2 rounded-2xl shadow-xl">
+          R1,499
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-600 text-xs animate-bounce">
+      <span>Scroll</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- FEATURE HIGHLIGHTS -->
+  <section class="py-32 bg-gradient-to-b from-ps-dark to-[#0d0d18]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-black mb-4 gradient-text">Born to Play.</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">The PS1 introduced the world to 3D gaming, CDs as game media, and a controller that became iconic. Three decades later, it's still legendary.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 hover:border-ps-tri/40 transition-colors group">
+          <div class="text-4xl font-black text-ps-tri symbol-glow-tri mb-5">▲</div>
+          <h3 class="font-black text-xl mb-2">3D Pioneer</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">The PlayStation was the first console to make real-time 3D gameplay mainstream — changing game design forever.</p>
+        </div>
+
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 hover:border-ps-cir/40 transition-colors group">
+          <div class="text-4xl font-black text-ps-cir symbol-glow-cir mb-5">●</div>
+          <h3 class="font-black text-xl mb-2">CD-ROM Media</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Ditched the expensive cartridge format for CD-ROMs — giving developers freedom to create deeper, richer worlds with full soundtracks.</p>
+        </div>
+
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 hover:border-ps-sq/40 transition-colors group">
+          <div class="text-4xl font-black text-ps-sq symbol-glow-sq mb-5">■</div>
+          <h3 class="font-black text-xl mb-2">Iconic Library</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Over 7,900 game titles. Final Fantasy VII. Metal Gear Solid. Crash Bandicoot. Gran Turismo. A library that defined a generation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section id="specs" class="py-32 bg-[#0d0d18]">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-4">Tech <span class="text-ps-navy">Specs</span></h2>
+        <p class="text-gray-500">The hardware that powered a revolution.</p>
+      </div>
+      <div class="bg-white/4 border border-white/8 rounded-3xl overflow-hidden">
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">CPU</span>
+          <span class="font-semibold text-right">MIPS R3000A @ 33.8688 MHz</span>
+        </div>
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">RAM</span>
+          <span class="font-semibold">2 MB Main · 1 MB Video</span>
+        </div>
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">GPU</span>
+          <span class="font-semibold">Sony GPU — 360,000 polygons/sec</span>
+        </div>
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">Media</span>
+          <span class="font-semibold">CD-ROM · 2× Speed</span>
+        </div>
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">Audio</span>
+          <span class="font-semibold">24-channel ADPCM · 44.1kHz Stereo</span>
+        </div>
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">Ports</span>
+          <span class="font-semibold">2× Controller · 2× Memory Card · AV Multi-Out</span>
+        </div>
+        <div class="spec-row flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">Resolution</span>
+          <span class="font-semibold">256×224 to 640×480</span>
+        </div>
+        <div class="flex justify-between items-center px-8 py-5">
+          <span class="text-gray-400 text-sm font-medium">Release</span>
+          <span class="font-semibold">December 3, 1994 (Japan) · September 9, 1995 (NA)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY / CONTROLLER SPOTLIGHT -->
+  <section id="gallery" class="py-32 bg-gradient-to-b from-[#0d0d18] to-ps-dark">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-4">In the <span class="text-ps-sq">Details</span></h2>
+        <p class="text-gray-500">Every curve. Every port. Every button.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="lg:col-span-2 rounded-3xl overflow-hidden bg-white/4 border border-white/8 aspect-video">
+          <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=900&q=85" alt="PS1 controller" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="rounded-3xl overflow-hidden bg-white/4 border border-white/8 aspect-video md:aspect-auto">
+          <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=85" alt="Gaming nostalgia" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="rounded-3xl overflow-hidden bg-white/4 border border-white/8 aspect-video">
+          <img src="https://images.unsplash.com/photo-1580327344181-c1163234e5a0?w=600&q=85" alt="Classic games" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="lg:col-span-2 rounded-3xl bg-gradient-to-br from-ps-navy/40 to-ps-sq/20 border border-white/8 p-8 flex flex-col justify-center">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl symbol-glow-cross text-ps-cross">✕</span>
+            <span class="text-4xl symbol-glow-sq text-ps-sq">■</span>
+            <span class="text-4xl symbol-glow-tri text-ps-tri">▲</span>
+            <span class="text-4xl symbol-glow-cir text-ps-cir">●</span>
+          </div>
+          <h3 class="text-2xl font-black mb-2">The Controller</h3>
+          <p class="text-gray-400 leading-relaxed">Four face buttons. Two shoulder triggers. A D-pad. Simple by design, but deep in execution — the layout that influenced every controller since.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGACY -->
+  <section id="legacy" class="py-32 bg-ps-dark">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-4">The <span class="text-ps-tri">Numbers</span></h2>
+        <p class="text-gray-500">A legacy measured in millions.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 text-center hover:border-ps-tri/30 transition-colors">
+          <div class="text-5xl font-black text-ps-tri mb-2">102M</div>
+          <div class="text-gray-400 text-sm">Units Sold Worldwide</div>
+        </div>
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 text-center hover:border-ps-cir/30 transition-colors">
+          <div class="text-5xl font-black text-ps-cir mb-2">7,900+</div>
+          <div class="text-gray-400 text-sm">Games in Library</div>
+        </div>
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 text-center hover:border-ps-cross/30 transition-colors">
+          <div class="text-5xl font-black text-ps-cross mb-2">962M</div>
+          <div class="text-gray-400 text-sm">Games Sold</div>
+        </div>
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-7 text-center hover:border-ps-sq/30 transition-colors">
+          <div class="text-5xl font-black text-ps-sq mb-2">1994</div>
+          <div class="text-gray-400 text-sm">Year of Birth</div>
+        </div>
+      </div>
+
+      <!-- Notable titles -->
+      <div class="bg-white/4 border border-white/8 rounded-3xl p-8 md:p-12">
+        <h3 class="text-2xl font-black mb-8 text-center">Games That Defined a Generation</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="border border-ps-tri/20 rounded-xl p-4 text-center hover:bg-ps-tri/5 transition-colors">
+            <div class="text-ps-tri font-black text-sm uppercase tracking-widest mb-1">RPG</div>
+            <div class="font-bold">Final Fantasy VII</div>
+          </div>
+          <div class="border border-ps-cir/20 rounded-xl p-4 text-center hover:bg-ps-cir/5 transition-colors">
+            <div class="text-ps-cir font-black text-sm uppercase tracking-widest mb-1">Action</div>
+            <div class="font-bold">Metal Gear Solid</div>
+          </div>
+          <div class="border border-ps-cross/20 rounded-xl p-4 text-center hover:bg-ps-cross/5 transition-colors">
+            <div class="text-ps-cross font-black text-sm uppercase tracking-widest mb-1">Platformer</div>
+            <div class="font-bold">Crash Bandicoot</div>
+          </div>
+          <div class="border border-ps-sq/20 rounded-xl p-4 text-center hover:bg-ps-sq/5 transition-colors">
+            <div class="text-ps-sq font-black text-sm uppercase tracking-widest mb-1">Racing</div>
+            <div class="font-bold">Gran Turismo</div>
+          </div>
+          <div class="border border-ps-tri/20 rounded-xl p-4 text-center hover:bg-ps-tri/5 transition-colors">
+            <div class="text-ps-tri font-black text-sm uppercase tracking-widest mb-1">Adventure</div>
+            <div class="font-bold">Spyro the Dragon</div>
+          </div>
+          <div class="border border-ps-cir/20 rounded-xl p-4 text-center hover:bg-ps-cir/5 transition-colors">
+            <div class="text-ps-cir font-black text-sm uppercase tracking-widest mb-1">Fighting</div>
+            <div class="font-bold">Tekken 3</div>
+          </div>
+          <div class="border border-ps-cross/20 rounded-xl p-4 text-center hover:bg-ps-cross/5 transition-colors">
+            <div class="text-ps-cross font-black text-sm uppercase tracking-widest mb-1">Horror</div>
+            <div class="font-bold">Resident Evil</div>
+          </div>
+          <div class="border border-ps-sq/20 rounded-xl p-4 text-center hover:bg-ps-sq/5 transition-colors">
+            <div class="text-ps-sq font-black text-sm uppercase tracking-widest mb-1">Sports</div>
+            <div class="font-bold">Tony Hawk's Pro Skater</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUY CTA -->
+  <section class="py-32 bg-gradient-to-b from-ps-dark to-[#060610] relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-navy/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-5 text-4xl font-black mb-8">
+        <span class="symbol-glow-tri text-ps-tri">▲</span>
+        <span class="symbol-glow-cir text-ps-cir">●</span>
+        <span class="symbol-glow-cross text-ps-cross">✕</span>
+        <span class="symbol-glow-sq text-ps-sq">■</span>
+      </div>
+      <h2 class="text-5xl md:text-6xl font-black mb-6 gradient-text">Own a Piece<br/>of History.</h2>
+      <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+        Fully refurbished. Cleaned, tested, and ready to play.<br/>Includes console, controller, and AV cable.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button class="w-full sm:w-auto inline-flex items-center justify-center bg-white text-ps-dark font-black px-10 py-4 rounded-full hover:bg-gray-100 transition-colors text-lg">
+          Add to Cart — R1,499
+        </button>
+        <button class="w-full sm:w-auto inline-flex items-center justify-center border border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors">
+          View Bundle Deals
+        </button>
+      </div>
+      <p class="text-gray-600 text-xs mt-6">Free delivery on orders over R999 · 7-day returns</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#060610] border-t border-white/5 py-10">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+      <div class="flex items-center gap-2 text-white font-bold">
+        <svg class="w-5 h-5" viewBox="0 0 100 100" fill="currentColor"><path d="M87.3 70.2L74.7 74.8V20.6l-24.4 8v58.8l-13.8 4.6V33.8L24.7 37.6v52.6L12.7 94.2V57.8l-12.7 4v11.4L0 73.4v10.2l12.7-4.2v9.6l12-4V75.4l13.8-4.6v9.6l12.2-4.1V18L74.7 12v52.8l12.6-4.2V70.2z"/></svg>
+        PlayStation
+      </div>
+      <div class="flex items-center gap-5">
+        <span class="text-ps-tri">▲</span>
+        <span class="text-ps-cir">●</span>
+        <span class="text-ps-cross">✕</span>
+        <span class="text-ps-sq">■</span>
+      </div>
+      <div>© 2025 Sony Interactive Entertainment. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

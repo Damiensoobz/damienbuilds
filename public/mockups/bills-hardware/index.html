@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bill's Hardware & General Dealer | Greenbury, Durban</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f97316',
+              dark:   '#1c1c1c',
+              charcoal: '#2d2d2d',
+              steel:  '#3f3f46',
+              light:  '#fafafa',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body class="font-sans bg-white text-gray-900 antialiased">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-brand-orange rounded flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <span class="text-white font-black text-lg tracking-tight">Bill's <span class="text-brand-orange">Hardware</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+        <a href="#categories" class="hover:text-white transition-colors">Products</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+      <a href="tel:0315027635" class="hidden md:inline-flex items-center gap-2 bg-brand-orange text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-orange-600 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
+        031 502 7635
+      </a>
+      <button id="menu-btn" class="md:hidden p-2 rounded text-gray-400 hover:text-white">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-brand-dark px-4 py-4 flex flex-col gap-4 text-sm font-medium text-gray-300">
+      <a href="#categories" onclick="closeMenu()">Products</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="tel:0315027635" class="bg-brand-orange text-white text-center font-semibold px-4 py-2 rounded-full">Call 031 502 7635</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-16 bg-brand-dark min-h-screen flex items-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'); background-size: cover; background-position: center;"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-brand-dark/50"></div>
+    <!-- Diagonal accent -->
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-28 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-brand-orange/20 border border-brand-orange/30 text-brand-orange text-xs font-bold px-3 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+          Greenbury, Phoenix · Est. Local
+        </div>
+        <h1 class="text-5xl md:text-6xl font-black leading-tight text-white mb-6">
+          Everything You<br/>Need to <span class="text-brand-orange">Build It.</span>
+        </h1>
+        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+          Tools, building supplies, accessories and more — all under one roof at the Easy Pick Centre in Greenbury. Your local hardware store, ready when you are.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#categories" class="inline-flex items-center justify-center gap-2 bg-brand-orange text-white font-bold px-6 py-3 rounded-full hover:bg-orange-600 transition-colors text-base">
+            Browse Products
+          </a>
+          <a href="tel:0315027635" class="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors text-base">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
+            Call Us
+          </a>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-orange mb-1">4.3★</div>
+          <div class="text-sm text-gray-400">Google Rating</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-orange mb-1">74</div>
+          <div class="text-sm text-gray-400">Reviews</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-brand-orange mb-1">5+</div>
+          <div class="text-sm text-gray-400">Categories</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <div class="text-brand-orange font-black text-xl mb-1">Easy Pick<br/>Centre</div>
+          <div class="text-sm text-gray-400">Greenbury</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER / ANNOUNCEMENT BAR -->
+  <div class="bg-brand-orange text-white py-3 overflow-hidden">
+    <div class="flex gap-16 animate-marquee whitespace-nowrap text-sm font-semibold px-4">
+      <span>🔧 Hand Tools &nbsp;·&nbsp; Building Accessories &nbsp;·&nbsp; Power Tools &nbsp;·&nbsp; Cordless Tools &nbsp;·&nbsp; Tile &amp; Flooring &nbsp;·&nbsp; General Supplies &nbsp;·&nbsp; Plumbing &nbsp;·&nbsp; Electrical &nbsp;·&nbsp; Safety Gear &nbsp;·&nbsp; 🔧 Hand Tools &nbsp;·&nbsp; Building Accessories &nbsp;·&nbsp; Power Tools &nbsp;·&nbsp; Cordless Tools &nbsp;·&nbsp; Tile &amp; Flooring &nbsp;·&nbsp; General Supplies</span>
+    </div>
+  </div>
+
+  <!-- PRODUCT CATEGORIES -->
+  <section id="categories" class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black mb-4">What We <span class="text-brand-orange">Stock</span></h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">From hand tools to heavy-duty power tools — if you need it for a job, chances are we've got it.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="h-44 bg-gray-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=600&q=80" alt="Hand Tools" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">Hand Tools</div>
+            <h3 class="font-bold text-lg mb-1">Hand Tools</h3>
+            <p class="text-gray-500 text-sm">Hammers, spanners, screwdrivers, tape measures, riveters, hacksaws and more.</p>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="h-44 bg-gray-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=600&q=80" alt="Power Tools" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">Power Tools</div>
+            <h3 class="font-bold text-lg mb-1">Cordless Power Tools</h3>
+            <p class="text-gray-500 text-sm">Drills, drivers, grinders, and cordless tool kits from trusted brands.</p>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="h-44 bg-gray-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Building Accessories" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">Building</div>
+            <h3 class="font-bold text-lg mb-1">Building Accessories</h3>
+            <p class="text-gray-500 text-sm">Buckets, tile spacers, mixing tools, and all the essentials for on-site work.</p>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="h-44 bg-gray-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=80" alt="Plumbing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">Plumbing</div>
+            <h3 class="font-bold text-lg mb-1">Plumbing Supplies</h3>
+            <p class="text-gray-500 text-sm">Pipes, fittings, taps, and everything needed for plumbing repairs and installs.</p>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="h-44 bg-gray-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80" alt="Electrical" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-5">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">Electrical</div>
+            <h3 class="font-bold text-lg mb-1">Electrical Supplies</h3>
+            <p class="text-gray-500 text-sm">Cables, plugs, switches, circuit breakers, and general electrical hardware.</p>
+          </div>
+        </div>
+
+        <div class="group bg-brand-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-orange/20">
+          <div class="p-5 h-44 flex flex-col justify-center items-center text-center">
+            <div class="w-14 h-14 bg-brand-orange/20 rounded-full flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+            <p class="text-white text-sm font-semibold">Can't find what you need?</p>
+            <p class="text-gray-400 text-xs mt-1">Give us a call — we may be able to source it.</p>
+          </div>
+          <div class="p-5 pt-0">
+            <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">General Dealer</div>
+            <h3 class="font-bold text-lg mb-1 text-white">Much More In-Store</h3>
+            <p class="text-gray-400 text-sm">Safety gear, paint, fasteners, cleaning supplies and general hardware.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-3">About Us</div>
+        <h2 class="text-4xl font-black mb-6">Your Local Hardware<br/>Store in <span class="text-brand-orange">Greenbury</span></h2>
+        <p class="text-gray-500 leading-relaxed mb-4">
+          Bill's Hardware & General Dealer has been serving the Phoenix and Greenbury community with quality tools, building supplies, and hardware. Conveniently located inside the Easy Pick Centre, we're the go-to stop for tradespeople, builders, and DIYers alike.
+        </p>
+        <p class="text-gray-500 leading-relaxed mb-8">
+          We stock products from trusted brands and keep our prices competitive so you can get the job done without breaking the budget.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Trusted Brands</div>
+              <div class="text-gray-400 text-xs">Quality tools you can rely on</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Competitive Prices</div>
+              <div class="text-gray-400 text-xs">Fair pricing for every budget</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Wide Range</div>
+              <div class="text-gray-400 text-xs">Tools, building & general supplies</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Friendly Service</div>
+              <div class="text-gray-400 text-xs">4.3★ from 74 Google reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-2xl overflow-hidden row-span-2 bg-gray-100">
+          <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=600&q=80" alt="Hardware store" class="w-full h-full object-cover" />
+        </div>
+        <div class="bg-brand-dark rounded-2xl p-5 text-white text-center">
+          <div class="text-3xl font-black text-brand-orange">4.3★</div>
+          <div class="text-xs text-gray-400 mt-1">74 Reviews</div>
+        </div>
+        <div class="bg-brand-orange rounded-2xl p-5 text-white text-center">
+          <div class="text-sm font-bold">Open Today</div>
+          <div class="text-xs text-white/80 mt-1">Closes 4:30 PM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-24 bg-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black mb-4">What Customers <span class="text-brand-orange">Say</span></h2>
+        <p class="text-gray-500 text-lg">4.3 stars from 74 Google reviews.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="text-yellow-400 text-lg mb-3">★★★★★</div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"Always have what I need. The staff know their stuff and point you in the right direction. Prices are fair too."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold">R</div>
+            <div><div class="font-semibold text-sm">Ravi P.</div><div class="text-xs text-gray-400">Google Review</div></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="text-yellow-400 text-lg mb-3">★★★★★</div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"My go-to for any building job. Easy to find, well stocked, and the owner is very helpful. Highly recommend."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold">M</div>
+            <div><div class="font-semibold text-sm">Muzi N.</div><div class="text-xs text-gray-400">Google Review</div></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <div class="text-yellow-400 text-lg mb-3">★★★★☆</div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"Good local hardware store in Greenbury. Convenient location and they carry a solid range of tools and supplies."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
+            <div><div class="font-semibold text-sm">Suren M.</div><div class="text-xs text-gray-400">Google Review</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 bg-brand-dark text-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-start">
+      <div>
+        <h2 class="text-4xl font-black mb-6">Find Us in <span class="text-brand-orange">Greenbury</span></h2>
+        <p class="text-gray-300 text-lg mb-8">Pop in during trading hours or give us a call before you come — we'll let you know if we have what you need.</p>
+        <div class="flex flex-col gap-5">
+          <a href="tel:0315027635" class="flex items-center gap-4 group">
+            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand-orange transition-colors">
+              <svg class="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Phone</div>
+              <div class="font-bold text-lg">031 502 7635</div>
+            </div>
+          </a>
+          <a href="mailto:bills.hardware@gmail.com" class="flex items-center gap-4 group">
+            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand-orange transition-colors">
+              <svg class="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Email</div>
+              <div class="font-bold text-lg">bills.hardware@gmail.com</div>
+            </div>
+          </a>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Address</div>
+              <div class="font-bold leading-relaxed">Shop No.2, Unit 2, Easy Pick Centre<br/>Garbgreen Cl, Greenbury, Durban, 4068</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-0.5">Hours</div>
+              <div class="font-bold">Open · Closes 4:30 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden h-80 bg-gray-800">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460!2d30.8870!3d-29.6920!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQxJzMxLjIiUyAzMMKwNTMnMTMuMiJF!5e0!3m2!1sen!2sza!4v1234567890"
+          width="100%" height="100%"
+          style="border:0; filter: grayscale(1) invert(0.85);"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Bill's Hardware Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-gray-500 py-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <div class="font-bold text-white">Bill's <span class="text-brand-orange">Hardware</span> & General Dealer</div>
+      <div>Easy Pick Centre, Greenbury, Durban · 031 502 7635</div>
+      <div>© 2025 Bill's Hardware. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      animation: marquee 20s linear infinite;
+    }
+  </style>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
