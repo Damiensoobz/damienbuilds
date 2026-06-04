@@ -1,38 +1,88 @@
 ---
-const proof = [
-  { lead: "Fixed pricing",       rest: "the number I quote is the number you pay" },
-  { lead: "Fast, modern builds", rest: "they load before your customer loses patience" },
-  { lead: "Full handover docs",  rest: "every login, every password — all yours" },
-  { lead: "A real person",       rest: "on the other end of a real WhatsApp number" },
+const loadingPhrases = [
+  "Reticulating Splines...",
+  "Compiling Developer Excuses...",
+  "Minifying Tears...",
+  "Initializing git blame...",
+  "Merging Unresolvable Conflicts...",
+  "Inverting Boolean Logic...",
+  "Propagating Undefined Behaviour...",
+  "Defragmenting Stack Overflow...",
+  "Hotfixing Production...",
+  "Concatenating Vertex Nodes...",
+  "Normalizing npm Vulnerabilities...",
+  "Deploying on a Friday...",
+  "Calculating Technical Debt...",
+  "Calibrating Rubber Duck...",
+  "Mapping the Llama Genome...",
+  "Invalidating Cache...",
+  "Rehydrating Components...",
+  "Asserting Dominance over CSS...",
+  "Iterating Chaos Array...",
+  "Segfaulting Gracefully...",
+  "Terraforming localhost...",
+  "Summoning the Dark Mode...",
+  "Committing Directly to Main...",
+  "Overengineering the Solution...",
+  "Estimating Two Weeks...",
+  "Blaming the Intern...",
+  "Rotating the API Keys...",
 ];
 ---
 
-<section class="hero">
-  <div class="cloud-grid">
-    <div class="cloud-blocks">
-      <div class="cloud-block block-1"><img src="/images/cloudsbg.jpg" alt="clouds" /></div>
-      <div class="cloud-block block-2"><img src="/images/cloudsbg.jpg" alt="clouds" /></div>
-      <div class="cloud-block block-3"><img src="/images/cloudsbg.jpg" alt="clouds" /></div>
-    </div>
+<section class="hero" id="hero-section">
+  <!-- Aurora background blobs -->
+  <div class="aurora-blob blob-1"></div>
+  <div class="aurora-blob blob-2"></div>
+  <div class="aurora-blob blob-3"></div>
+  <div class="aurora-blob blob-4"></div>
 
-    <div class="hero-text">
-      <p class="hero-tagline">Durban Web Design</p>
-      <h1>A Website You Own.<br/>Built by Someone You<br/>Can Actually Reach.</h1>
-      <p class="hero-sub">For small businesses and creators tired of being invisible online — and tired of agencies who treat them like a ticket number. Clean builds, fixed pricing, no nonsense.</p>
-      <a href="#contact" class="hero-cta">Let's Build This →</a>
-      <p class="hero-secondary">Based in Phoenix, Durban. Building for businesses across South Africa.</p>
-    </div>
+  <!-- Main CTA card -->
+  <div class="hero-text">
+    <p class="hero-tagline">Durban Web Design</p>
+    <h1>A Website You Own.<br/>Built by Someone You<br/>Can Actually Reach.</h1>
+    <p class="hero-sub">For small businesses and creators tired of being invisible online — and tired of agencies who treat them like a ticket number. Clean builds, fixed pricing, no nonsense.</p>
+    <a href="#contact" class="hero-cta">Let's Build This →</a>
+    <p class="hero-secondary">Based in Phoenix, Durban. Building for businesses across South Africa.</p>
+  </div>
+
+  <!-- Right info panel -->
+  <div class="hero-aside">
+    <p class="aside-lead">In 2026, your website<br/>is your first impression.</p>
+    <p class="aside-body">
+      Before a customer calls, books, or buys — they search. If you're not showing up,
+      a competitor who is gets the sale. It's not complicated; it's just how people
+      make decisions now.
+    </p>
+    <p class="aside-body">
+      Social media helps, but you don't own it. One algorithm shift, one account ban,
+      one platform dying — and your audience is gone. A website is the only piece of
+      your online presence that is permanently, unconditionally yours.
+    </p>
+
+    <div class="aside-divider"></div>
+
+    <p class="aside-body">
+      AI search tools are changing how people find businesses too. ChatGPT, Perplexity,
+      Google's AI overviews — they all pull from real websites. No website means no
+      presence in the places your next customer is already looking.
+    </p>
+    <p class="aside-body">
+      The businesses that invest in a proper web presence now — fast, clean, actually
+      indexed by Google — are the ones that will be findable when everything else
+      shifts again. And it will shift again.
+    </p>
   </div>
 </section>
 
-<!-- Social proof bar -->
-<div class="social-proof">
-  <div class="proof-inner">
-    {proof.map((item) => (
-      <div class="proof-item">
-        <span class="proof-check">✓</span>
-        <p><strong>{item.lead}</strong> — {item.rest}</p>
-      </div>
+<!-- Loading ticker -->
+<div class="loading-banner" aria-label="Loading...">
+  <div class="loading-track">
+    {[...loadingPhrases, ...loadingPhrases].map((phrase) => (
+      <span class="loading-phrase">
+        <span class="loading-diamond">◆</span>
+        {phrase}
+      </span>
     ))}
   </div>
 </div>
@@ -41,109 +91,156 @@ const proof = [
   .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    background: linear-gradient(180deg,
-      #4e6b7c 0%,
-      #3a5060 28%,
-      #2e2535 55%,
-      #1f1618 78%,
-      #1a1210 100%
+    min-height: 100vh;
+    background: linear-gradient(160deg,
+      #1a3a5c 0%,
+      #0f2040 30%,
+      #080f1e 65%,
+      #0d1117 100%
     );
     overflow: hidden;
     display: flex;
     align-items: center;
+    gap: 5vw;
+    padding: 6rem max(8vw, 2rem) 4rem;
   }
 
-  /* ── Cloud grid ── */
-  .cloud-grid {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-  }
-
-  .cloud-blocks {
+  /* Dot grid texture */
+  .hero::before {
+    content: '';
     position: absolute;
-    display: flex;
-    width: 1350px;
-    justify-content: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(232, 237, 248, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  .cloud-block { flex-shrink: 0; overflow: hidden; width: 450px; }
-
-  .block-1 { height: 580px; position: relative; top: 150px; }
-  .block-2 { height: 580px; position: relative; top: 0; }
-  .block-3 { height: 580px; position: relative; top: -90px; }
-
-  .cloud-block img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    transform: rotate(90deg) scale(2);
+  /* ── Aurora blobs ── */
+  .aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(65px);
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, opacity;
   }
 
-  .block-2 img { transform: rotate(90deg) scale(2) scaleY(-1); }
+  .blob-1 {
+    width: 480px;
+    height: 480px;
+    background: rgba(50, 100, 200, 0.65);
+    top: -80px;
+    left: -60px;
+    animation: blobDrift1 12s ease-in-out infinite;
+  }
 
-  /* ── Hero text ── */
+  .blob-2 {
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 80, 20, 0.55);
+    bottom: -80px;
+    right: 8%;
+    animation: blobDrift2 15s ease-in-out infinite;
+  }
+
+  .blob-3 {
+    width: 300px;
+    height: 300px;
+    background: rgba(120, 40, 200, 0.6);
+    top: 40%;
+    left: 40%;
+    animation: blobDrift3 10s ease-in-out infinite;
+  }
+
+  .blob-4 {
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 140, 20, 0.45);
+    top: 10%;
+    right: 20%;
+    animation: blobDrift4 8s ease-in-out infinite;
+  }
+
+  @keyframes blobDrift1 {
+    0%   { transform: translate(0px,    0px)    scale(1);    opacity: 0.8; }
+    25%  { transform: translate(200px,  100px)  scale(1.25); opacity: 1;   }
+    50%  { transform: translate(120px,  260px)  scale(0.8);  opacity: 0.6; }
+    75%  { transform: translate(-60px,  150px)  scale(1.15); opacity: 0.9; }
+    100% { transform: translate(0px,    0px)    scale(1);    opacity: 0.8; }
+  }
+
+  @keyframes blobDrift2 {
+    0%   { transform: translate(0px,    0px)    scale(1);    opacity: 0.7; }
+    30%  { transform: translate(-200px, -140px) scale(1.2);  opacity: 1;   }
+    60%  { transform: translate(-100px, -260px) scale(0.75); opacity: 0.5; }
+    80%  { transform: translate(80px,   -180px) scale(1.1);  opacity: 0.85;}
+    100% { transform: translate(0px,    0px)    scale(1);    opacity: 0.7; }
+  }
+
+  @keyframes blobDrift3 {
+    0%   { transform: translate(0px,    0px)   scale(1);    opacity: 0.75; }
+    20%  { transform: translate(-180px, 140px) scale(1.3);  opacity: 1;    }
+    50%  { transform: translate(100px,  200px) scale(0.7);  opacity: 0.5;  }
+    75%  { transform: translate(160px, -100px) scale(1.15); opacity: 0.9;  }
+    100% { transform: translate(0px,    0px)   scale(1);    opacity: 0.75; }
+  }
+
+  @keyframes blobDrift4 {
+    0%   { transform: translate(0px,    0px)   scale(1);   opacity: 0.6;  }
+    35%  { transform: translate(-120px, 160px) scale(1.4); opacity: 0.95; }
+    65%  { transform: translate(100px,  100px) scale(0.65);opacity: 0.45; }
+    100% { transform: translate(0px,    0px)   scale(1);   opacity: 0.6;  }
+  }
+
+  /* ── Hero text — glassmorphism card ── */
   .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    position: relative;
     z-index: 5;
-    background: rgba(26, 18, 16, 0.72);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(210, 153, 146, 0.16);
-    border-top: 1px solid rgba(210, 153, 146, 0.4);
-    padding: 2.75rem 4rem;
-    width: 640px;
-    max-width: 90vw;
+    flex: 0 0 auto;
+    text-align: left;
+    background: rgba(6, 12, 28, 0.85);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 2.75rem 3.5rem;
+    width: 520px;
+    max-width: 88vw;
   }
 
   .hero-tagline {
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #e0aaa3;
+    color: #FF8C5A;
     opacity: 0.9;
     margin-bottom: 0.85rem;
     font-family: 'Inter', sans-serif;
   }
 
   .hero-text h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-size: clamp(2rem, 3.8vw, 3.4rem);
     font-weight: 400;
     line-height: 1.1;
-    color: #f0ece4;
+    color: #e8edf8;
     margin-bottom: 1.1rem;
     letter-spacing: -0.01em;
   }
 
   .hero-sub {
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     opacity: 0.72;
     line-height: 1.7;
     margin-bottom: 1.75rem;
-    color: #f0ece4;
+    color: #e8edf8;
     font-weight: 300;
-    max-width: 30rem;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .hero-cta {
     display: inline-block;
-    background: #D29992;
-    color: #1a1210;
+    background: #FF6B35;
+    color: #0d1117;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
     font-size: 0.82rem;
@@ -154,60 +251,168 @@ const proof = [
     transition: background 0.2s, transform 0.2s;
   }
 
-  .hero-cta:hover { background: #e0aaa3; transform: translateY(-1px); }
+  .hero-cta:hover { background: #FF8C5A; transform: translateY(-1px); }
 
   .hero-secondary {
     margin-top: 1.5rem;
     font-size: 0.72rem;
-    color: rgba(240, 236, 228, 0.45);
+    color: rgba(232, 237, 248, 0.45);
     letter-spacing: 0.04em;
   }
 
-  /* ── Social proof bar ── */
-  .social-proof {
-    background: #1a1210;
-    border-bottom: 1px solid rgba(240, 236, 228, 0.07);
-    padding: 1.5rem 2rem;
+  /* ── Right info panel ── */
+  .hero-aside {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    min-width: 0;
+    padding-left: 3vw;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .proof-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  .aside-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: #e8edf8;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
   }
 
-  .proof-item { display: flex; align-items: flex-start; gap: 0.6rem; }
+  .aside-body {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: rgba(232, 237, 248, 0.55);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    max-width: 32rem;
+  }
 
-  .proof-check { color: #D29992; font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .aside-divider {
+    width: 2.5rem;
+    height: 1px;
+    background: rgba(255, 107, 53, 0.35);
+    margin-bottom: 1.25rem;
+  }
 
-  .proof-item p { font-size: 0.78rem; line-height: 1.5; color: rgba(240, 236, 228, 0.55); }
-  .proof-item strong { color: #f0ece4; font-weight: 600; }
+  .aside-section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FF8C5A;
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .aside-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .aside-list li {
+    font-size: 0.82rem;
+    color: rgba(232, 237, 248, 0.6);
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .aside-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #FF6B35;
+    opacity: 0.6;
+  }
+
+  /* ── Loading ticker ── */
+  .loading-banner {
+    position: relative;
+    background: #080d14;
+    border-top: 1px solid rgba(255, 107, 53, 0.18);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.12);
+    overflow: hidden;
+    padding: 0.85rem 0;
+  }
+
+  .loading-banner::before,
+  .loading-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 8rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .loading-banner::before { left: 0;  background: linear-gradient(to right, #080d14, transparent); }
+  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #080d14, transparent); }
+
+  .loading-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: loadingTicker 60s linear infinite;
+  }
+
+  .loading-banner:hover .loading-track { animation-play-state: paused; }
+
+  @keyframes loadingTicker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .loading-phrase {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0 2rem;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: rgba(232, 237, 248, 0.45);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    cursor: default;
+  }
+
+  .loading-diamond {
+    color: #FF6B35;
+    font-size: 0.5rem;
+    opacity: 0.7;
+  }
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
-    .proof-inner { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  }
-
-  @media (max-width: 768px) {
-    .block-1, .block-3 { display: none; }
-
-    .cloud-blocks {
-      width: 100%;
-      transform: translate(-50%, -50%);
+    .hero {
+      flex-direction: column;
       justify-content: center;
+      align-items: stretch;
+      padding: 5rem 1.5rem 3rem;
+      gap: 2rem;
+      min-height: 100vh;
+      height: auto;
     }
-
-    .cloud-block.block-2 { width: 90vw; height: 800px; margin-top: 0; }
-    .cloud-block.block-2 img { object-fit: contain; width: 100%; height: 100%; }
-
-    .hero-text { width: 86vw; padding: 1.75rem 1.5rem; }
-    .hero-text h1 { font-size: 1.7rem; }
+    .hero-text {
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      padding: 1.75rem 1.5rem;
+    }
+    .hero-aside {
+      border-left: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+    .hero-text h1 { font-size: 1.8rem; }
     .hero-sub { font-size: 0.85rem; }
-  }
-
-  @media (max-width: 560px) {
-    .proof-inner { grid-template-columns: 1fr; gap: 1rem; }
+    .loading-phrase { font-size: 0.65rem; padding: 0 1.25rem; }
   }
 </style>

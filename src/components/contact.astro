@@ -13,26 +13,6 @@ const socials = [
 
 <section class="contact-section" id="contact">
 
-  <!-- ── About ── -->
-  <div class="about">
-    <div class="about-portrait">
-      <img src="/images/portrait.jpg" alt="Damien" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="portrait-placeholder"><span>Your Photo</span></div>
-    </div>
-    <div class="about-text">
-      <p class="eyebrow">About</p>
-      <h2>Hi, I'm Damien.</h2>
-      <p>I'm a Durban-based web designer with a day job in IT — which is a fancy way of saying I've spent years being the person people call when the tech breaks and the explanation needs to make sense to a human.</p>
-      <p>I'm not an agency. No account manager you'll never meet, no junior quietly doing the real work. You work with me, start to finish — first chat to final handover. And the IT background means the boring-but-critical stuff (domain, hosting, email, analytics) gets set up properly, not bolted on and forgotten.</p>
-      <p>When I hand it over, you actually own it. No leash, no monthly "maintenance" hostage situation. Based in Phoenix, Durban — working with businesses across South Africa, and open to the rest of the world while I'm at it.</p>
-      <div class="about-links">
-        <a href="mailto:damien@damienbuilds.dev" class="about-link"><span>✉</span> damien@damienbuilds.dev</a>
-        <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="about-link"><span>💬</span> WhatsApp</a>
-        <span class="about-link no-link"><span>📍</span> Phoenix, Durban</span>
-      </div>
-    </div>
-  </div>
-
   <!-- ── Contact ── -->
   <div class="contact-head">
     <p class="eyebrow">Get In Touch</p>
@@ -40,9 +20,8 @@ const socials = [
     <p class="contact-sub">Fill in the form and I'll get back to you within 24 hours — usually sooner, often after hours, because that's when the side-hustle magic happens. No sales pitch. Just a straight conversation.</p>
   </div>
 
-  <div class="contact-grid">
-
-    <!-- Form -->
+  <!-- Form (full width) -->
+  <div class="form-wrap">
     <div class="form-box">
       <form class="contact-form" name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact" />
@@ -85,8 +64,28 @@ const socials = [
 
       <p class="whatsapp-line">Rather just talk? <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer">WhatsApp me directly →</a> Voice notes welcome.</p>
     </div>
+  </div>
 
-    <!-- Socials -->
+  <!-- ── About + Socials ── -->
+  <div class="about">
+    <div class="about-portrait">
+      <img src="/images/portrait.jpg" alt="Damien" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="portrait-placeholder"><span>Your Photo</span></div>
+    </div>
+    <div class="about-text">
+      <p class="eyebrow">About</p>
+      <h2>Hi, I'm Damien.</h2>
+      <p>I'm a Durban-based web designer with a day job in IT — which is a fancy way of saying I've spent years being the person people call when the tech breaks and the explanation needs to make sense to a human.</p>
+      <p>I'm not an agency. No account manager you'll never meet, no junior quietly doing the real work. You work with me, start to finish — first chat to final handover. And the IT background means the boring-but-critical stuff (domain, hosting, email, analytics) gets set up properly, not bolted on and forgotten.</p>
+      <p>When I hand it over, you actually own it. No leash, no monthly "maintenance" hostage situation. Based in Phoenix, Durban — working with businesses across South Africa, and open to the rest of the world while I'm at it.</p>
+      <div class="about-links">
+        <a href="mailto:damien@damienbuilds.dev" class="about-link"><span>✉</span> damien@damienbuilds.dev</a>
+        <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="about-link"><span>💬</span> WhatsApp</a>
+        <span class="about-link no-link"><span>📍</span> Phoenix, Durban</span>
+      </div>
+    </div>
+
+    <!-- Socials — beside the about block -->
     <aside class="socials">
       <p class="eyebrow">Find Me Online</p>
       <div class="socials-list">
@@ -103,14 +102,13 @@ const socials = [
         ))}
       </div>
     </aside>
-
   </div>
 
 </section>
 
 <style>
   .contact-section {
-    background: #1a1210;
+    background: #0d1117;
     padding: 7rem 2rem 6rem;
   }
 
@@ -118,16 +116,18 @@ const socials = [
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: #D29992;
+    color: #FF6B35;
     margin-bottom: 0.85rem;
   }
 
   /* ── About ── */
   .about {
     max-width: 1080px;
-    margin: 0 auto 5.5rem;
+    margin: 5.5rem auto 0;
+    padding-top: 5.5rem;
+    border-top: 1px solid rgba(232, 237, 248, 0.07);
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 280px 1fr auto;
     gap: 3.5rem;
     align-items: start;
   }
@@ -136,7 +136,7 @@ const socials = [
     position: relative;
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    border: 1px solid rgba(210, 153, 146, 0.2);
+    border: 1px solid rgba(255, 107, 53, 0.2);
   }
 
   .about-portrait img {
@@ -153,21 +153,21 @@ const socials = [
     height: 100%;
     background:
       repeating-linear-gradient(45deg, rgba(210,153,146,0.04) 0 12px, transparent 12px 24px),
-      rgba(240, 236, 228, 0.03);
+      rgba(232, 237, 248, 0.03);
     align-items: center;
     justify-content: center;
   }
 
   .portrait-placeholder span {
     font-size: 0.75rem;
-    color: rgba(240, 236, 228, 0.3);
+    color: rgba(232, 237, 248, 0.3);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   .about-text h2 {
     font-size: clamp(2rem, 3.5vw, 3rem);
-    color: #f0ece4;
+    color: #e8edf8;
     font-weight: 400;
     margin-bottom: 1.25rem;
     line-height: 1.1;
@@ -176,7 +176,7 @@ const socials = [
 
   .about-text p {
     font-size: 0.92rem;
-    color: rgba(240, 236, 228, 0.62);
+    color: rgba(232, 237, 248, 0.62);
     line-height: 1.85;
     margin-bottom: 1.1rem;
   }
@@ -187,7 +187,7 @@ const socials = [
     gap: 1.5rem;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(240, 236, 228, 0.1);
+    border-top: 1px solid rgba(232, 237, 248, 0.1);
   }
 
   .about-link {
@@ -195,12 +195,12 @@ const socials = [
     align-items: center;
     gap: 0.5rem;
     font-size: 0.82rem;
-    color: rgba(240, 236, 228, 0.6);
+    color: rgba(232, 237, 248, 0.6);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .about-link:hover { color: #D29992; }
+  .about-link:hover { color: #FF6B35; }
   .about-link.no-link { cursor: default; }
   .about-link span { font-size: 0.9rem; }
 
@@ -212,7 +212,7 @@ const socials = [
 
   .contact-head h2 {
     font-size: clamp(2rem, 3.5vw, 3rem);
-    color: #f0ece4;
+    color: #e8edf8;
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -221,25 +221,21 @@ const socials = [
 
   .contact-sub {
     font-size: 0.92rem;
-    color: rgba(240, 236, 228, 0.55);
+    color: rgba(232, 237, 248, 0.55);
     line-height: 1.8;
     max-width: 38rem;
   }
 
-  /* ── Contact grid ── */
-  .contact-grid {
+  /* ── Form wrap ── */
+  .form-wrap {
     max-width: 1080px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 2.5rem;
-    align-items: start;
   }
 
   /* ── Form box (cream) ── */
   .form-box {
-    background: #F4EFE6;
-    border: 1px solid rgba(210, 153, 146, 0.2);
+    background: #eef2ff;
+    border: 1px solid rgba(255, 107, 53, 0.2);
     padding: 2.5rem;
   }
 
@@ -265,15 +261,15 @@ const socials = [
     font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(26, 19, 16, 0.5);
+    color: rgba(13, 17, 23, 0.5);
   }
 
   .form-field input,
   .form-field select,
   .form-field textarea {
-    background: #fdfaf5;
-    border: 1px solid rgba(26, 19, 16, 0.15);
-    color: #1a1310;
+    background: #f5f7ff;
+    border: 1px solid rgba(13, 17, 23, 0.15);
+    color: #0d1117;
     font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
     padding: 0.7rem 0.85rem;
@@ -283,17 +279,17 @@ const socials = [
   }
 
   .form-field input::placeholder,
-  .form-field textarea::placeholder { color: rgba(26, 19, 16, 0.35); }
+  .form-field textarea::placeholder { color: rgba(13, 17, 23, 0.35); }
 
   .form-field input:focus,
   .form-field select:focus,
-  .form-field textarea:focus { border-color: #D29992; }
+  .form-field textarea:focus { border-color: #FF6B35; }
 
-  .form-field select option { background: #F4EFE6; color: #1a1310; }
+  .form-field select option { background: #eef2ff; color: #0d1117; }
 
   .form-submit {
-    background: #1a1210;
-    color: #f0ece4;
+    background: #0d1117;
+    color: #e8edf8;
     border: none;
     font-family: 'Inter', sans-serif;
     font-size: 0.82rem;
@@ -306,23 +302,23 @@ const socials = [
     margin-top: 0.35rem;
   }
 
-  .form-submit:hover { background: #2e2520; }
+  .form-submit:hover { background: #1a2235; }
 
   .whatsapp-line {
     margin-top: 1.5rem;
     font-size: 0.82rem;
-    color: rgba(26, 19, 16, 0.6);
+    color: rgba(13, 17, 23, 0.6);
     line-height: 1.6;
   }
 
   .whatsapp-line a {
-    color: #b86a62;
+    color: #d14a25;
     text-decoration: none;
     font-weight: 600;
-    border-bottom: 1px solid rgba(184, 106, 98, 0.3);
+    border-bottom: 1px solid rgba(209, 74, 37, 0.3);
   }
 
-  .whatsapp-line a:hover { border-color: #b86a62; }
+  .whatsapp-line a:hover { border-color: #d14a25; }
 
   /* ── Socials ── */
   .socials-list {
@@ -337,8 +333,8 @@ const socials = [
     align-items: center;
     gap: 0.75rem;
     padding: 0.95rem 1rem;
-    background: rgba(210, 153, 146, 0.04);
-    border: 1px solid rgba(210, 153, 146, 0.12);
+    background: rgba(255, 107, 53, 0.04);
+    border: 1px solid rgba(255, 107, 53, 0.12);
     text-decoration: none;
     overflow: hidden;
     isolation: isolate;
@@ -355,7 +351,7 @@ const socials = [
   }
 
   .social-card:hover {
-    border-color: rgba(240, 236, 228, 0.25);
+    border-color: rgba(232, 237, 248, 0.25);
     transform: translateX(3px);
   }
 
@@ -367,26 +363,26 @@ const socials = [
   .social-github::before    { background: linear-gradient(135deg, #3a3f47 0%, #1b1f23 100%); }
 
   .social-icon {
-    color: #D29992;
+    color: #FF6B35;
     width: 2rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(210, 153, 146, 0.25);
+    border: 1px solid rgba(255, 107, 53, 0.25);
     flex-shrink: 0;
   }
 
-  .social-card:hover .social-icon { color: #f0ece4; border-color: rgba(240,236,228,0.4); }
+  .social-card:hover .social-icon { color: #e8edf8; border-color: rgba(240,236,228,0.4); }
 
-  .social-name { font-size: 0.82rem; color: #f0ece4; font-weight: 500; }
-  .social-handle { font-size: 0.7rem; color: rgba(240, 236, 228, 0.4); margin-top: 0.1rem; }
+  .social-name { font-size: 0.82rem; color: #e8edf8; font-weight: 500; }
+  .social-handle { font-size: 0.7rem; color: rgba(232, 237, 248, 0.4); margin-top: 0.1rem; }
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
     .about { grid-template-columns: 1fr; gap: 2rem; }
     .about-portrait { max-width: 280px; aspect-ratio: 3 / 4; }
-    .contact-grid { grid-template-columns: 1fr; }
+    .socials { border-top: 1px solid rgba(232, 237, 248, 0.07); padding-top: 2rem; }
     .socials-list { flex-direction: row; flex-wrap: wrap; }
     .social-card { flex: 1 1 160px; }
   }

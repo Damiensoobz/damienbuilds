@@ -21,7 +21,9 @@
       "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Milliseconds 500; $r = Get-Process node -ErrorAction SilentlyContinue; if \\($r\\) { \"still running: $\\($r.Count\\)\" } else { \"all node stopped\" })",
       "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
       "PowerShell(Stop-Process -Force)",
-      "PowerShell(\"node cleared\")"
+      "PowerShell(\"node cleared\")",
+      "Bash(git fetch *)",
+      "PowerShell($f = \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\web\\\\damienbuilds\\\\astro_build\\\\damienbuilds\\\\src\\\\components\\\\hero.astro\"; \\(Get-Item $f\\).LastWriteTime = Get-Date; Write-Output \"touched\")"
     ]
   }
 }

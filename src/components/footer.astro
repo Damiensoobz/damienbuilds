@@ -18,7 +18,7 @@ const p = home ? "" : "/";
         <a href={`${p}#services`}>Services</a>
         <a href={`${p}#work`}>Work</a>
         <a href={`${p}#process`}>Process</a>
-        <a href={`${p}#pricing`}>Pricing</a>
+        <a href="/pricing">Pricing</a>
         <a href="/faq">FAQ</a>
         <a href={`${p}#contact`}>Contact</a>
       </nav>
@@ -29,9 +29,9 @@ const p = home ? "" : "/";
 
 <style>
   .footer {
-    background: #120d0b;
+    background: #080d14;
     padding: 2.5rem 2rem;
-    border-top: 1px solid rgba(240, 236, 228, 0.07);
+    border-top: 1px solid rgba(232, 237, 248, 0.07);
   }
 
   .footer-inner {
@@ -47,10 +47,10 @@ const p = home ? "" : "/";
   .footer-brand { display: flex; align-items: center; gap: 0.85rem; }
   .footer-logo { width: 2.75rem; height: 2.75rem; flex-shrink: 0; display: block; }
   .footer-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .footer-name { font-size: 0.82rem; font-weight: 600; color: #f0ece4; letter-spacing: 0.04em; }
+  .footer-name { font-size: 0.82rem; font-weight: 600; color: #e8edf8; letter-spacing: 0.04em; }
   .footer-tagline {
     font-size: 0.72rem;
-    color: rgba(240, 236, 228, 0.35);
+    color: rgba(232, 237, 248, 0.35);
     margin-top: 0.1rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -58,7 +58,7 @@ const p = home ? "" : "/";
 
   .footer-copy {
     font-size: 0.78rem;
-    color: rgba(240, 236, 228, 0.35);
+    color: rgba(232, 237, 248, 0.35);
     line-height: 1.7;
     text-align: center;
   }
@@ -68,14 +68,14 @@ const p = home ? "" : "/";
 
   .footer-links a {
     font-size: 0.8rem;
-    color: rgba(240, 236, 228, 0.5);
+    color: rgba(232, 237, 248, 0.5);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .footer-links a:hover { color: #D29992; }
+  .footer-links a:hover { color: #FF6B35; }
 
-  .footer-legal { font-size: 0.7rem; color: rgba(240, 236, 228, 0.25); letter-spacing: 0.04em; }
+  .footer-legal { font-size: 0.7rem; color: rgba(232, 237, 248, 0.25); letter-spacing: 0.04em; }
 
   @media (max-width: 600px) {
     .footer-inner { flex-direction: column; align-items: center; text-align: center; }
