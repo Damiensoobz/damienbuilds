@@ -129,7 +129,7 @@ const socials = [
     display: grid;
     grid-template-columns: 280px 1fr auto;
     gap: 3.5rem;
-    align-items: start;
+    align-items: center;
   }
 
   .about-portrait {
@@ -165,6 +165,10 @@ const socials = [
     text-transform: uppercase;
   }
 
+  .about-text {
+    text-align: center;
+  }
+
   .about-text h2 {
     font-size: clamp(2rem, 3.5vw, 3rem);
     color: #e8edf8;
@@ -184,6 +188,7 @@ const socials = [
   .about-links {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
@@ -208,6 +213,7 @@ const socials = [
   .contact-head {
     max-width: 1080px;
     margin: 0 auto 2.5rem;
+    text-align: center;
   }
 
   .contact-head h2 {
@@ -224,6 +230,7 @@ const socials = [
     color: rgba(232, 237, 248, 0.55);
     line-height: 1.8;
     max-width: 38rem;
+    margin: 0 auto;
   }
 
   /* ── Form wrap ── */

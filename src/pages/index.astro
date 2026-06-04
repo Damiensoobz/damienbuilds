@@ -4,6 +4,7 @@ import SiteNav from '../components/siteNav.astro';
 import Hero from '../components/hero.astro';
 import Services from '../components/services.astro';
 import Portfolio from '../components/portfolio.astro';
+import WaveDivider from '../components/waveDivider.astro';
 import Process from '../components/process.astro';
 import Contact from '../components/contact.astro';
 import Footer from '../components/footer.astro';
@@ -13,8 +14,17 @@ import Footer from '../components/footer.astro';
   <SiteNav home={true} />
   <Hero />
   <Services />
+  <div class="section-rule"></div>
   <Portfolio />
   <Process />
+  <WaveDivider colorTop="#0d1117" colorBottom="#0d1117" />
   <Contact />
   <Footer home={true} />
 </BaseLayout>
+
+<style>
+  .section-rule {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+</style>

@@ -31,51 +31,51 @@ const loadingPhrases = [
 ---
 
 <section class="hero" id="hero-section">
-  <!-- Aurora background blobs -->
+  <!-- Aurora background blobs (unchanged) -->
   <div class="aurora-blob blob-1"></div>
   <div class="aurora-blob blob-2"></div>
   <div class="aurora-blob blob-3"></div>
   <div class="aurora-blob blob-4"></div>
 
-  <!-- Main CTA card -->
-  <div class="hero-text">
-    <p class="hero-tagline">Durban Web Design</p>
-    <h1>A Website You Own.<br/>Built by Someone You<br/>Can Actually Reach.</h1>
-    <p class="hero-sub">For small businesses and creators tired of being invisible online — and tired of agencies who treat them like a ticket number. Clean builds, fixed pricing, no nonsense.</p>
-    <a href="#contact" class="hero-cta">Let's Build This →</a>
-    <p class="hero-secondary">Based in Phoenix, Durban. Building for businesses across South Africa.</p>
-  </div>
+  <!-- Editorial layout -->
+  <div class="hero-inner">
 
-  <!-- Right info panel -->
-  <div class="hero-aside">
-    <p class="aside-lead">In 2026, your website<br/>is your first impression.</p>
-    <p class="aside-body">
-      Before a customer calls, books, or buys — they search. If you're not showing up,
-      a competitor who is gets the sale. It's not complicated; it's just how people
-      make decisions now.
-    </p>
-    <p class="aside-body">
-      Social media helps, but you don't own it. One algorithm shift, one account ban,
-      one platform dying — and your audience is gone. A website is the only piece of
-      your online presence that is permanently, unconditionally yours.
-    </p>
+    <!-- Headline — heavy first line, light remainder -->
+    <h1 class="hero-headline">
+      <span class="hl-strong">A Website You Own.</span>
+      Built by Someone You<br/>Can Actually Reach.
+    </h1>
 
-    <div class="aside-divider"></div>
+    <!-- Rule flush under headline -->
+    <div class="hero-rule"></div>
 
-    <p class="aside-body">
-      AI search tools are changing how people find businesses too. ChatGPT, Perplexity,
-      Google's AI overviews — they all pull from real websites. No website means no
-      presence in the places your next customer is already looking.
-    </p>
-    <p class="aside-body">
-      The businesses that invest in a proper web presence now — fast, clean, actually
-      indexed by Google — are the ones that will be findable when everything else
-      shifts again. And it will shift again.
-    </p>
+    <!-- Aside explainer — lead spans full width, body in 2 equal columns -->
+    <div class="hero-mid">
+      <p class="aside-lead">In 2026, your website is your first impression.</p>
+      <div class="aside-cols">
+        <div class="aside-col">
+          <p class="aside-body">Before a customer calls, books, or buys — they search. If you're not showing up, a competitor who is gets the sale. It's not complicated; it's just how people make decisions now.</p>
+          <p class="aside-body">Social media helps, but you don't own it. One algorithm shift, one account ban, one platform dying — and your audience is gone. A website is the only piece of your online presence that is permanently, unconditionally yours.</p>
+        </div>
+        <div class="aside-col">
+          <p class="aside-body">AI search tools are changing how people find businesses too. ChatGPT, Perplexity, Google's AI overviews — they all pull from real websites. No website means no presence in the places your next customer is already looking.</p>
+          <p class="aside-body">The businesses that invest in a proper web presence now — fast, clean, actually indexed by Google — are the ones that will be findable when everything else shifts again. And it will shift again.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom foot: location left, CTA right -->
+    <div class="hero-foot">
+      <div class="hero-bottom">
+        <p class="hero-secondary">Based in Phoenix, Durban · Building for businesses across South Africa.</p>
+        <a href="#contact" class="hero-cta">Let's Build!</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- Loading ticker -->
+<!-- Loading ticker (unchanged) -->
 <div class="loading-banner" aria-label="Loading...">
   <div class="loading-track">
     {[...loadingPhrases, ...loadingPhrases].map((phrase) => (
@@ -88,6 +88,7 @@ const loadingPhrases = [
 </div>
 
 <style>
+  /* ── Hero shell ── */
   .hero {
     position: relative;
     width: 100%;
@@ -100,9 +101,9 @@ const loadingPhrases = [
     );
     overflow: hidden;
     display: flex;
-    align-items: center;
-    gap: 5vw;
-    padding: 6rem max(8vw, 2rem) 4rem;
+    flex-direction: column;
+    /* height: explicit so flex:1 on hero-inner distributes correctly */
+    height: 100vh;
   }
 
   /* Dot grid texture */
@@ -116,7 +117,7 @@ const loadingPhrases = [
     pointer-events: none;
   }
 
-  /* ── Aurora blobs ── */
+  /* ── Aurora blobs (unchanged) ── */
   .aurora-blob {
     position: absolute;
     border-radius: 50%;
@@ -127,38 +128,27 @@ const loadingPhrases = [
   }
 
   .blob-1 {
-    width: 480px;
-    height: 480px;
+    width: 480px; height: 480px;
     background: rgba(50, 100, 200, 0.65);
-    top: -80px;
-    left: -60px;
+    top: -80px; left: -60px;
     animation: blobDrift1 12s ease-in-out infinite;
   }
-
   .blob-2 {
-    width: 400px;
-    height: 400px;
+    width: 400px; height: 400px;
     background: rgba(255, 80, 20, 0.55);
-    bottom: -80px;
-    right: 8%;
+    bottom: -80px; right: 8%;
     animation: blobDrift2 15s ease-in-out infinite;
   }
-
   .blob-3 {
-    width: 300px;
-    height: 300px;
+    width: 300px; height: 300px;
     background: rgba(120, 40, 200, 0.6);
-    top: 40%;
-    left: 40%;
+    top: 40%; left: 40%;
     animation: blobDrift3 10s ease-in-out infinite;
   }
-
   .blob-4 {
-    width: 220px;
-    height: 220px;
+    width: 220px; height: 220px;
     background: rgba(255, 140, 20, 0.45);
-    top: 10%;
-    right: 20%;
+    top: 10%; right: 20%;
     animation: blobDrift4 8s ease-in-out infinite;
   }
 
@@ -169,15 +159,13 @@ const loadingPhrases = [
     75%  { transform: translate(-60px,  150px)  scale(1.15); opacity: 0.9; }
     100% { transform: translate(0px,    0px)    scale(1);    opacity: 0.8; }
   }
-
   @keyframes blobDrift2 {
     0%   { transform: translate(0px,    0px)    scale(1);    opacity: 0.7; }
-    30%  { transform: translate(-200px, -140px) scale(1.2);  opacity: 1;   }
-    60%  { transform: translate(-100px, -260px) scale(0.75); opacity: 0.5; }
-    80%  { transform: translate(80px,   -180px) scale(1.1);  opacity: 0.85;}
+    30%  { transform: translate(-200px,-140px)  scale(1.2);  opacity: 1;   }
+    60%  { transform: translate(-100px,-260px)  scale(0.75); opacity: 0.5; }
+    80%  { transform: translate(80px,  -180px)  scale(1.1);  opacity: 0.85;}
     100% { transform: translate(0px,    0px)    scale(1);    opacity: 0.7; }
   }
-
   @keyframes blobDrift3 {
     0%   { transform: translate(0px,    0px)   scale(1);    opacity: 0.75; }
     20%  { transform: translate(-180px, 140px) scale(1.3);  opacity: 1;    }
@@ -185,183 +173,160 @@ const loadingPhrases = [
     75%  { transform: translate(160px, -100px) scale(1.15); opacity: 0.9;  }
     100% { transform: translate(0px,    0px)   scale(1);    opacity: 0.75; }
   }
-
   @keyframes blobDrift4 {
-    0%   { transform: translate(0px,    0px)   scale(1);   opacity: 0.6;  }
-    35%  { transform: translate(-120px, 160px) scale(1.4); opacity: 0.95; }
-    65%  { transform: translate(100px,  100px) scale(0.65);opacity: 0.45; }
-    100% { transform: translate(0px,    0px)   scale(1);   opacity: 0.6;  }
+    0%   { transform: translate(0px,    0px)   scale(1);    opacity: 0.6;  }
+    35%  { transform: translate(-120px, 160px) scale(1.4);  opacity: 0.95; }
+    65%  { transform: translate(100px,  100px) scale(0.65); opacity: 0.45; }
+    100% { transform: translate(0px,    0px)   scale(1);    opacity: 0.6;  }
   }
 
-  /* ── Hero text — glassmorphism card ── */
-  .hero-text {
-    position: relative;
-    z-index: 5;
-    flex: 0 0 auto;
-    text-align: left;
-    background: rgba(6, 12, 28, 0.85);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: 1px solid rgba(255, 255, 255, 0.22);
-    padding: 2.75rem 3.5rem;
-    width: 520px;
-    max-width: 88vw;
-  }
-
-  .hero-tagline {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #FF8C5A;
-    opacity: 0.9;
-    margin-bottom: 0.85rem;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .hero-text h1 {
-    font-size: clamp(2rem, 3.8vw, 3.4rem);
-    font-weight: 400;
-    line-height: 1.1;
-    color: #e8edf8;
-    margin-bottom: 1.1rem;
-    letter-spacing: -0.01em;
-  }
-
-  .hero-sub {
-    font-size: 0.93rem;
-    opacity: 0.72;
-    line-height: 1.7;
-    margin-bottom: 1.75rem;
-    color: #e8edf8;
-    font-weight: 300;
-  }
-
-  .hero-cta {
-    display: inline-block;
-    background: #FF6B35;
-    color: #0d1117;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.8rem 2rem;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .hero-cta:hover { background: #FF8C5A; transform: translateY(-1px); }
-
-  .hero-secondary {
-    margin-top: 1.5rem;
-    font-size: 0.72rem;
-    color: rgba(232, 237, 248, 0.45);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Right info panel ── */
-  .hero-aside {
+  /* ── Editorial layout ── */
+  .hero-inner {
     position: relative;
     z-index: 5;
     flex: 1;
-    min-width: 0;
-    padding-left: 3vw;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    padding: 8rem 6vw 3.5rem;
+  }
+
+  /* Horizontal rules */
+  .hero-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(232, 237, 248, 0.14);
+    flex-shrink: 0;
+  }
+
+  /* Headline — sits at top, natural height, no grow */
+  .hero-headline {
+    font-size: clamp(3.2rem, 7.8vw, 9.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: #e8edf8;
+    letter-spacing: -0.03em;
+    padding-bottom: 1.5rem;
+    margin: 0;
+  }
+
+  .hl-strong {
+    font-weight: 800;
+    display: block;
+  }
+
+  /* ── Aside explainer ── */
+  .hero-mid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.75rem 0;
+    justify-content: center;
   }
 
   .aside-lead {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-size: clamp(1.3rem, 2vw, 1.75rem);
     font-weight: 400;
-    line-height: 1.25;
+    line-height: 1.2;
     color: #e8edf8;
-    margin-bottom: 1rem;
     letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* Two equal columns, body text aligned at the top */
+  .aside-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .aside-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .aside-body {
     font-size: 0.85rem;
-    line-height: 1.75;
-    color: rgba(232, 237, 248, 0.55);
+    line-height: 1.8;
+    color: rgba(232, 237, 248, 0.52);
     font-weight: 300;
-    margin-bottom: 1.5rem;
-    max-width: 32rem;
-  }
-
-  .aside-divider {
-    width: 2.5rem;
-    height: 1px;
-    background: rgba(255, 107, 53, 0.35);
-    margin-bottom: 1.25rem;
-  }
-
-  .aside-section-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #FF8C5A;
-    opacity: 0.8;
-    margin-bottom: 0.75rem;
-  }
-
-  .aside-list {
-    list-style: none;
-    padding: 0;
     margin: 0;
+  }
+
+  /* Bottom foot */
+  .hero-foot {
+    flex-shrink: 0;
+  }
+
+  .hero-bottom {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0 0;
   }
 
-  .aside-list li {
-    font-size: 0.82rem;
-    color: rgba(232, 237, 248, 0.6);
-    padding-left: 1.1rem;
-    position: relative;
-    line-height: 1.5;
+  .hero-secondary {
+    font-size: 0.68rem;
+    color: rgba(232, 237, 248, 0.28);
+    letter-spacing: 0.07em;
+    margin: 0;
   }
 
-  .aside-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
+  .hero-cta {
+    display: inline-block;
+    border: 1px solid rgba(232, 237, 248, 0.4);
+    color: #e8edf8;
+    background: transparent;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.75rem;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .hero-cta:hover {
+    border-color: #FF6B35;
     color: #FF6B35;
-    opacity: 0.6;
+    background: rgba(255, 107, 53, 0.06);
   }
 
-  /* ── Loading ticker ── */
+  /* ── Loading ticker (unchanged) ── */
   .loading-banner {
     position: relative;
     background: #080d14;
     border-top: 1px solid rgba(255, 107, 53, 0.18);
     border-bottom: 1px solid rgba(255, 107, 53, 0.12);
     overflow: hidden;
-    padding: 0.85rem 0;
+    padding: 1.6rem 0;
   }
 
   .loading-banner::before,
   .loading-banner::after {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 8rem;
+    top: 0; bottom: 0;
+    width: calc(100vw / 3);
     z-index: 2;
     pointer-events: none;
   }
-
-  .loading-banner::before { left: 0;  background: linear-gradient(to right, #080d14, transparent); }
-  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #080d14, transparent); }
+  .loading-banner::before { left: 0;  background: linear-gradient(to right, #080d14 30%, transparent); }
+  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #080d14 30%, transparent); }
 
   .loading-track {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: loadingTicker 60s linear infinite;
+    animation: loadingTicker 80s linear infinite;
   }
-
   .loading-banner:hover .loading-track { animation-play-state: paused; }
 
   @keyframes loadingTicker {
@@ -372,47 +337,32 @@ const loadingPhrases = [
   .loading-phrase {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0 2rem;
+    justify-content: center;
+    gap: 0.75rem;
+    width: calc(100vw / 3);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 0.72rem;
-    color: rgba(232, 237, 248, 0.45);
+    font-size: 1rem;
+    color: rgba(232, 237, 248, 0.55);
     letter-spacing: 0.04em;
     white-space: nowrap;
     cursor: default;
+    flex-shrink: 0;
   }
 
   .loading-diamond {
     color: #FF6B35;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     opacity: 0.7;
   }
 
   /* ── Responsive ── */
-  @media (max-width: 900px) {
-    .hero {
-      flex-direction: column;
-      justify-content: center;
-      align-items: stretch;
-      padding: 5rem 1.5rem 3rem;
-      gap: 2rem;
-      min-height: 100vh;
-      height: auto;
-    }
-    .hero-text {
-      width: 100%;
-      max-width: 100%;
-      text-align: center;
-      padding: 1.75rem 1.5rem;
-    }
-    .hero-aside {
-      border-left: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-left: 0;
-      padding-top: 2rem;
-    }
-    .hero-text h1 { font-size: 1.8rem; }
-    .hero-sub { font-size: 0.85rem; }
-    .loading-phrase { font-size: 0.65rem; padding: 0 1.25rem; }
+  @media (max-width: 768px) {
+    .hero-inner  { padding: 6rem 1.5rem 2.5rem; }
+    .hero-headline { font-size: clamp(2.6rem, 10vw, 4rem); padding-bottom: 1rem; }
+    .hero-mid    { padding: 1.25rem 0; }
+    .aside-cols  { grid-template-columns: 1fr; gap: 1rem; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    .hero-cta    { width: 100%; text-align: center; }
+    .loading-phrase { font-size: 0.75rem; width: calc(100vw / 3); }
   }
 </style>

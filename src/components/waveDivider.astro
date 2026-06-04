@@ -1,0 +1,114 @@
+---
+interface Props {
+  colorTop?:    string;   // colour of section above (default: work section)
+  colorBottom?: string;   // colour of section below (default: process section)
+}
+
+const {
+  colorTop    = '#161d2f',
+  colorBottom = '#1a3a5c',
+} = Astro.props;
+
+// Unique gradient ID — avoids SVG def conflicts when two instances exist on the page
+const uid    = Math.random().toString(36).slice(2, 7);
+const gradId = `wdGrad_${uid}`;
+
+// Lerp two hex colours — used to compute intermediate wave fill shades
+function mix(h1: string, h2: string, t: number): string {
+  const p = (h: string) => [
+    parseInt(h.slice(1,3), 16),
+    parseInt(h.slice(3,5), 16),
+    parseInt(h.slice(5,7), 16),
+  ];
+  const [r1,g1,b1] = p(h1), [r2,g2,b2] = p(h2);
+  return '#' + [
+    Math.round(r1 + t*(r2-r1)),
+    Math.round(g1 + t*(g2-g1)),
+    Math.round(b1 + t*(b2-b1)),
+  ].map(v => v.toString(16).padStart(2,'0')).join('');
+}
+
+const backFill   = mix(colorTop, colorBottom, 0.35);
+const midFill    = mix(colorTop, colorBottom, 0.65);
+const frontCrest = mix(colorTop, colorBottom, 0.45);  // lighter at wave crest
+
+// Smooth sine-wave bezier (control points at 0.37 × half-period)
+interface WaveCfg { yMid: number; amp: number; hPer: number; startUp: boolean }
+
+function buildPath(cfg: WaveCfg, totalW: number, viewH: number, fillBottom: boolean): string {
+  const { yMid, amp, hPer, startUp } = cfg;
+  const cp = hPer * 0.37;
+  let d = `M 0,${yMid}`;
+  let x = 0, up = startUp;
+  while (x < totalW) {
+    const yc = up ? yMid - amp : yMid + amp;
+    d += ` C ${x+cp},${yc} ${x+hPer-cp},${yc} ${x+hPer},${yMid}`;
+    x += hPer;
+    up = !up;
+  }
+  if (fillBottom) d += ` L ${totalW},${viewH} L 0,${viewH} Z`;
+  return d;
+}
+
+// 2880 = 200 % of a 1440 px viewport → seamless loop via translateX(-50 %)
+// Half-periods must divide 1440 for a perfect loop: 720, 360, 240 …
+const W = 2880, H = 260;
+const back  = buildPath({ yMid: 222, amp: 20, hPer: 720, startUp: true  }, W, H, true);
+const mid   = buildPath({ yMid: 192, amp: 40, hPer: 360, startUp: false }, W, H, true);
+const front = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, true);
+const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, false);
+---
+
+<div class="wave-divider" style={`--ct:${colorTop};--cb:${colorBottom}`} aria-hidden="true">
+
+  <svg class="wl wl-back"  viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d={back}  fill={backFill}/>
+  </svg>
+
+  <svg class="wl wl-mid"   viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d={mid}   fill={midFill}/>
+  </svg>
+
+  <svg class="wl wl-front" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color={frontCrest}/>
+        <stop offset="100%" stop-color={colorBottom}/>
+      </linearGradient>
+    </defs>
+    <path d={front} fill={`url(#${gradId})`}/>
+    <!-- Subtle orange accent on the front wave crest -->
+    <path d={edge}  fill="none" stroke="rgba(255,107,53,0.18)" stroke-width="2.5"/>
+  </svg>
+
+</div>
+
+<style>
+  .wave-divider {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+    /* Container bg bridges the two section colours */
+    background: linear-gradient(to bottom, var(--ct), var(--cb));
+    /* Negative margin eliminates the sub-pixel seam against the section below */
+    margin-bottom: -3px;
+  }
+
+  .wl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+  }
+
+  /* Barely moving — almost imperceptible drift */
+  .wl-back  { animation: waveScroll 160s linear infinite; }
+  .wl-mid   { animation: waveScroll 120s linear infinite; }
+  .wl-front { animation: waveScroll 80s linear infinite; }
+
+  @keyframes waveScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>
