@@ -96,8 +96,8 @@ const loadingPhrases = [
     background: linear-gradient(160deg,
       #1a3a5c 0%,
       #0f2040 30%,
-      #080f1e 65%,
-      #0d1117 100%
+      #091420 65%,
+      #0c1525 100%
     );
     overflow: hidden;
     display: flex;
@@ -111,7 +111,7 @@ const loadingPhrases = [
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(232, 237, 248, 0.07) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
     background-size: 28px 28px;
     z-index: 0;
     pointer-events: none;
@@ -194,7 +194,7 @@ const loadingPhrases = [
   .hero-rule {
     width: 100%;
     height: 1px;
-    background: rgba(232, 237, 248, 0.14);
+    background: rgba(255, 255, 255, 0.14);
     flex-shrink: 0;
   }
 
@@ -203,7 +203,7 @@ const loadingPhrases = [
     font-size: clamp(3.2rem, 7.8vw, 9.5rem);
     font-weight: 300;
     line-height: 1.0;
-    color: #e8edf8;
+    color: #ffffff;
     letter-spacing: -0.03em;
     padding-bottom: 1.5rem;
     margin: 0;
@@ -229,7 +229,7 @@ const loadingPhrases = [
     font-size: clamp(1.3rem, 2vw, 1.75rem);
     font-weight: 400;
     line-height: 1.2;
-    color: #e8edf8;
+    color: #ffffff;
     letter-spacing: -0.01em;
     margin: 0;
   }
@@ -251,7 +251,7 @@ const loadingPhrases = [
   .aside-body {
     font-size: 0.85rem;
     line-height: 1.8;
-    color: rgba(232, 237, 248, 0.52);
+    color: rgba(255, 255, 255, 0.52);
     font-weight: 300;
     margin: 0;
   }
@@ -271,15 +271,15 @@ const loadingPhrases = [
 
   .hero-secondary {
     font-size: 0.68rem;
-    color: rgba(232, 237, 248, 0.28);
+    color: rgba(255, 255, 255, 0.28);
     letter-spacing: 0.07em;
     margin: 0;
   }
 
   .hero-cta {
     display: inline-block;
-    border: 1px solid rgba(232, 237, 248, 0.4);
-    color: #e8edf8;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
     background: transparent;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
@@ -294,17 +294,17 @@ const loadingPhrases = [
   }
 
   .hero-cta:hover {
-    border-color: #FF6B35;
-    color: #FF6B35;
-    background: rgba(255, 107, 53, 0.06);
+    border-color: #E96530;
+    color: #E96530;
+    background: rgba(233, 101, 48, 0.06);
   }
 
   /* ── Loading ticker (unchanged) ── */
   .loading-banner {
     position: relative;
-    background: #080d14;
-    border-top: 1px solid rgba(255, 107, 53, 0.18);
-    border-bottom: 1px solid rgba(255, 107, 53, 0.12);
+    background: #0c1525;
+    border-top: 1px solid rgba(233, 101, 48, 0.18);
+    border-bottom: 1px solid rgba(233, 101, 48, 0.12);
     overflow: hidden;
     padding: 1.6rem 0;
   }
@@ -318,8 +318,8 @@ const loadingPhrases = [
     z-index: 2;
     pointer-events: none;
   }
-  .loading-banner::before { left: 0;  background: linear-gradient(to right, #080d14 30%, transparent); }
-  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #080d14 30%, transparent); }
+  .loading-banner::before { left: 0;  background: linear-gradient(to right, #0c1525 30%, transparent); }
+  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #0c1525 30%, transparent); }
 
   .loading-track {
     display: flex;
@@ -342,7 +342,7 @@ const loadingPhrases = [
     width: calc(100vw / 3);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 1rem;
-    color: rgba(232, 237, 248, 0.55);
+    color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.04em;
     white-space: nowrap;
     cursor: default;
@@ -350,7 +350,7 @@ const loadingPhrases = [
   }
 
   .loading-diamond {
-    color: #FF6B35;
+    color: #E96530;
     font-size: 0.6rem;
     opacity: 0.7;
   }

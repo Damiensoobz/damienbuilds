@@ -40,10 +40,15 @@ const steps = [
 ---
 
 <section class="process" id="process">
-  <!-- Aurora blobs (same as hero) -->
-  <div class="process-blob pb-1"></div>
-  <div class="process-blob pb-2"></div>
-  <div class="process-blob pb-3"></div>
+  <!-- Blobs clipped in their own layer so .process can be overflow:visible -->
+  <div class="process-blob-clip">
+    <div class="process-blob pb-1"></div>
+    <div class="process-blob pb-2"></div>
+    <div class="process-blob pb-3"></div>
+    <div class="process-blob pb-4"></div>
+    <div class="process-blob pb-5"></div>
+    <div class="process-blob pb-6"></div>
+  </div>
 
   <div class="process-inner">
     <div class="process-header">
@@ -63,7 +68,7 @@ const steps = [
         </div>
         <div class="step-node">
           <div class="step-dot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" aria-hidden="true" set:html={step.icon}></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="38" height="38" aria-hidden="true" set:html={step.icon}></svg>
           </div>
         </div>
       </div>
@@ -74,10 +79,19 @@ const steps = [
 <style>
   .process {
     position: relative;
+    overflow: visible;
+    background: linear-gradient(160deg, #1a2840 0%, #0e1c32 40%, #091420 72%, #0a1e36 100%);
+    padding: 6rem 2rem 13rem;
+    color: #ffffff;
+  }
+
+  /* Clips blobs without clipping the wave overlap */
+  .process-blob-clip {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
-    background: linear-gradient(160deg, #1a2840 0%, #0e1c32 40%, #091420 75%, #0d1117 100%);
-    padding: 6rem 2rem 5rem;
-    color: #e8edf8;
+    pointer-events: none;
+    z-index: 0;
   }
 
   /* ── Process aurora blobs — white by default, coloured on step hover ── */
@@ -112,6 +126,27 @@ const steps = [
     animation: pbDrift3 14s ease-in-out infinite;
   }
 
+  .pb-4 {
+    width: 420px; height: 420px;
+    background: rgba(255, 255, 255, 0.07);
+    top: 25%; left: -80px;
+    animation: pbDrift2 26s ease-in-out infinite reverse;
+  }
+
+  .pb-5 {
+    width: 260px; height: 260px;
+    background: rgba(255, 255, 255, 0.09);
+    top: 68%; right: 5%;
+    animation: pbDrift1 20s ease-in-out infinite reverse;
+  }
+
+  .pb-6 {
+    width: 350px; height: 350px;
+    background: rgba(255, 255, 255, 0.06);
+    top: 50%; left: 30%;
+    animation: pbDrift3 30s ease-in-out infinite;
+  }
+
   @keyframes pbDrift1 {
     0%, 100% { transform: translate(0,     0)    scale(1);    opacity: 0.75; }
     33%       { transform: translate(-180px, 120px) scale(1.15); opacity: 1;    }
@@ -143,13 +178,13 @@ const steps = [
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: #FF6B35;
+    color: #4FC3F7;
     margin-bottom: 1rem;
   }
 
   .process-inner h2 {
     font-size: clamp(2.2rem, 4vw, 3.4rem);
-    color: #e8edf8;
+    color: #ffffff;
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.01em;
@@ -174,8 +209,8 @@ const steps = [
     transform: translateX(-50%);
     background: linear-gradient(to bottom,
       transparent,
-      rgba(255, 107, 53, 0.3) 5%,
-      rgba(255, 107, 53, 0.3) 95%,
+      rgba(233, 101, 48, 0.3) 5%,
+      rgba(233, 101, 48, 0.3) 95%,
       transparent
     );
     pointer-events: none;
@@ -218,7 +253,8 @@ const steps = [
     flex-shrink: 0;
   }
 
-  .step:hover .step-dot {
+  .step:hover .step-dot,
+  .step.is-active .step-dot {
     box-shadow: 0 0 28px color-mix(in srgb, var(--glyph) 55%, transparent);
     transform: scale(1.1);
   }
@@ -227,13 +263,14 @@ const steps = [
   .step-content {
     position: relative;
     overflow: hidden;
-    background: #161d2f;
+    background: #112038;
     border: 1px solid rgba(255, 255, 255, 0.07);
     padding: 2rem;
     transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
   }
 
-  .step:hover .step-content {
+  .step:hover .step-content,
+  .step.is-active .step-content {
     border-color: color-mix(in srgb, var(--glyph) 40%, transparent);
     box-shadow: 0 4px 28px color-mix(in srgb, var(--glyph) 8%, transparent);
     transform: translateY(-2px);
@@ -252,7 +289,8 @@ const steps = [
     transition: opacity 0.3s ease;
   }
 
-  .step:hover .step-glyph { opacity: 0.15; }
+  .step:hover .step-glyph,
+  .step.is-active .step-glyph { opacity: 0.15; }
 
   .step-number {
     display: block;
@@ -266,12 +304,13 @@ const steps = [
     transition: opacity 0.3s ease;
   }
 
-  .step:hover .step-number { opacity: 1; }
+  .step:hover .step-number,
+  .step.is-active .step-number { opacity: 1; }
 
   .step-content h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
-    color: #e8edf8;
+    color: #ffffff;
     font-weight: 500;
     margin-bottom: 0.6rem;
     line-height: 1.2;
@@ -279,7 +318,7 @@ const steps = [
 
   .step-content p {
     font-size: 0.82rem;
-    color: rgba(232, 237, 248, 0.6);
+    color: rgba(255, 255, 255, 0.6);
     line-height: 1.7;
   }
 
@@ -327,24 +366,52 @@ const steps = [
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 
-  const blobs   = Array.from(document.querySelectorAll<HTMLElement>('.process-blob'));
-  const steps   = Array.from(document.querySelectorAll<HTMLElement>('.step'));
-  const alphas  = [0.45, 0.35, 0.28]; // pb-1, pb-2, pb-3
-  const whites  = ['rgba(255,255,255,0.12)', 'rgba(255,255,255,0.10)', 'rgba(255,255,255,0.08)'];
+  const blobs  = Array.from(document.querySelectorAll<HTMLElement>('.process-blob'));
+  const steps  = Array.from(document.querySelectorAll<HTMLElement>('.step'));
+  const alphas = [0.45, 0.35, 0.28, 0.25, 0.32, 0.20];
+  const whites = ['rgba(255,255,255,0.12)', 'rgba(255,255,255,0.10)', 'rgba(255,255,255,0.08)', 'rgba(255,255,255,0.07)', 'rgba(255,255,255,0.09)', 'rgba(255,255,255,0.06)'];
+
+  let scrollActiveStep: HTMLElement | null = null;
+  let hoverActiveStep:  HTMLElement | null = null;
+
+  function setBlobs(step: HTMLElement | null) {
+    if (step) {
+      const color = getComputedStyle(step).getPropertyValue('--glyph').trim();
+      blobs.forEach((blob, i) => { blob.style.background = hexToRgba(color, alphas[i]); });
+    } else {
+      blobs.forEach((blob, i) => { blob.style.background = whites[i]; });
+    }
+  }
+
+  function getScrollActive(): HTMLElement | null {
+    const trigger = window.innerHeight * 0.55;
+    let active: HTMLElement | null = null;
+    for (const step of steps) {
+      if (step.getBoundingClientRect().top <= trigger) active = step;
+    }
+    return active;
+  }
+
+  function updateScrollActive() {
+    const newActive = getScrollActive();
+    if (newActive === scrollActiveStep) return;
+    steps.forEach(s => s.classList.remove('is-active'));
+    if (newActive) newActive.classList.add('is-active');
+    scrollActiveStep = newActive;
+    if (!hoverActiveStep) setBlobs(scrollActiveStep);
+  }
 
   steps.forEach(step => {
-    const color = getComputedStyle(step).getPropertyValue('--glyph').trim();
-
     step.addEventListener('mouseenter', () => {
-      blobs.forEach((blob, i) => {
-        blob.style.background = hexToRgba(color, alphas[i]);
-      });
+      hoverActiveStep = step;
+      setBlobs(step);
     });
-
     step.addEventListener('mouseleave', () => {
-      blobs.forEach((blob, i) => {
-        blob.style.background = whites[i];
-      });
+      hoverActiveStep = null;
+      setBlobs(scrollActiveStep);
     });
   });
+
+  window.addEventListener('scroll', updateScrollActive, { passive: true });
+  updateScrollActive();
 </script>

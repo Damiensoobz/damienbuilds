@@ -6,9 +6,14 @@ const p = home ? "" : "/";
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class="footer-logo" href="/" aria-label="DamienBuilds home"><img src="/favicon.png" alt="DamienBuilds" /></a>
       <div>
-        <p class="footer-name">DamienBuilds.dev</p>
+        <a class="footer-logo" href="/" aria-label="DamienBuilds home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 102" fill="none" aria-hidden="true">
+            <text y="43" x="1" font-family="DM Sans, sans-serif" font-size="44" letter-spacing="-1.8"><tspan font-weight="300" fill="#ffffff">d</tspan><tspan font-weight="700" fill="#ffffff">b</tspan></text>
+            <rect x="1" y="48" width="52" height="3.5" rx="1.5" fill="#E96530"/>
+            <text x="1" y="88" font-family="DM Sans, sans-serif" font-size="28" letter-spacing="-0.8"><tspan font-weight="300" fill="#ffffff">damien</tspan><tspan font-weight="700" fill="#ffffff">builds</tspan><tspan font-weight="500" fill="#E96530" font-size="12" dy="-2">.dev</tspan></text>
+          </svg>
+        </a>
         <p class="footer-tagline">Durban Web Design</p>
       </div>
     </div>
@@ -29,9 +34,9 @@ const p = home ? "" : "/";
 
 <style>
   .footer {
-    background: #080d14;
+    background: #0c1525;
     padding: 2.5rem 2rem;
-    border-top: 1px solid rgba(232, 237, 248, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .footer-inner {
@@ -44,21 +49,19 @@ const p = home ? "" : "/";
     flex-wrap: wrap;
   }
 
-  .footer-brand { display: flex; align-items: center; gap: 0.85rem; }
-  .footer-logo { width: 2.75rem; height: 2.75rem; flex-shrink: 0; display: block; }
-  .footer-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .footer-name { font-size: 0.82rem; font-weight: 600; color: #e8edf8; letter-spacing: 0.04em; }
+  .footer-brand { display: flex; align-items: flex-start; }
+  .footer-logo { display: block; margin-bottom: 0.5rem; }
+  .footer-logo svg { height: 3rem; width: auto; display: block; }
   .footer-tagline {
     font-size: 0.72rem;
-    color: rgba(232, 237, 248, 0.35);
-    margin-top: 0.1rem;
+    color: rgba(255, 255, 255, 0.35);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .footer-copy {
     font-size: 0.78rem;
-    color: rgba(232, 237, 248, 0.35);
+    color: rgba(255, 255, 255, 0.35);
     line-height: 1.7;
     text-align: center;
   }
@@ -68,14 +71,14 @@ const p = home ? "" : "/";
 
   .footer-links a {
     font-size: 0.8rem;
-    color: rgba(232, 237, 248, 0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .footer-links a:hover { color: #FF6B35; }
+  .footer-links a:hover { color: #E96530; }
 
-  .footer-legal { font-size: 0.7rem; color: rgba(232, 237, 248, 0.25); letter-spacing: 0.04em; }
+  .footer-legal { font-size: 0.7rem; color: rgba(255, 255, 255, 0.25); letter-spacing: 0.04em; }
 
   @media (max-width: 600px) {
     .footer-inner { flex-direction: column; align-items: center; text-align: center; }

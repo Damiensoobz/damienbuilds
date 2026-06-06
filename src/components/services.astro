@@ -56,6 +56,11 @@ const services = [
     </div>
   </div>
 
+  <!-- Grid subtitle bridge -->
+  <div class="services-bridge">
+    <p class="bridge-lead">Here's what I work with — your build gets what it actually needs.</p>
+  </div>
+
   <!-- Service grid -->
   <div class="services-inner">
     <div class="services-grid">
@@ -63,7 +68,7 @@ const services = [
         <div class="service-card" style={`--accent: ${s.accent}`}>
           <span class="service-num">{String(i + 1).padStart(2, '0')}</span>
           <span class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" set:html={s.icon}></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="30" height="30" set:html={s.icon}></svg>
           </span>
           <h3>{s.title}</h3>
           <p>{s.desc}</p>
@@ -76,8 +81,8 @@ const services = [
 
 <style>
   .services {
-    background: #0f1520;
-    color: #e8edf8;
+    background: #0c1525;
+    color: #ffffff;
     padding: 0 0 6rem;
   }
 
@@ -119,14 +124,14 @@ const services = [
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: #FF8C5A;
+    color: #4FC3F7;
     margin-bottom: 0.85rem;
   }
 
   .services-header h2 {
     font-size: clamp(2.2rem, 4.5vw, 3.6rem);
     font-weight: 400;
-    color: #e8edf8;
+    color: #ffffff;
     line-height: 1.08;
     letter-spacing: -0.02em;
     margin-bottom: 1.25rem;
@@ -135,9 +140,21 @@ const services = [
 
   .services-intro {
     font-size: 0.92rem;
-    color: rgba(232, 237, 248, 0.78);
+    color: rgba(255, 255, 255, 0.78);
     line-height: 1.85;
     text-shadow: 0 1px 14px rgba(8, 5, 4, 0.7);
+  }
+
+  /* ── Bridge subtitle ── */
+  .services-bridge {
+    text-align: center;
+    padding: 2.5rem 2rem 0;
+  }
+
+  .bridge-lead {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.04em;
   }
 
   /* ── Grid ── */
@@ -150,14 +167,14 @@ const services = [
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(232, 237, 248, 0.1);
-    border-left: 1px solid rgba(232, 237, 248, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .service-card {
     padding: 2.75rem 2rem;
-    border-right: 1px solid rgba(232, 237, 248, 0.1);
-    border-bottom: 1px solid rgba(232, 237, 248, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,8 +200,8 @@ const services = [
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    width: 3.75rem;
+    height: 3.75rem;
     border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
     border-radius: 50%;
     transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
@@ -201,14 +218,14 @@ const services = [
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.45rem;
     font-weight: 400;
-    color: #e8edf8;
+    color: #ffffff;
     line-height: 1.2;
     letter-spacing: -0.01em;
   }
 
   .service-card p {
     font-size: 0.85rem;
-    color: rgba(232, 237, 248, 0.55);
+    color: rgba(255, 255, 255, 0.55);
     line-height: 1.75;
   }
 

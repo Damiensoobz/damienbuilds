@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 56" fill="none">
+  <text y="43" x="1" font-family="DM Sans, sans-serif" font-size="43" letter-spacing="-1.7"><tspan font-weight="300" fill="#ffffff">d</tspan><tspan font-weight="700" fill="#ffffff">b</tspan></text>
+  <rect x="1" y="47.5" width="50" height="3" rx="1.5" fill="#E96530"></rect>
+  <rect x="70" y="12" width="1" height="30" fill="#ffffff" fill-opacity="0.18" rx="0.5"></rect>
+  <text x="84" y="42" font-family="DM Sans, sans-serif" font-size="34" letter-spacing="-1">
+    <tspan font-weight="300" fill="#ffffff">damien</tspan><tspan font-weight="700" fill="#ffffff">builds</tspan><tspan font-weight="500" fill="#E96530" font-size="14" dy="-3">.dev</tspan>
+  </text>
+</svg>

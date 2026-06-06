@@ -1,13 +1,17 @@
 ---
 interface Props {
-  colorTop?:    string;   // colour of section above (default: work section)
-  colorBottom?: string;   // colour of section below (default: process section)
+  colorTop?:    string;
+  colorBottom?: string;
+  overlap?:     number;   // px to pull up and overlap into the section above
 }
 
 const {
   colorTop    = '#161d2f',
   colorBottom = '#1a3a5c',
+  overlap     = 0,
 } = Astro.props;
+
+const layered = overlap > 0;
 
 // Unique gradient ID — avoids SVG def conflicts when two instances exist on the page
 const uid    = Math.random().toString(36).slice(2, 7);
@@ -28,9 +32,10 @@ function mix(h1: string, h2: string, t: number): string {
   ].map(v => v.toString(16).padStart(2,'0')).join('');
 }
 
-const backFill   = mix(colorTop, colorBottom, 0.35);
-const midFill    = mix(colorTop, colorBottom, 0.65);
-const frontCrest = mix(colorTop, colorBottom, 0.45);  // lighter at wave crest
+// In layered mode all waves fill with the destination colour; opacity does the transparency work
+const backFill   = layered ? colorBottom : mix(colorTop, colorBottom, 0.35);
+const midFill    = layered ? colorBottom : mix(colorTop, colorBottom, 0.65);
+const frontCrest = layered ? colorBottom : mix(colorTop, colorBottom, 0.45);
 
 // Smooth sine-wave bezier (control points at 0.37 × half-period)
 interface WaveCfg { yMid: number; amp: number; hPer: number; startUp: boolean }
@@ -59,14 +64,18 @@ const front = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H,
 const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, false);
 ---
 
-<div class="wave-divider" style={`--ct:${colorTop};--cb:${colorBottom}`} aria-hidden="true">
+<div
+  class:list={['wave-divider', layered && 'wave-divider--overlap']}
+  style={`--ct:${colorTop};--cb:${colorBottom};--overlap:${overlap}px`}
+  aria-hidden="true"
+>
 
   <svg class="wl wl-back"  viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d={back}  fill={backFill}/>
+    <path d={back}  fill={backFill} fill-opacity={layered ? 0.45 : 1}/>
   </svg>
 
   <svg class="wl wl-mid"   viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d={mid}   fill={midFill}/>
+    <path d={mid}   fill={midFill}  fill-opacity={layered ? 0.72 : 1}/>
   </svg>
 
   <svg class="wl wl-front" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +85,7 @@ const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H,
         <stop offset="100%" stop-color={colorBottom}/>
       </linearGradient>
     </defs>
-    <path d={front} fill={`url(#${gradId})`}/>
+    <path d={front} fill={layered ? colorBottom : `url(#${gradId})`}/>
     <!-- Subtle orange accent on the front wave crest -->
     <path d={edge}  fill="none" stroke="rgba(255,107,53,0.18)" stroke-width="2.5"/>
   </svg>
@@ -92,6 +101,14 @@ const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H,
     background: linear-gradient(to bottom, var(--ct), var(--cb));
     /* Negative margin eliminates the sub-pixel seam against the section below */
     margin-bottom: -3px;
+  }
+
+  /* Layered mode: transparent so the section above shows through the wave troughs */
+  .wave-divider--overlap {
+    background: transparent;
+    margin-top: calc(-1 * var(--overlap));
+    position: relative;
+    z-index: 5;
   }
 
   .wl {
