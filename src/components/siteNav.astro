@@ -113,7 +113,7 @@ const links = [
 
   /* ── Overlay ── */
   .mobile-overlay {
-    display: none;
+    display: flex;          /* always flex so opacity transition fires */
     position: fixed;
     inset: 0;
     z-index: 98;
@@ -123,16 +123,26 @@ const links = [
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    pointer-events: none;
+    /* delay visibility on close so it hides after the fade-out completes */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
   }
 
-  .mobile-overlay.open { display: flex; opacity: 1; }
+  .mobile-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    /* remove visibility delay on open — show immediately, then fade in */
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+  }
 
   .overlay-links {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.75rem;
+    padding: 2rem 1.5rem;
   }
 
   .overlay-link {
@@ -152,6 +162,12 @@ const links = [
   @media (max-width: 820px) {
     .hamburger { display: flex; }
     .nav-links { display: none; }
+  }
+
+  @media (max-width: 430px) {
+    .nav         { padding: 0.85rem 1.25rem; }
+    .nav.compact { padding: 0.4rem 1.25rem; }
+    .overlay-link { font-size: 1.85rem; gap: 1.4rem; }
   }
 </style>
 

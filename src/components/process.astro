@@ -324,12 +324,13 @@ const steps = [
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    .process { padding: 5rem 1.25rem 4rem; }
+    /* Keep bottom padding ≥ wave overlap (180px) so last step isn't hidden under the wave */
+    .process { padding: 5rem 1.25rem 12rem; }
 
-    .steps-timeline { padding: 0 1rem; }
+    .steps-timeline { padding: 0 0.75rem; }
 
     .steps-timeline::before {
-      left: 2.5rem;
+      left: 2.25rem;
       transform: none;
     }
 
@@ -338,6 +339,7 @@ const steps = [
     .step--right {
       display: grid;
       grid-template-columns: 3.5rem 1fr;
+      margin-bottom: 2.5rem;
     }
 
     .step--left  .step-content,
@@ -355,6 +357,21 @@ const steps = [
     }
 
     .step-dot { width: 3.5rem; height: 3.5rem; }
+  }
+
+  @media (max-width: 430px) {
+    .process         { padding: 4rem 0.75rem 12rem; }
+    .process-inner   { margin-bottom: 2.5rem; padding: 0 0.5rem; }
+    .steps-timeline  { padding: 0; }
+    .steps-timeline::before { left: 1.85rem; }
+    .step,
+    .step--left,
+    .step--right     { grid-template-columns: 3rem 1fr; margin-bottom: 2rem; }
+    .step-dot        { width: 3rem; height: 3rem; }
+    .step-content    { padding: 1.5rem 1.25rem; }
+    .step-glyph      { width: 80px; height: 80px; bottom: -0.5rem; right: -0.5rem; }
+    .step-number     { font-size: 1.5rem; }
+    .step-content h3 { font-size: 1.15rem; }
   }
 </style>
 
