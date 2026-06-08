@@ -32,7 +32,9 @@ function mix(h1: string, h2: string, t: number): string {
   ].map(v => v.toString(16).padStart(2,'0')).join('');
 }
 
-// In layered mode all waves fill with the destination colour; opacity does the transparency work
+// In layered mode all dark waves fill with the destination colour; opacity builds the blend.
+// A separate orange accent wave sits between the mid and front layers (visible because it's
+// positioned higher than the front wave surface, so it peeks through).
 const backFill   = layered ? colorBottom : mix(colorTop, colorBottom, 0.35);
 const midFill    = layered ? colorBottom : mix(colorTop, colorBottom, 0.65);
 const frontCrest = layered ? colorBottom : mix(colorTop, colorBottom, 0.45);
@@ -58,15 +60,11 @@ function buildPath(cfg: WaveCfg, totalW: number, viewH: number, fillBottom: bool
 // 2880 = 200 % of a 1440 px viewport → seamless loop via translateX(-50 %)
 // Half-periods must divide 1440 for a perfect loop: 720, 360, 240 …
 const W = 2880, H = 260;
-const back  = buildPath({ yMid: 222, amp: 20, hPer: 720, startUp: true  }, W, H, true);
-const mid   = buildPath({ yMid: 192, amp: 40, hPer: 360, startUp: false }, W, H, true);
-const front = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, true);
-const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, false);
+const back   = buildPath({ yMid: 215, amp: 32, hPer: 720, startUp: true  }, W, H, true);
+const mid    = buildPath({ yMid: 185, amp: 55, hPer: 360, startUp: false }, W, H, true);
+const front  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, true);
+const edge   = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, false);
 
-// Orange trough fill — same wave as front but fills UPWARD to y=0.
-// Perfectly in sync with the front wave so the orange shows through exactly
-// the transparent trough windows, most prominent where the surface dips lowest.
-const orangeTop = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true }, W, H, false) + ` L ${W},0 L 0,0 Z`;
 ---
 
 <div
@@ -74,12 +72,6 @@ const orangeTop = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true }, W,
   style={`--ct:${colorTop};--cb:${colorBottom};--overlap:${overlap}px`}
   aria-hidden="true"
 >
-
-  {layered && (
-    <svg class="wl wl-orange" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d={orangeTop} fill="rgba(233,101,48,0.28)"/>
-    </svg>
-  )}
 
   <svg class="wl wl-back"  viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d={back}  fill={backFill} fill-opacity={layered ? 0.45 : 1}/>
@@ -97,8 +89,8 @@ const orangeTop = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true }, W,
       </linearGradient>
     </defs>
     <path d={front} fill={layered ? colorBottom : `url(#${gradId})`}/>
-    <!-- Subtle orange accent on the front wave crest -->
-    <path d={edge}  fill="none" stroke="rgba(255,107,53,0.18)" stroke-width="2.5"/>
+    <!-- Orange accent line tracing the front wave crest -->
+    <path d={edge}  fill="none" stroke="rgba(233,101,48,0.55)" stroke-width="4"/>
   </svg>
 
 </div>
@@ -114,9 +106,11 @@ const orangeTop = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true }, W,
     margin-bottom: -3px;
   }
 
-  /* Layered mode: transparent so the section above shows through the wave troughs */
+  /* Layered mode: gradient from transparent (process bg shows through at top)
+     to solid destination colour by 65% — eliminates background peeking through
+     animated trough gaps regardless of wave phase */
   .wave-divider--overlap {
-    background: transparent;
+    background: linear-gradient(to bottom, transparent 0%, transparent 58%, var(--cb) 92%);
     margin-top: calc(-1 * var(--overlap));
     position: relative;
     z-index: 5;
@@ -131,10 +125,9 @@ const orangeTop = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true }, W,
   }
 
   /* Barely moving — almost imperceptible drift */
-  .wl-orange { animation: waveScroll 80s linear infinite; } /* synced with front — fills its trough windows */
-  .wl-back   { animation: waveScroll 160s linear infinite; }
-  .wl-mid    { animation: waveScroll 120s linear infinite; }
-  .wl-front  { animation: waveScroll 80s linear infinite; }
+  .wl-back  { animation: waveScroll 160s linear infinite; }
+  .wl-mid   { animation: waveScroll 120s linear infinite; }
+  .wl-front { animation: waveScroll  80s linear infinite; }
 
   @keyframes waveScroll {
     from { transform: translateX(0); }
