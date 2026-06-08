@@ -128,4 +128,15 @@ const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H,
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .wave-divider           { height: 200px; }
+    .wave-divider--overlap  { margin-top: -120px; }
+  }
+
+  @media (max-width: 430px) {
+    .wave-divider           { height: 150px; }
+    .wave-divider--overlap  { margin-top: -90px; }
+  }
 </style>

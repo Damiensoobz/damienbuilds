@@ -68,6 +68,49 @@ const addOns = [
       <p class="pricing-sub">One fixed price for the standard build. Add what you need from the list — every add-on has a number next to it, because surprise invoices are a crime. Anything bigger than standard scope gets a custom quote, agreed up front before I touch a thing.</p>
     </div>
 
+    <!-- Running Costs note -->
+    <div class="running-costs">
+      <div class="rc-header">
+        <span class="rc-tag">Before we talk numbers</span>
+        <h3>What a website actually costs to run</h3>
+      </div>
+      <p class="rc-intro">Every website has two types of cost: what you pay me once to build it, and what you pay directly to third parties each year to keep it live. I don't mark these up, I don't build a monthly retainer around them, and I don't hold the accounts. You own them outright. My add-ons cover the setup — once it's configured and handed over, the billing is entirely yours.</p>
+      <div class="rc-grid">
+        <div class="rc-item">
+          <span class="rc-name">Hosting</span>
+          <span class="rc-range">~R600–R1,200 / year</span>
+          <span class="rc-note">Varies by provider and plan. I recommend options that are fast, reliable, and won't double the price after year one.</span>
+        </div>
+        <div class="rc-item">
+          <span class="rc-name">Domain (.co.za)</span>
+          <span class="rc-range">~R150–R300 / year</span>
+          <span class="rc-note">Registered in your name, renewed directly through the registrar. You own it — it doesn't disappear if you ever stop working with me.</span>
+        </div>
+        <div class="rc-item">
+          <span class="rc-name">Google Workspace</span>
+          <span class="rc-range">~R2,400 / year</span>
+          <span class="rc-note">Only if you want a professional you@yourbusiness.co.za email. Optional, but worth it if you're emailing clients.</span>
+        </div>
+      </div>
+      <p class="rc-footer">These numbers are rough guides — I'll give you exact figures when we're scoping your build. No surprises, no locked-in subscriptions through me.</p>
+    </div>
+
+    <!-- Founding offer — slides in above the Standard Build -->
+    <div class="founding" id="foundingOffer">
+      <div class="badge">⚡ Founding Client Offer</div>
+      <div class="founding-grid">
+        <div>
+          <p class="founding-price">R4,500</p>
+          <p class="founding-was">down from R6,500</p>
+        </div>
+        <div>
+          <p class="founding-desc">Full Standard Build, nothing stripped out. In exchange I ask for honest feedback and the green light to feature your site as a case study. <strong>First come, first built.</strong></p>
+          <p class="founding-note">3 spots remaining.</p>
+          <a href="#contact" class="cta-button">Claim Your Spot →</a>
+        </div>
+      </div>
+    </div>
+
     <!-- Standard Build panel -->
     <div class="build-hero">
       <p class="build-eyebrow">The Standard Build · Once-off</p>
@@ -102,22 +145,6 @@ const addOns = [
       </div>
     </div>
 
-    <!-- Founding offer -->
-    <div class="founding">
-      <div class="badge">⚡ Founding Client Offer</div>
-      <div class="founding-grid">
-        <div>
-          <p class="founding-price">R4,500</p>
-          <p class="founding-was">down from R6,500</p>
-        </div>
-        <div>
-          <p class="founding-desc">Full Standard Build, nothing stripped out. In exchange I ask for honest feedback and the green light to feature your site as a case study. <strong>First come, first built.</strong></p>
-          <p class="founding-note">3 spots available.</p>
-          <a href="#contact" class="cta-button">Claim Your Spot →</a>
-        </div>
-      </div>
-    </div>
-
     <!-- Custom -->
     <div class="block">
       <h3>Need Something Bigger?</h3>
@@ -138,7 +165,11 @@ const addOns = [
 
 <style>
   .pricing {
-    background: #0c1525;
+    background:
+      radial-gradient(ellipse 90% 35% at 50% 0%, rgba(79, 195, 247, 0.05) 0%, transparent 100%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(233, 101, 48, 0.04) 0%, transparent 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.22) 0%, transparent 8%, transparent 92%, rgba(0,0,0,0.18) 100%),
+      #0c1525;
     padding: 7rem 2rem 6rem;
     color: #ffffff;
   }
@@ -447,6 +478,110 @@ const addOns = [
 
   .download-link:hover { color: #E96530; border-color: #E96530; }
 
+  /* ── Running Costs ── */
+  .running-costs {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 2px solid rgba(79, 195, 247, 0.4);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .rc-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+    flex-wrap: wrap;
+  }
+
+  .rc-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #4FC3F7;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .rc-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .rc-intro {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
+  }
+
+  .rc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rc-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.1rem 1.25rem;
+    background: rgba(79, 195, 247, 0.04);
+    border: 1px solid rgba(79, 195, 247, 0.12);
+  }
+
+  .rc-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+  }
+
+  .rc-range {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: #4FC3F7;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .rc-note {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.42);
+    line-height: 1.55;
+    margin-top: 0.2rem;
+  }
+
+  .rc-footer {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* ── Founding offer slide-in ── */
+  .founding {
+    opacity: 0;
+    transform: translateY(-18px);
+    filter: blur(3px);
+    transition:
+      opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.65s ease;
+  }
+
+  .founding.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
   /* ── Responsive ── */
   @media (max-width: 600px) {
     .pricing { padding: 5rem 1.25rem 4rem; }
@@ -457,6 +592,11 @@ const addOns = [
     .addon-body { padding-right: 1.5rem; }
   }
 
+  @media (max-width: 700px) {
+    .rc-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .running-costs { padding: 1.75rem 1.5rem; }
+  }
+
   @media (max-width: 430px) {
     .pricing      { padding: 4rem 1rem 3rem; }
     .build-hero   { padding: 2rem 1.25rem; }
@@ -465,5 +605,25 @@ const addOns = [
     .founding     { padding: 1.25rem 1rem; }
     .cta-button   { width: 100%; text-align: center; }
     .addon summary { padding: 1rem 0.25rem; }
+    .running-costs { padding: 1.5rem 1rem; }
+    .rc-header    { flex-direction: column; gap: 0.4rem; }
   }
 </style>
+
+<script>
+  const founding = document.getElementById('foundingOffer');
+  if (founding) {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(founding);
+  }
+</script>
