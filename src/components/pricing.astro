@@ -70,29 +70,20 @@ const addOns = [
 
     <!-- Running Costs note -->
     <div class="running-costs">
-      <div class="rc-header">
-        <span class="rc-tag">Before we talk numbers</span>
-        <h3>What a website actually costs to run</h3>
-      </div>
-      <p class="rc-intro">Every website has two types of cost: what you pay me once to build it, and what you pay directly to third parties each year to keep it live. I don't mark these up, I don't build a monthly retainer around them, and I don't hold the accounts. You own them outright. My add-ons cover the setup — once it's configured and handed over, the billing is entirely yours.</p>
-      <div class="rc-grid">
-        <div class="rc-item">
-          <span class="rc-name">Hosting</span>
-          <span class="rc-range">~R600–R1,200 / year</span>
-          <span class="rc-note">Varies by provider and plan. I recommend options that are fast, reliable, and won't double the price after year one.</span>
-        </div>
-        <div class="rc-item">
-          <span class="rc-name">Domain (.co.za)</span>
-          <span class="rc-range">~R150–R300 / year</span>
-          <span class="rc-note">Registered in your name, renewed directly through the registrar. You own it — it doesn't disappear if you ever stop working with me.</span>
-        </div>
-        <div class="rc-item">
-          <span class="rc-name">Google Workspace</span>
-          <span class="rc-range">~R2,400 / year</span>
-          <span class="rc-note">Only if you want a professional you@yourbusiness.co.za email. Optional, but worth it if you're emailing clients.</span>
-        </div>
-      </div>
-      <p class="rc-footer">These numbers are rough guides — I'll give you exact figures when we're scoping your build. No surprises, no locked-in subscriptions through me.</p>
+      <p class="rc-label">A note on recurring costs</p>
+      <p class="rc-body">What you pay me is once-off. But to keep a website live, you pay two third parties directly each year — and I want you to know about them upfront rather than find out when the renewal email lands. I don't mark these up or hold the accounts. Once I've set everything up and handed it over, the billing is entirely yours.</p>
+      <ul class="rc-list">
+        <li>
+          <span class="rc-item-label">Hosting</span>
+          <span class="rc-item-cost">~R600–R1,200 / year</span>
+          <span class="rc-item-note">Depends on provider and plan — I'll recommend something reliable that won't quietly double in price after year one.</span>
+        </li>
+        <li>
+          <span class="rc-item-label">Domain (.co.za)</span>
+          <span class="rc-item-cost">~R150–R300 / year</span>
+          <span class="rc-item-note">Registered in your name, renewed directly through the registrar. It's yours whether you keep working with me or not.</span>
+        </li>
+      </ul>
     </div>
 
     <!-- Founding offer — slides in above the Standard Build -->
@@ -128,7 +119,7 @@ const addOns = [
     </div>
 
     <!-- Add-ons (expandable) -->
-    <div class="block">
+    <div class="block block--no-rule">
       <h3>Add-Ons — Fixed Prices, No Asterisks</h3>
       <p class="block-sub">Tap any add-on for a plain-English explainer. Every line has a number — no surprises.</p>
       <div class="addons">
@@ -246,6 +237,8 @@ const addOns = [
     padding: 2.75rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  .block--no-rule { border-bottom: none; }
 
   .block h3 {
     font-family: 'Cormorant Garamond', serif;
@@ -480,93 +473,74 @@ const addOns = [
 
   /* ── Running Costs ── */
   .running-costs {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-left: 2px solid rgba(79, 195, 247, 0.4);
-    padding: 2.5rem;
-    margin-bottom: 2rem;
+    padding: 2.75rem 0;
+    margin-bottom: 0;
   }
 
-  .rc-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.1rem;
-    flex-wrap: wrap;
-  }
-
-  .rc-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
+  .rc-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #4FC3F7;
-    flex-shrink: 0;
-    font-family: 'Inter', sans-serif;
+    margin-bottom: 0.85rem;
   }
 
-  .rc-header h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-
-  .rc-intro {
-    font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.58);
+  .rc-body {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.55);
     line-height: 1.85;
     margin-bottom: 1.75rem;
+    max-width: 600px;
   }
 
-  .rc-grid {
+  .rc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .rc-list li {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 2rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .rc-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 1.1rem 1.25rem;
-    background: rgba(79, 195, 247, 0.04);
-    border: 1px solid rgba(79, 195, 247, 0.12);
-  }
-
-  .rc-name {
-    font-size: 0.78rem;
-    font-weight: 600;
+  .rc-item-label {
+    font-size: 0.9rem;
     color: #ffffff;
-    letter-spacing: 0.04em;
+    font-weight: 500;
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  .rc-range {
+  .rc-item-cost {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #4FC3F7;
     font-weight: 400;
-    line-height: 1;
+    grid-column: 2;
+    grid-row: 1;
+    white-space: nowrap;
+    align-self: center;
   }
 
-  .rc-note {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.42);
-    line-height: 1.55;
-    margin-top: 0.2rem;
-  }
-
-  .rc-footer {
+  .rc-item-note {
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.4);
-    font-style: italic;
-    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.42);
+    line-height: 1.6;
+    grid-column: 1;
+    grid-row: 2;
+    padding-top: 0.25rem;
   }
 
   /* ── Founding offer slide-in ── */
-  .founding {
+  /* JS adds .will-animate immediately before observing — keeps element visible
+     without JS and prevents a blank placeholder flash before the script runs */
+  .founding.will-animate {
     opacity: 0;
     transform: translateY(-18px);
     filter: blur(3px);
@@ -592,9 +566,11 @@ const addOns = [
     .addon-body { padding-right: 1.5rem; }
   }
 
-  @media (max-width: 700px) {
-    .rc-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-    .running-costs { padding: 1.75rem 1.5rem; }
+  @media (max-width: 560px) {
+    /* Stack cost and price on small screens */
+    .rc-list li   { grid-template-columns: 1fr; }
+    .rc-item-cost { grid-column: 1; grid-row: 2; padding-top: 0.15rem; font-size: 1rem; }
+    .rc-item-note { grid-row: 3; }
   }
 
   @media (max-width: 430px) {
@@ -605,14 +581,14 @@ const addOns = [
     .founding     { padding: 1.25rem 1rem; }
     .cta-button   { width: 100%; text-align: center; }
     .addon summary { padding: 1rem 0.25rem; }
-    .running-costs { padding: 1.5rem 1rem; }
-    .rc-header    { flex-direction: column; gap: 0.4rem; }
   }
 </style>
 
 <script>
   const founding = document.getElementById('foundingOffer');
   if (founding) {
+    // Hide it NOW (before first paint commit) so there's no flash of content before observe
+    founding.classList.add('will-animate');
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {

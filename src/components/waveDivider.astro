@@ -62,6 +62,11 @@ const back  = buildPath({ yMid: 222, amp: 20, hPer: 720, startUp: true  }, W, H,
 const mid   = buildPath({ yMid: 192, amp: 40, hPer: 360, startUp: false }, W, H, true);
 const front = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, true);
 const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H, false);
+
+// Orange trough fill — same wave as front but fills UPWARD to y=0.
+// Perfectly in sync with the front wave so the orange shows through exactly
+// the transparent trough windows, most prominent where the surface dips lowest.
+const orangeTop = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true }, W, H, false) + ` L ${W},0 L 0,0 Z`;
 ---
 
 <div
@@ -69,6 +74,12 @@ const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H,
   style={`--ct:${colorTop};--cb:${colorBottom};--overlap:${overlap}px`}
   aria-hidden="true"
 >
+
+  {layered && (
+    <svg class="wl wl-orange" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d={orangeTop} fill="rgba(233,101,48,0.28)"/>
+    </svg>
+  )}
 
   <svg class="wl wl-back"  viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d={back}  fill={backFill} fill-opacity={layered ? 0.45 : 1}/>
@@ -120,9 +131,10 @@ const edge  = buildPath({ yMid: 155, amp: 62, hPer: 240, startUp: true  }, W, H,
   }
 
   /* Barely moving — almost imperceptible drift */
-  .wl-back  { animation: waveScroll 160s linear infinite; }
-  .wl-mid   { animation: waveScroll 120s linear infinite; }
-  .wl-front { animation: waveScroll 80s linear infinite; }
+  .wl-orange { animation: waveScroll 80s linear infinite; } /* synced with front — fills its trough windows */
+  .wl-back   { animation: waveScroll 160s linear infinite; }
+  .wl-mid    { animation: waveScroll 120s linear infinite; }
+  .wl-front  { animation: waveScroll 80s linear infinite; }
 
   @keyframes waveScroll {
     from { transform: translateX(0); }
