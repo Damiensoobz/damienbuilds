@@ -1,4 +1,5 @@
 ---
+import { FOUNDING_SPOTS_REMAINING, FOUNDING_SPOTS_TOTAL, PRICING } from '../data/site';
 ---
 
 <section class="work" id="work">
@@ -23,10 +24,10 @@
       <div class="banner-content">
         <p class="banner-eyebrow">🚧 This Spot Is Reserved For You</p>
         <p class="banner-lead">Real talk: I'm new to running this independently, so this space is empty on purpose — I'd rather show you nothing than fake it with stock photos and made-up testimonials.</p>
-        <p class="banner-body">So here's the deal. I'm taking on <strong>3 founding clients at R4,500</strong> instead of R6,500. Same build, same quality, same full handover. All I ask in return is honest feedback and permission to feature your site right here.</p>
-        <p class="banner-kicker">You get a proper website at a founder's price. I get a portfolio that's actually real. Nobody gets Comic Sans.</p>
+        <p class="banner-body">So here's the deal. I'm taking on <strong>{FOUNDING_SPOTS_TOTAL} founding clients at {PRICING.founding}</strong> instead of {PRICING.standard} — the full Standard Build, domain and hosting setup included, nothing stripped out. Same build, same quality, same full handover. All I ask in return is honest feedback and permission to feature your site right here.</p>
+        <p class="banner-kicker">You get a complete website, live on the internet, at a founder's price. I get a portfolio that's actually real. Nobody gets Comic Sans.</p>
         <a href="#contact" class="banner-cta">Claim a Founding Spot →</a>
-        <p class="banner-small">2 spots remaining. Once they're gone, it's full price.</p>
+        <p class="banner-small">{FOUNDING_SPOTS_REMAINING} spots remaining. Once they're gone, it's full price.</p>
       </div>
     </div>
 

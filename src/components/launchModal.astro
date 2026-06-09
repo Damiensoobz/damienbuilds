@@ -1,0 +1,313 @@
+---
+// Temporary pre-launch overlay shown on the homepage.
+// Captures "notify me at launch" sign-ups via Web3Forms — submissions are
+// emailed to the address registered against WEB3FORMS_ACCESS_KEY (src/data/site.ts).
+// Remove this component (and its import in index.astro) once you go live.
+import { WEB3FORMS_ACCESS_KEY } from '../data/site';
+---
+
+<div class="launch-modal" id="launchModal" role="dialog" aria-modal="true" aria-labelledby="launchTitle">
+  <div class="launch-backdrop" data-close></div>
+
+  <div class="launch-card">
+    <button class="launch-close" id="launchClose" type="button" aria-label="Close">&times;</button>
+
+    <!-- Default pane -->
+    <div class="launch-pane" id="launchBody">
+      <p class="launch-eyebrow">⚡ Almost supper time</p>
+      <h2 id="launchTitle">Hey there — you're a real MVP.</h2>
+      <p class="launch-text">Thanks for stopping by! I'm still getting all my ducks in a row, so I'm not taking on new work <em>just</em> yet — but something legendary is cooking, and it's nearly ready to serve.</p>
+      <p class="launch-text">Want a shout the moment we officially launch? Drop your details and you'll be first to know.</p>
+
+      <form class="launch-form" id="launchForm">
+        <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+        <input type="hidden" name="subject" value="🚀 New launch-notify signup — damienbuilds.dev" />
+        <input type="hidden" name="from_name" value="DamienBuilds Website" />
+        <!-- Web3Forms honeypot: bots tick this, humans never see it -->
+        <input type="checkbox" name="botcheck" class="launch-hp" tabindex="-1" autocomplete="off" />
+        <div class="launch-fields">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required />
+          <input type="email" name="email" placeholder="your@email.com" aria-label="Your email" required />
+        </div>
+        <input type="tel" name="whatsapp" placeholder="WhatsApp number (optional)" aria-label="WhatsApp number" />
+        <button type="submit" class="launch-submit" id="launchSubmit">Notify Me at Launch →</button>
+      </form>
+
+      <button class="launch-dismiss" id="launchDismiss" type="button">No thanks, I'm just browsing</button>
+    </div>
+
+    <!-- Success pane -->
+    <div class="launch-pane" id="launchSuccess" hidden>
+      <p class="launch-eyebrow">🎉 You're on the list</p>
+      <h2>Brilliant — talk soon.</h2>
+      <p class="launch-text">Got your details. The moment we go live, you'll be among the first to hear about it. Now go enjoy the rest of the site.</p>
+      <button class="launch-continue" id="launchContinue" type="button">Continue Browsing →</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .launch-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+  }
+
+  .launch-modal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.35s ease, visibility 0s linear 0s;
+  }
+
+  .launch-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 10, 18, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .launch-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 0%, rgba(233, 101, 48, 0.10) 0%, transparent 70%),
+      #112038;
+    border: 1px solid rgba(233, 101, 48, 0.28);
+    border-top: 2px solid #E96530;
+    padding: 2.75rem 2.5rem 2.25rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    transform: translateY(18px) scale(0.97);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .launch-modal.open .launch-card { transform: translateY(0) scale(1); }
+
+  .launch-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.95rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.7rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .launch-close:hover { color: #E96530; transform: rotate(90deg); }
+
+  .launch-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #E96530;
+    margin-bottom: 0.85rem;
+  }
+
+  .launch-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.95rem;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .launch-text {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.66);
+    line-height: 1.75;
+    margin-bottom: 0.9rem;
+  }
+
+  .launch-text em { color: #ffffff; font-style: italic; }
+
+  .launch-form {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .launch-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+
+  .launch-form input {
+    background: #0c1525;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.75rem 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .launch-form input::placeholder { color: rgba(255, 255, 255, 0.35); }
+  .launch-form input:focus { border-color: #E96530; }
+
+  /* Honeypot — visually and structurally hidden from real users */
+  .launch-hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+  .launch-submit {
+    margin-top: 0.3rem;
+    background: #E96530;
+    color: #0c1525;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .launch-submit:hover { background: #ff7a42; transform: translateY(-1px); }
+  .launch-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+  .launch-dismiss {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .launch-dismiss:hover { color: rgba(255, 255, 255, 0.7); }
+
+  .launch-error {
+    color: #ff8a6a;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin-top: 0.6rem;
+  }
+
+  .launch-continue {
+    margin-top: 1.25rem;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.75rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .launch-continue:hover { border-color: #E96530; color: #E96530; }
+
+  @media (max-width: 480px) {
+    .launch-card   { padding: 2.25rem 1.5rem 1.75rem; }
+    .launch-card h2 { font-size: 1.6rem; }
+    .launch-fields { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .launch-card { transition: none; transform: none; }
+    .launch-close:hover { transform: none; }
+  }
+</style>
+
+<script>
+  const KEY = 'db_launch_notice_v1';
+  const modal = document.getElementById('launchModal');
+
+  if (modal && !localStorage.getItem(KEY)) {
+    const bodyPane = document.getElementById('launchBody');
+    const successPane = document.getElementById('launchSuccess');
+    const form = document.getElementById('launchForm') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('launchSubmit') as HTMLButtonElement | null;
+
+    const open = () => {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('launchClose')?.focus();
+    };
+    const close = () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      try { localStorage.setItem(KEY, '1'); } catch (e) { /* ignore */ }
+    };
+
+    // Let the page paint first, then invite them in.
+    setTimeout(open, 700);
+
+    // Close: X button, backdrop, "just browsing", Continue, or Esc.
+    modal.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (
+        t.matches('[data-close]') ||
+        t.id === 'launchClose' ||
+        t.id === 'launchDismiss' ||
+        t.id === 'launchContinue'
+      ) {
+        close();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (!json.success) throw new Error(json.message || 'Submission failed');
+          if (bodyPane) bodyPane.hidden = true;
+          if (successPane) successPane.hidden = false;
+          try { localStorage.setItem(KEY, '1'); } catch (err) { /* ignore */ }
+        })
+        .catch(() => {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Notify Me at Launch →'; }
+          let err = form.querySelector('.launch-error') as HTMLElement | null;
+          if (!err) {
+            err = document.createElement('p');
+            err.className = 'launch-error';
+            form.appendChild(err);
+          }
+          err.textContent =
+            "Hmm, that didn't go through. Email me at damien@damienbuilds.dev and I'll add you myself.";
+        });
+    });
+  }
+</script>

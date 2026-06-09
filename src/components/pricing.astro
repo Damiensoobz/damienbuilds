@@ -1,50 +1,55 @@
 ---
+import { FOUNDING_SPOTS_REMAINING, PRICING } from '../data/site';
+
 const included = [
   "Up to 5 pages (Home, About, Services, Contact + 1 of your choice)",
+  "Domain registration in your name + all DNS wiring",
+  "Hosting set up and your site deployed — login handed to you",
   "Mobile responsive — looks right on every screen, not just yours",
   "On-page SEO basics (meta titles, descriptions, sitemap)",
+  "Copy polish — send me messy notes and rough ideas; shaping them into proper website words is part of the job",
   "Contact form",
   "WhatsApp chat button",
   "2 rounds of revisions",
   "SSL setup",
-  "Handover document with all logins and renewal dates",
+  "Handover document with every login, password, and renewal date",
 ];
 
 const addOns = [
   {
-    label: "Domain registration + DNS setup",
-    price: "R400",
-    info: "I register your domain (yourbusiness.co.za) and wire up the technical records so your site loads under it. The domain is registered in your name — you own it, not me.",
-  },
-  {
-    label: "Hosting setup + client handover",
-    price: "R500",
-    info: "Reliable hosting set up, your site deployed to it, and the login handed straight to you. No renting your own website back through me.",
-  },
-  {
     label: "Business email setup (Google Workspace)",
-    price: "R600",
-    info: "A professional you@yourbusiness.co.za inbox through Google Workspace, configured and ready to send and receive on day one.",
-  },
-  {
-    label: "Google Analytics 4 installation + config",
-    price: "R800",
-    info: "Analytics installed and set up properly, so you can see how many people visit, where they come from, and which pages they actually look at.",
-  },
-  {
-    label: "Google Business Profile setup + optimisation",
     price: "R750",
-    info: "Your business added to Google Maps and Search and optimised, so you turn up when someone nearby searches for what you do.",
+    info: "A professional you@yourbusiness.co.za inbox, working on your phone before we're done talking. The subscription runs on your card, in your name — I just make it work. Because quoting a client from durbanplumber94@gmail.com quietly costs you jobs you never even hear about.",
+  },
+  {
+    label: "Google Analytics 4 — installation + config",
+    price: "R750",
+    info: "Analytics installed properly, plus a one-page \"how to read this\" cheat sheet written in human. You'll see how many people visit, where they came from, and which page they bailed on — facts, not vibes.",
+  },
+  {
+    label: "Google Business Profile — setup + optimisation",
+    price: "R750",
+    info: "Your business on Google Maps and Search, set up and optimised — categories, service areas, photos, the lot. When someone nearby searches what you do at 9pm with a burst geyser, this is what decides whether you exist. You also get a review link to send happy customers, which is how this thing snowballs.",
+  },
+  {
+    label: "Full copywriting",
+    price: "R1,500",
+    info: "Copy polish is already included — send me anything and I'll shape it. But if you've got nothing at all? I'll interview you, learn the business, and write every word of all five pages myself. You talk, I type.",
+  },
+  {
+    label: "Blog setup + CMS configuration",
+    price: "R2,000",
+    info: "A blog with a simple editor so you can publish posts yourself — no code, no calling me every time you have something to say. Includes a training session and a written how-to guide. I build it once, teach you once, and then you're independent. That's the point.",
+  },
+  {
+    label: "Site Rescue Audit",
+    price: "R850",
+    info: "Already have a website that isn't pulling its weight? R850 gets you a straight written verdict: what's broken (speed, mobile, Google visibility, who actually owns your accounts), what fixing it costs, or whether you're honestly better off rebuilding. No sales fog — if a R500 fix solves it, that's what the report will say. And if we do rebuild, the R850 comes off the build price.",
   },
   {
     label: "Additional page (beyond 5)",
     price: "R700/page",
     info: "The standard build covers five pages. Need a menu, a portfolio, or an extra service page? Each one beyond five is a flat R700.",
-  },
-  {
-    label: "Blog setup + CMS configuration",
-    price: "R1,200",
-    info: "A blog with a simple editor so you can publish posts yourself — no code, no calling me every time you want to add an article.",
   },
   {
     label: "Gallery section",
@@ -54,8 +59,16 @@ const addOns = [
   {
     label: "Extra revision round",
     price: "R500",
-    info: "Two rounds of changes come standard. Want another full round after that? It's R500 per round, no drama.",
+    info: "Two rounds of changes come standard. Want another full round after that? R500 per round, no drama.",
   },
+];
+
+const carePlan = [
+  "Your hosting and domain renewals managed — nothing lapses, nothing expires quietly at 2am",
+  "Up to 2 small content changes a month (new prices, updated hours, a swapped photo — the stuff that actually comes up)",
+  "Uptime monitoring — if your site goes down, I usually know before you do",
+  "A short monthly summary of your traffic, in plain English",
+  "Priority WhatsApp support — you skip the queue",
 ];
 ---
 
@@ -65,25 +78,26 @@ const addOns = [
     <div class="pricing-header">
       <p class="pricing-label">Pricing</p>
       <h2>Straightforward pricing. The kind you can read in one go.</h2>
-      <p class="pricing-sub">One fixed price for the standard build. Add what you need from the list — every add-on has a number next to it, because surprise invoices are a crime. Anything bigger than standard scope gets a custom quote, agreed up front before I touch a thing.</p>
+      <p class="pricing-sub">One price for the standard build — and it now includes your domain and hosting setup, because a website you can't actually visit isn't a website. Add what you need from the list below; every add-on has a number next to it, because surprise invoices are a crime. Anything bigger gets a custom quote, agreed up front before I touch a thing.</p>
     </div>
 
     <!-- Running Costs note -->
     <div class="running-costs">
       <p class="rc-label">A note on recurring costs</p>
-      <p class="rc-body">What you pay me is once-off. But to keep a website live, you pay two third parties directly each year — and I want you to know about them upfront rather than find out when the renewal email lands. I don't mark these up or hold the accounts. Once I've set everything up and handed it over, the billing is entirely yours.</p>
+      <p class="rc-body">What you pay me is once-off. To keep a website live, there are two small yearly costs that belong to you — and I'd rather you hear about them now than when a renewal email lands.</p>
       <ul class="rc-list">
-        <li>
-          <span class="rc-item-label">Hosting</span>
-          <span class="rc-item-cost">~R600–R1,200 / year</span>
-          <span class="rc-item-note">Depends on provider and plan — I'll recommend something reliable that won't quietly double in price after year one.</span>
-        </li>
         <li>
           <span class="rc-item-label">Domain (.co.za)</span>
           <span class="rc-item-cost">~R150–R300 / year</span>
           <span class="rc-item-note">Registered in your name, renewed directly through the registrar. It's yours whether you keep working with me or not.</span>
         </li>
+        <li>
+          <span class="rc-item-label">Hosting</span>
+          <span class="rc-item-cost">often R0 / year</span>
+          <span class="rc-item-note">Genuinely. Because of how I build (modern static sites, not bloated page-builders), most of my clients' sites run on world-class infrastructure that costs nothing at their size. The R1,200-a-year hosting bill other builders quote you? For a standard build, you usually just don't have one. If your project genuinely needs paid hosting — bookings, a store, heavy traffic — I'll tell you the exact number before we start, and the account will be in your name.</span>
+        </li>
       </ul>
+      <p class="rc-footnote">I don't mark anything up and I don't hold the accounts. Once it's handed over, the billing — what little there is — is entirely yours.</p>
     </div>
 
     <!-- Founding offer — slides in above the Standard Build -->
@@ -91,13 +105,13 @@ const addOns = [
       <div class="badge">⚡ Founding Client Offer</div>
       <div class="founding-grid">
         <div>
-          <p class="founding-price">R4,500</p>
-          <p class="founding-was">down from R6,500</p>
+          <p class="founding-price">{PRICING.founding}</p>
+          <p class="founding-was">down from {PRICING.standard}</p>
         </div>
         <div>
-          <p class="founding-desc">Full Standard Build, nothing stripped out. In exchange I ask for honest feedback and the green light to feature your site as a case study. <strong>First come, first built.</strong></p>
-          <p class="founding-note">3 spots remaining.</p>
-          <a href="#contact" class="cta-button">Claim Your Spot →</a>
+          <p class="founding-desc">Full Standard Build, nothing stripped out — domain and hosting setup included. In exchange I ask for honest feedback and the green light to feature your site as a case study. <strong>First come, first built.</strong></p>
+          <p class="founding-note">{FOUNDING_SPOTS_REMAINING} spots remaining.</p>
+          <a href="/#contact" class="cta-button">Claim Your Spot →</a>
         </div>
       </div>
     </div>
@@ -105,8 +119,8 @@ const addOns = [
     <!-- Standard Build panel -->
     <div class="build-hero">
       <p class="build-eyebrow">The Standard Build · Once-off</p>
-      <p class="build-price">R6,500</p>
-      <p class="build-tagline">A complete, professional 5-page website. Ready to launch, ready to be found, ready to make you look like you've got your act together.</p>
+      <p class="build-price">{PRICING.standard}</p>
+      <p class="build-tagline">A complete, professional 5-page website — registered, hosted, live, and ready to be found. One price, on the internet, done.</p>
     </div>
 
     <!-- What's Included -->
@@ -115,7 +129,11 @@ const addOns = [
       <ul class="included-list">
         {included.map((item) => <li>{item}</li>)}
       </ul>
-      <a href="#contact" class="cta-button">Get Started →</a>
+      <div class="own-domain">
+        <p class="own-domain-lead">Already own your domain and hosting? <strong>{PRICING.ownDomainDiscount} off.</strong></p>
+        <p class="own-domain-note">The discount applies where your existing domain and hosting are accessible and registered in your name. If a previous web guy is holding them hostage, recovering access is quoted separately — and yes, that situation is exactly why I run things the way I do.</p>
+      </div>
+      <a href="/#contact" class="cta-button">Get Started →</a>
     </div>
 
     <!-- Add-ons (expandable) -->
@@ -136,11 +154,25 @@ const addOns = [
       </div>
     </div>
 
+    <!-- Care Plan (optional monthly) -->
+    <div class="block block--no-rule">
+      <div class="care-plan" id="care-plan">
+        <p class="care-eyebrow">The Care Plan · {PRICING.carePlanMonthly}/month <span>— optional, cancel anytime</span></p>
+        <p class="care-lead">Most of my clients don't need ongoing help — that's the whole point of how I hand things over. But if you'd rather never think about your website again, this is for you.</p>
+        <p class="care-list-label">What you get every month</p>
+        <ul class="care-list">
+          {carePlan.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="care-note"><strong>The same rules as everything else apply:</strong> every account stays registered in your name. Cancel anytime, take everything with you, owe me nothing further. A care plan you can't leave isn't care — it's a leash, and I don't sell those.</p>
+        <a href="/#contact" class="cta-button cta-button--ghost">Ask About the Care Plan →</a>
+      </div>
+    </div>
+
     <!-- Custom -->
     <div class="block">
       <h3>Need Something Bigger?</h3>
       <p class="block-desc">Online stores, booking systems, chatbots, full SEO campaigns — these live outside the standard build because no two are the same. Tell me what you're picturing and I'll come back with a real quote, not an "it depends."</p>
-      <a href="#contact" class="cta-button">Request a Custom Quote →</a>
+      <a href="/#contact" class="cta-button">Request a Custom Quote →</a>
     </div>
 
     <!-- Download -->
@@ -387,6 +419,129 @@ const addOns = [
 
   .cta-button:hover { background: #E96530; transform: translateY(-1px); }
 
+  /* Ghost variant — for secondary / optional CTAs (Care Plan) */
+  .cta-button--ghost {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(79, 195, 247, 0.4);
+  }
+
+  .cta-button--ghost:hover {
+    background: rgba(79, 195, 247, 0.08);
+    border-color: #4FC3F7;
+    color: #4FC3F7;
+  }
+
+  /* ── Recurring-costs footnote ── */
+  .rc-footnote {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    max-width: 600px;
+  }
+
+  /* ── Own-domain discount note ── */
+  .own-domain {
+    border-left: 2px solid #E96530;
+    background: rgba(233, 101, 48, 0.06);
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 2rem;
+  }
+
+  .own-domain-lead {
+    font-size: 0.95rem;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .own-domain-lead strong { color: #E96530; font-weight: 600; }
+
+  .own-domain-note {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── Care Plan ── */
+  .care-plan {
+    background: #112038;
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    border-top: 2px solid #4FC3F7;
+    padding: 2.5rem;
+  }
+
+  .care-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .care-eyebrow span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .care-lead {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+  }
+
+  .care-list-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #4FC3F7;
+    margin-bottom: 1rem;
+  }
+
+  .care-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .care-list li {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.72);
+    padding-left: 1.6rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .care-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    color: #4FC3F7;
+    font-size: 0.8rem;
+  }
+
+  .care-note {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+  }
+
+  .care-note strong { color: #ffffff; font-weight: 600; }
+
   /* ── Founding block ── */
   .founding {
     background: rgba(233, 101, 48, 0.08);
@@ -564,6 +719,8 @@ const addOns = [
     .founding-grid { grid-template-columns: 1fr; gap: 1.25rem; }
     .download-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
     .addon-body { padding-right: 1.5rem; }
+    .care-plan { padding: 1.75rem; }
+    .care-eyebrow span { display: block; white-space: normal; margin-top: 0.3rem; }
   }
 
   @media (max-width: 560px) {
@@ -579,6 +736,7 @@ const addOns = [
     .build-price  { font-size: clamp(2.6rem, 10vw, 3.5rem); }
     .block        { padding: 2rem 0; }
     .founding     { padding: 1.25rem 1rem; }
+    .care-plan    { padding: 1.5rem 1.25rem; }
     .cta-button   { width: 100%; text-align: center; }
     .addon summary { padding: 1rem 0.25rem; }
   }
