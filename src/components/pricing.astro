@@ -1,6 +1,9 @@
 ---
 import { FOUNDING_SPOTS_REMAINING, PRICING } from '../data/site';
 
+// Flip to true once the pricing PDF actually exists at /downloads/DamienBuilds_Pricing.pdf
+const showDownload = false;
+
 const included = [
   "Up to 5 pages (Home, About, Services, Contact + 1 of your choice)",
   "Domain registration in your name + all DNS wiring",
@@ -77,7 +80,7 @@ const carePlan = [
 
     <div class="pricing-header">
       <p class="pricing-label">Pricing</p>
-      <h2>Straightforward pricing. The kind you can read in one go.</h2>
+      <h1>Straightforward pricing. The kind you can read in one go.</h1>
       <p class="pricing-sub">One price for the standard build — and it now includes your domain and hosting setup, because a website you can't actually visit isn't a website. Add what you need from the list below; every add-on has a number next to it, because surprise invoices are a crime. Anything bigger gets a custom quote, agreed up front before I touch a thing.</p>
     </div>
 
@@ -175,13 +178,15 @@ const carePlan = [
       <a href="/#contact" class="cta-button">Request a Custom Quote →</a>
     </div>
 
-    <!-- Download -->
-    <div class="download-row">
-      <p>Want it all in one place to mull over with your morning coffee?</p>
-      <a href="/downloads/DamienBuilds_Pricing.pdf" download class="download-link">
-        Download Pricing Sheet ↓
-      </a>
-    </div>
+    <!-- Download — hidden until the PDF is built (see showDownload flag) -->
+    {showDownload && (
+      <div class="download-row">
+        <p>Want it all in one place to mull over with your morning coffee?</p>
+        <a href="/downloads/DamienBuilds_Pricing.pdf" download class="download-link">
+          Download Pricing Sheet ↓
+        </a>
+      </div>
+    )}
 
   </div>
 </section>
@@ -213,7 +218,7 @@ const carePlan = [
     margin-bottom: 0.85rem;
   }
 
-  .pricing-header h2 {
+  .pricing-header h1 {
     font-size: clamp(2.2rem, 4.5vw, 3.4rem);
     font-weight: 400;
     color: #ffffff;
