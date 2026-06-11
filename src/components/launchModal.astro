@@ -3,7 +3,7 @@
 // Captures "notify me at launch" sign-ups via Web3Forms — submissions are
 // emailed to the address registered against WEB3FORMS_ACCESS_KEY (src/data/site.ts).
 // Remove this component (and its import in index.astro) once you go live.
-import { WEB3FORMS_ACCESS_KEY } from '../data/site';
+import { WEB3FORMS_ACCESS_KEY, FOUNDING_SPOTS_TOTAL, PRICING } from '../data/site';
 ---
 
 <div class="launch-modal" id="launchModal" role="dialog" aria-modal="true" aria-labelledby="launchTitle">
@@ -17,11 +17,11 @@ import { WEB3FORMS_ACCESS_KEY } from '../data/site';
       <p class="launch-eyebrow">⚡ Almost supper time</p>
       <h2 id="launchTitle">Hey there — you're a real MVP.</h2>
       <p class="launch-text">Thanks for stopping by! I'm still getting all my ducks in a row, so I'm not taking on new work <em>just</em> yet — but something legendary is cooking, and it's nearly ready to serve.</p>
-      <p class="launch-text">Want a shout the moment we officially launch? Drop your details and you'll be first to know.</p>
+      <p class="launch-text">Here's the thing though: I'm launching with just <strong>{FOUNDING_SPOTS_TOTAL} founding spots</strong> — the full build at <strong>{PRICING.founding}</strong> instead of {PRICING.standard}. Drop your details and you're first in line when the doors open.</p>
 
       <form class="launch-form" id="launchForm">
         <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-        <input type="hidden" name="subject" value="🚀 New launch-notify signup — damienbuilds.dev" />
+        <input type="hidden" name="subject" value="🚀 Launch list signup (founding spot interest) — damienbuilds.dev" />
         <input type="hidden" name="from_name" value="DamienBuilds Website" />
         <!-- Web3Forms honeypot: bots tick this, humans never see it -->
         <input type="checkbox" name="botcheck" class="launch-hp" tabindex="-1" autocomplete="off" />
@@ -30,7 +30,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../data/site';
           <input type="email" name="email" placeholder="your@email.com" aria-label="Your email" required />
         </div>
         <input type="tel" name="whatsapp" placeholder="WhatsApp number (optional)" aria-label="WhatsApp number" />
-        <button type="submit" class="launch-submit" id="launchSubmit">Notify Me at Launch →</button>
+        <button type="submit" class="launch-submit" id="launchSubmit">Put Me First in Line →</button>
       </form>
 
       <button class="launch-dismiss" id="launchDismiss" type="button">No thanks, I'm just browsing</button>
@@ -38,9 +38,9 @@ import { WEB3FORMS_ACCESS_KEY } from '../data/site';
 
     <!-- Success pane -->
     <div class="launch-pane" id="launchSuccess" hidden>
-      <p class="launch-eyebrow">🎉 You're on the list</p>
+      <p class="launch-eyebrow">🎉 You're in line</p>
       <h2>Brilliant — talk soon.</h2>
-      <p class="launch-text">Got your details. The moment we go live, you'll be among the first to hear about it. Now go enjoy the rest of the site.</p>
+      <p class="launch-text">Got your details. The moment the doors open you'll be the first to hear — and first in line for a founding spot. Now go enjoy the rest of the site.</p>
       <button class="launch-continue" id="launchContinue" type="button">Continue Browsing →</button>
     </div>
   </div>
@@ -138,6 +138,7 @@ import { WEB3FORMS_ACCESS_KEY } from '../data/site';
   }
 
   .launch-text em { color: #ffffff; font-style: italic; }
+  .launch-text strong { color: #E96530; font-weight: 600; }
 
   .launch-form {
     margin-top: 1.5rem;

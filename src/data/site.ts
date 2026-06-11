@@ -28,8 +28,8 @@ export const WEB3FORMS_ACCESS_KEY = "3096dcb9-fa86-4011-9b1d-3d5b4f1e21c8";
 
 /** Headline prices, written once so the pages stay in sync. */
 export const PRICING = {
-  standard: "R7,500",
-  founding: "R4,500",
+  standard: "R5,000",
+  founding: "R2,500",
   siteRescueAudit: "R850",
   carePlanMonthly: "R500",
   ownDomainDiscount: "R900",
