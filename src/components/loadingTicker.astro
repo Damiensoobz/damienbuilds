@@ -1,0 +1,107 @@
+---
+const loadingPhrases = [
+  "Warming Up the Geyser...",
+  "Checking the Load-Shedding...",
+  "Blaming Eskom...",
+  "Searching for Parking...",
+  "Waiting for the Kettle...",
+  "Finding the TV Remote...",
+  "Untangling the Earphones...",
+  "Skipping the Ad in 3... 2...",
+  "Pretending to Read the Terms...",
+  "Locating the Other Sock...",
+  "Topping Up the Airtime...",
+  "Defrosting the Boerewors...",
+  "Apologising to the Robot...",
+  "Avoiding the Group Chat...",
+  "Looking Busy...",
+  "Reheating Last Night's Curry...",
+  "Counting to Ten...",
+  "Stalking an Old Classmate...",
+  "Queuing at Home Affairs...",
+  "Watering Forgotten Plants...",
+  "Deciding What's for Supper...",
+  "Rebooting Monday...",
+  "Finding the Will to Reply...",
+  "Charging the Prepaid Meter...",
+  "Pretending to Be on Mute...",
+  "Locating Motivation...",
+];
+---
+
+<div class="loading-banner" aria-label="Loading...">
+  <div class="loading-track">
+    {[...loadingPhrases, ...loadingPhrases].map((phrase) => (
+      <span class="loading-phrase">
+        <span class="loading-diamond">◆</span>
+        {phrase}
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .loading-banner {
+    position: relative;
+    background: #0c1525;
+    border-top: 1px solid rgba(233, 101, 48, 0.18);
+    border-bottom: 1px solid rgba(233, 101, 48, 0.12);
+    overflow: hidden;
+    padding: 1.6rem 0;
+  }
+
+  .loading-banner::before,
+  .loading-banner::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: calc(100vw / 3);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .loading-banner::before { left: 0;  background: linear-gradient(to right, #0c1525 30%, transparent); }
+  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #0c1525 30%, transparent); }
+
+  .loading-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: loadingTicker 105s linear infinite;
+  }
+  .loading-banner:hover .loading-track { animation-play-state: paused; }
+
+  @keyframes loadingTicker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .loading-phrase {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: calc(100vw / 3);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    cursor: default;
+    flex-shrink: 0;
+  }
+
+  .loading-diamond {
+    color: #E96530;
+    font-size: 0.6rem;
+    opacity: 0.7;
+  }
+
+  /* Ticker: 2 phrases visible at a time so text stays legible */
+  @media (max-width: 768px) {
+    .loading-phrase { font-size: 0.72rem; width: 50vw; }
+  }
+
+  @media (max-width: 430px) {
+    .loading-phrase { font-size: 0.65rem; width: 50vw; }
+  }
+</style>

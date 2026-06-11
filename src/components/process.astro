@@ -85,6 +85,17 @@ const steps = [
     color: #ffffff;
   }
 
+  /* Dot grid texture — same as the hero */
+  .process::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   /* Clips blobs without clipping the wave overlap */
   .process-blob-clip {
     position: absolute;

@@ -193,6 +193,7 @@ const carePlan = [
 
 <style>
   .pricing {
+    position: relative;
     background:
       radial-gradient(ellipse 90% 35% at 50% 0%, rgba(79, 195, 247, 0.05) 0%, transparent 100%),
       radial-gradient(ellipse 60% 40% at 0% 100%, rgba(233, 101, 48, 0.04) 0%, transparent 100%),
@@ -202,7 +203,20 @@ const carePlan = [
     color: #ffffff;
   }
 
+  /* Dot grid texture — same as the homepage hero */
+  .pricing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .pricing-inner {
+    position: relative;
+    z-index: 1;
     max-width: 820px;
     margin: 0 auto;
   }

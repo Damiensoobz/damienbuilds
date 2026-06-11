@@ -1,32 +1,4 @@
 ---
-const loadingPhrases = [
-  "Warming Up the Geyser...",
-  "Checking the Load-Shedding...",
-  "Blaming Eskom...",
-  "Searching for Parking...",
-  "Waiting for the Kettle...",
-  "Finding the TV Remote...",
-  "Untangling the Earphones...",
-  "Skipping the Ad in 3... 2...",
-  "Pretending to Read the Terms...",
-  "Locating the Other Sock...",
-  "Topping Up the Airtime...",
-  "Defrosting the Boerewors...",
-  "Apologising to the Robot...",
-  "Avoiding the Group Chat...",
-  "Looking Busy...",
-  "Reheating Last Night's Curry...",
-  "Counting to Ten...",
-  "Stalking an Old Classmate...",
-  "Queuing at Home Affairs...",
-  "Watering Forgotten Plants...",
-  "Deciding What's for Supper...",
-  "Rebooting Monday...",
-  "Finding the Will to Reply...",
-  "Charging the Prepaid Meter...",
-  "Pretending to Be on Mute...",
-  "Locating Motivation...",
-];
 ---
 
 <section class="hero" id="hero-section">
@@ -53,12 +25,10 @@ const loadingPhrases = [
       <p class="aside-lead">These days, your website is your first impression.</p>
       <div class="aside-cols">
         <div class="aside-col">
-          <p class="aside-body">Before a customer calls, books, or buys — they search. If you're not showing up, a competitor who is gets the sale. It's not complicated; it's just how people make decisions now.</p>
-          <p class="aside-body">Social media helps, but you don't own it. One algorithm shift, one account ban, one platform dying — and your audience is gone. A website is the only piece of your online presence that is permanently, unconditionally yours.</p>
+          <p class="aside-body">Before a customer calls, books, or buys — they search. If you're not showing up, a competitor who is gets the sale. And social media doesn't cover you: you don't own it, and one algorithm shift can erase your audience overnight.</p>
         </div>
         <div class="aside-col">
-          <p class="aside-body">AI search tools are changing how people find businesses too. ChatGPT, Perplexity, Google's AI overviews — they all pull from real websites. No website means no presence in the places your next customer is already looking.</p>
-          <p class="aside-body">The businesses that invest in a proper web presence now — fast, clean, actually indexed by Google — are the ones that will be findable when everything else shifts again. And it will shift again.</p>
+          <p class="aside-body">A website is the only piece of your online presence that's permanently, unconditionally yours. Even AI search tools pull their answers from real websites — the businesses with a proper one are the businesses that get found.</p>
         </div>
       </div>
     </div>
@@ -73,18 +43,6 @@ const loadingPhrases = [
 
   </div>
 </section>
-
-<!-- Loading ticker (unchanged) -->
-<div class="loading-banner" aria-label="Loading...">
-  <div class="loading-track">
-    {[...loadingPhrases, ...loadingPhrases].map((phrase) => (
-      <span class="loading-phrase">
-        <span class="loading-diamond">◆</span>
-        {phrase}
-      </span>
-    ))}
-  </div>
-</div>
 
 <style>
   /* ── Hero shell ── */
@@ -282,11 +240,11 @@ const loadingPhrases = [
     background: transparent;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.92rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 1.1rem 2.75rem;
+    padding: 1.35rem 3.5rem;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
     white-space: nowrap;
     flex-shrink: 0;
@@ -296,62 +254,6 @@ const loadingPhrases = [
     border-color: #E96530;
     color: #E96530;
     background: rgba(233, 101, 48, 0.06);
-  }
-
-  /* ── Loading ticker (unchanged) ── */
-  .loading-banner {
-    position: relative;
-    background: #0c1525;
-    border-top: 1px solid rgba(233, 101, 48, 0.18);
-    border-bottom: 1px solid rgba(233, 101, 48, 0.12);
-    overflow: hidden;
-    padding: 1.6rem 0;
-  }
-
-  .loading-banner::before,
-  .loading-banner::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: calc(100vw / 3);
-    z-index: 2;
-    pointer-events: none;
-  }
-  .loading-banner::before { left: 0;  background: linear-gradient(to right, #0c1525 30%, transparent); }
-  .loading-banner::after  { right: 0; background: linear-gradient(to left,  #0c1525 30%, transparent); }
-
-  .loading-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    animation: loadingTicker 80s linear infinite;
-  }
-  .loading-banner:hover .loading-track { animation-play-state: paused; }
-
-  @keyframes loadingTicker {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-
-  .loading-phrase {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    width: calc(100vw / 3);
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.55);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-    cursor: default;
-    flex-shrink: 0;
-  }
-
-  .loading-diamond {
-    color: #E96530;
-    font-size: 0.6rem;
-    opacity: 0.7;
   }
 
   /* ── Responsive ── */
@@ -366,8 +268,6 @@ const loadingPhrases = [
     .hero-mid      { padding: 1.25rem 0; }
     .hero-bottom   { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     .hero-cta      { width: 100%; text-align: center; }
-    /* Ticker: 2 phrases visible at a time so text stays legible */
-    .loading-phrase { font-size: 0.72rem; width: 50vw; }
   }
 
   @media (max-width: 430px) {
@@ -377,6 +277,5 @@ const loadingPhrases = [
     .aside-body    { font-size: 0.82rem; }
     .hero-mid      { padding: 1rem 0; gap: 0.85rem; }
     .hero-bottom   { gap: 1rem; padding-top: 1rem; }
-    .loading-phrase { font-size: 0.65rem; width: 50vw; }
   }
 </style>
