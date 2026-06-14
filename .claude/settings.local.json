@@ -23,7 +23,23 @@
       "PowerShell(Stop-Process -Force)",
       "PowerShell(\"node cleared\")",
       "Bash(git fetch *)",
-      "PowerShell($f = \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\web\\\\damienbuilds\\\\astro_build\\\\damienbuilds\\\\src\\\\components\\\\hero.astro\"; \\(Get-Item $f\\).LastWriteTime = Get-Date; Write-Output \"touched\")"
+      "PowerShell($f = \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\web\\\\damienbuilds\\\\astro_build\\\\damienbuilds\\\\src\\\\components\\\\hero.astro\"; \\(Get-Item $f\\).LastWriteTime = Get-Date; Write-Output \"touched\")",
+      "Bash(git -C \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\web\\\\damienbuilds\\\\astro_build\\\\damienbuilds\" status)",
+      "Bash(git -C \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\\\\web\\\\damienbuilds\\\\astro_build\\\\damienbuilds\" log --oneline -3)",
+      "Bash(git commit -m ' *)",
+      "Bash(cat astro.config.mjs)",
+      "Bash(ls *.mjs *.ts *.js)",
+      "Bash(npm uninstall *)",
+      "Bash(npm install *)",
+      "PowerShell(Stop-Process -Id 23244 -Force -Confirm:$false)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 4321 -ErrorAction SilentlyContinue)",
+      "WebFetch(domain:damiensoobz.github.io)",
+      "Bash(gh api *)",
+      "WebFetch(domain:huggingface.co)",
+      "Bash(python -c \"import reportlab; print\\('reportlab', reportlab.Version\\)\")",
+      "PowerShell($dev = \"C:\\\\Users\\\\Player One\\\\Desktop\\\\Daylin\\\\development\"; Write-Output \"TOP-LEVEL OF $dev :\"; Get-ChildItem $dev -Directory | Select-Object -ExpandProperty Name; $toys = Join-Path $dev \"toys\"; foreach \\($n in \"pomodoro\",\"asciifier\",\"ascii-cam\",\"hollywood-hacker\",\"dice-oracle\"\\) { New-Item -ItemType Directory -Force -Path \\(Join-Path $toys $n\\) | Out-Null }; Write-Output \"`nCreated under $toys :\"; Get-ChildItem $toys -Directory | Select-Object -ExpandProperty Name)",
+      "Read(//c/Users/Player One/Desktop/Daylin/development/toys/**)",
+      "Bash(node -e ' *)"
     ]
   }
 }

@@ -27,6 +27,11 @@ const p = home ? "" : "/";
         <a href="/faq">FAQ</a>
         <a href={`${p}#contact`}>Contact</a>
       </nav>
+      <nav class="footer-legal-links">
+        <a href="/privacy">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terms">Terms of Use</a>
+      </nav>
       <p class="footer-legal">Built with Astro · Hosted on Vercel</p>
     </div>
   </div>
@@ -105,6 +110,22 @@ const p = home ? "" : "/";
   .footer-links a:hover { color: #E96530; }
 
   .footer-legal { font-size: 0.7rem; color: rgba(255, 255, 255, 0.25); letter-spacing: 0.04em; }
+
+  .footer-legal-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .footer-legal-links a {
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-legal-links a:hover { color: #E96530; }
+  .footer-legal-links span { color: rgba(255, 255, 255, 0.2); }
 
   /* ── Badges row ── */
   .footer-badges {
